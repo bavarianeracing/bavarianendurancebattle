@@ -5,146 +5,293 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Bavarian Endurance Battle — Buttonwillow, December 2026</title>
   <meta name="description" content="BMW-only 12 Hour Endurance Race at Buttonwillow Raceway — December 2026." />
+
+  <!-- Premium free font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root { --bg:#fff; --fg:#0a0a0a; --muted:#3f3f46; --card:#fff; --border:#e4e4e7; --btn:#0a0a0a; --btnfg:#fff; }
-    :root.dark { --bg:#0a0a0a; --fg:#fafafa; --muted:#a1a1aa; --card:#111113; --border:#27272a; --btn:#fafafa; --btnfg:#0a0a0a; }
-    *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-      background:var(--bg);color:var(--fg); }
-    a{color:inherit} .wrap{max-width:1100px;margin:0 auto;padding:0 18px}
-    header{position:sticky;top:0;border-bottom:1px solid var(--border);backdrop-filter:blur(10px);
-      background:color-mix(in oklab, var(--bg) 85%, transparent);}
-    nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 0}
-    .brand{font-weight:650;letter-spacing:-.01em;text-decoration:none}
-    .links{display:none;gap:18px;font-size:14px;opacity:.9}
-    .links a{text-decoration:none} .links a:hover{opacity:.8}
+    :root{
+      --bg:#ffffff;
+      --fg:#0b0b0f;
+      --muted:#545461;
+      --card:#ffffff;
+      --border:#e7e7ee;
+      --shadow: 0 12px 30px rgba(0,0,0,.08);
+      --shadow2: 0 8px 20px rgba(0,0,0,.06);
+      --btn:#0b0b0f;
+      --btnfg:#ffffff;
+      --ring: rgba(11,11,15,.12);
+      --grad1: radial-gradient(900px 500px at 20% -10%, rgba(0,0,0,.06), transparent 55%),
+               radial-gradient(700px 450px at 90% 10%, rgba(0,0,0,.04), transparent 60%);
+    }
+
+    :root.dark{
+      --bg:#07070a;
+      --fg:#f6f6fb;
+      --muted:#a5a5b3;
+      --card:#0f0f14;
+      --border:#1f1f2a;
+      --shadow: 0 14px 34px rgba(0,0,0,.55);
+      --shadow2: 0 10px 24px rgba(0,0,0,.38);
+      --btn:#f6f6fb;
+      --btnfg:#0b0b0f;
+      --ring: rgba(246,246,251,.10);
+      --grad1: radial-gradient(900px 500px at 20% -10%, rgba(255,255,255,.08), transparent 55%),
+               radial-gradient(700px 450px at 90% 10%, rgba(255,255,255,.06), transparent 60%);
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      background: var(--bg);
+      color: var(--fg);
+      letter-spacing: -0.01em;
+    }
+
+    a{color:inherit}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+    .topbg{background: var(--grad1);}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      border-bottom:1px solid var(--border);
+      background: color-mix(in oklab, var(--bg) 86%, transparent);
+      backdrop-filter: blur(10px);
+    }
+
+    nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
+    .brand{
+      font-weight:700;
+      text-decoration:none;
+      letter-spacing:-.03em;
+      display:flex;align-items:center;gap:10px
+    }
+    .mark{
+      width:26px;height:26px;border-radius:10px;
+      border:1px solid var(--border);
+      box-shadow: var(--shadow2);
+      background: linear-gradient(135deg, color-mix(in oklab, var(--fg) 18%, transparent), transparent);
+    }
+
+    .links{display:none;gap:18px;font-size:14px;color:var(--muted)}
+    .links a{text-decoration:none}
+    .links a:hover{color:var(--fg)}
+
     .actions{display:flex;align-items:center;gap:10px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;
-      border:1px solid var(--border);text-decoration:none;font-size:14px}
-    .btn.primary{background:var(--btn);color:var(--btnfg);border-color:transparent}
-    .btn:hover{opacity:.9}
-    .hero{padding:64px 0 34px}
-    .pill{display:inline-flex;border:1px solid var(--border);border-radius:999px;padding:6px 10px;font-size:12px;opacity:.9}
-    h1{margin:16px 0 0;font-size:44px;letter-spacing:-.03em;line-height:1.05}
-    .sub{margin:16px 0 0;font-size:18px;line-height:1.55;color:var(--muted);max-width:42rem}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:10px 14px;border-radius:14px;
+      border:1px solid var(--border);
+      text-decoration:none;font-size:14px;
+      box-shadow: 0 1px 0 var(--ring);
+      background: color-mix(in oklab, var(--card) 92%, transparent);
+    }
+    .btn.primary{
+      background: var(--btn);
+      color: var(--btnfg);
+      border-color: transparent;
+      box-shadow: 0 10px 22px rgba(0,0,0,.18);
+    }
+    .btn:hover{transform: translateY(-1px); transition: .15s ease; }
+    .btn:active{transform: translateY(0px)}
+    .btn.small{padding:9px 12px}
+
+    .hero{padding:74px 0 28px}
+    .pill{
+      display:inline-flex;align-items:center;gap:8px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      padding:7px 12px;
+      font-size:12px;
+      color: var(--muted);
+      background: color-mix(in oklab, var(--card) 92%, transparent);
+      box-shadow: 0 1px 0 var(--ring);
+    }
+    .dot{width:7px;height:7px;border-radius:99px;background: color-mix(in oklab, var(--fg) 22%, transparent);}
+    h1{margin:16px 0 0;font-size:46px;letter-spacing:-.04em;line-height:1.02}
+    .sub{
+      margin:16px 0 0;
+      font-size:18px;
+      line-height:1.6;
+      color: var(--muted);
+      max-width: 44rem;
+    }
+
     .grid{display:grid;gap:18px}
     .heroGrid{grid-template-columns:1fr}
-    .card{border:1px solid var(--border);background:var(--card);border-radius:22px;padding:18px}
-    .snap{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;font-size:14px}
-    .snap dt{color:var(--muted);font-size:12px} .snap dd{margin:4px 0 0;font-weight:600}
+
+    .card{
+      border:1px solid var(--border);
+      background: var(--card);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow2);
+    }
+
+    .snap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:14px;
+      margin-top:14px;
+      font-size:14px;
+    }
+    .snap dt{color:var(--muted);font-size:12px}
+    .snap dd{margin:4px 0 0;font-weight:650}
+
     .section{padding:26px 0 62px}
+    .section h2{margin:0 0 10px;font-size:22px;letter-spacing:-.02em}
     .muted{color:var(--muted)}
-    footer{border-top:1px solid var(--border);padding:28px 0;color:var(--muted);font-size:14px}
-    @media (min-width: 900px){
+
+    .grid3{grid-template-columns:1fr}
+    .feature h3{margin:0;font-size:16px;letter-spacing:-.02em}
+    .feature p{margin:10px 0 0;color:var(--muted);line-height:1.65;font-size:14px}
+
+    .cta{
+      display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;
+      padding:18px;border-radius:22px;border:1px solid var(--border);
+      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), transparent);
+      box-shadow: var(--shadow2);
+    }
+
+    footer{
+      border-top:1px solid var(--border);
+      padding:28px 0;
+      color: var(--muted);
+      font-size:14px;
+    }
+
+    @media (min-width: 920px){
       .links{display:flex}
-      .hero{padding:82px 0 44px}
-      .heroGrid{grid-template-columns:1.2fr .8fr;align-items:center}
-      h1{font-size:54px}
+      .hero{padding:92px 0 34px}
+      .heroGrid{grid-template-columns:1.15fr .85fr;align-items:center}
+      h1{font-size:58px}
       .grid3{grid-template-columns:1fr 1fr 1fr}
     }
   </style>
 </head>
-<body>
-<header>
-  <div class="wrap">
-    <nav>
-      <a class="brand" href="#top">Bavarian Endurance Battle</a>
-      <div class="links" aria-label="Primary navigation">
-        <a href="#event">Event</a>
-        <a href="#rules">Rules</a>
-        <a href="#media">Media</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
-      <div class="actions">
-        <a class="btn primary" href="#contact">Get Updates</a>
-        <button class="btn" id="theme" type="button" aria-label="Toggle theme">Theme</button>
-      </div>
-    </nav>
-  </div>
-</header>
 
-<main id="top">
-  <section class="hero">
+<body>
+<div class="topbg">
+  <header>
     <div class="wrap">
-      <div class="grid heroGrid">
-        <div>
-          <div class="pill">Buttonwillow Raceway • December 2026 • 12 Hour Endurance</div>
-          <h1>Are you ready to show what you’re made of?</h1>
-          <p class="sub">
-            BMW-only endurance. Real teams. Real strategy. No fluff — just preparation, consistency, and execution.
-          </p>
-          <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-            <a class="btn primary" href="#contact">Get Updates / Team Interest</a>
-            <a class="btn" href="#event">See Event Details</a>
-          </div>
-          <p class="muted" style="margin-top:12px;font-size:14px">
-            Contact: <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
-          </p>
+      <nav>
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true"></span>
+          <span>Bavarian Endurance Battle</span>
+        </a>
+
+        <div class="links" aria-label="Primary navigation">
+          <a href="#event">Event</a>
+          <a href="#rules">Rules</a>
+          <a href="#media">Media</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </div>
 
-        <div class="card">
-          <div style="font-weight:700;font-size:18px">Event Snapshot</div>
-          <dl class="snap">
-            <div><dt>Track</dt><dd>Buttonwillow Raceway</dd></div>
-            <div><dt>Race Length</dt><dd>12 Hours</dd></div>
-            <div><dt>Date</dt><dd>December 2026</dd></div>
-            <div><dt>Platform</dt><dd>BMW-only</dd></div>
-          </dl>
-          <div class="card" style="margin-top:14px;border-radius:18px">
-            <div class="muted" style="font-size:14px;line-height:1.5">
-              This site is the official hub for updates, rules, and team interest. Rules and registration details will be published here as they’re finalized.
+        <div class="actions">
+          <a class="btn primary small" href="#contact">Get Updates</a>
+          <button class="btn small" id="theme" type="button" aria-label="Toggle theme">Theme</button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="grid heroGrid">
+          <div>
+            <div class="pill"><span class="dot" aria-hidden="true"></span> Buttonwillow Raceway • December 2026 • 12 Hour Endurance</div>
+            <h1>Are you ready to show what you’re made of?</h1>
+            <p class="sub">
+              BMW-only endurance. Real teams. Real strategy. No fluff — just preparation, consistency, and execution.
+              This is the official hub for rules, updates, and team interest.
+            </p>
+
+            <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
+              <a class="btn primary" href="#contact">Get Updates / Team Interest</a>
+              <a class="btn" href="#event">See Event Details</a>
+            </div>
+
+            <p class="muted" style="margin-top:12px;font-size:14px">
+              Contact: <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
+            </p>
+          </div>
+
+          <div class="card">
+            <div style="font-weight:700;font-size:18px;letter-spacing:-.02em">Event Snapshot</div>
+            <dl class="snap">
+              <div><dt>Track</dt><dd>Buttonwillow Raceway</dd></div>
+              <div><dt>Race Length</dt><dd>12 Hours</dd></div>
+              <div><dt>Date</dt><dd>December 2026</dd></div>
+              <div><dt>Platform</dt><dd>BMW-only</dd></div>
+            </dl>
+
+            <div style="margin-top:14px" class="cta">
+              <div style="max-width:28rem">
+                <div style="font-weight:650;letter-spacing:-.02em">What’s next</div>
+                <div class="muted" style="margin-top:6px;line-height:1.55;font-size:14px">
+                  Rules PDFs and registration details will be published here as they’re finalized. If you want first notice, get on the update list.
+                </div>
+              </div>
+              <a class="btn" href="#contact">Join the list</a>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
+</div>
 
-  <section class="section" id="event">
-    <div class="wrap">
-      <h2 style="margin:0 0 10px;font-size:22px">Event</h2>
-      <p class="muted" style="margin:0;max-width:52rem;line-height:1.6">
-        Buttonwillow Raceway • December 2026 • 12 Hour Endurance. Schedule, entry format, class structure, and tech expectations will be published here.
-      </p>
-    </div>
-  </section>
+<section class="section" id="event">
+  <div class="wrap">
+    <h2>Event</h2>
+    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
+      Buttonwillow Raceway • December 2026 • 12 Hour Endurance. Schedule, entry format, class structure, and tech expectations will be published here.
+    </p>
+  </div>
+</section>
 
-  <section class="section" id="rules">
-    <div class="wrap">
-      <h2 style="margin:0 0 10px;font-size:22px">Rules</h2>
-      <p class="muted" style="margin:0;max-width:52rem;line-height:1.6">
-        Rules PDFs and bulletins will be posted here (technical, safety, sporting).
-      </p>
-    </div>
-  </section>
+<section class="section" id="rules">
+  <div class="wrap">
+    <h2>Rules</h2>
+    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
+      Rules PDFs and bulletins will be posted here (technical, safety, sporting). If it matters, it’ll be published.
+    </p>
+  </div>
+</section>
 
-  <section class="section" id="media">
-    <div class="wrap">
-      <h2 style="margin:0 0 10px;font-size:22px">Media</h2>
-      <p class="muted" style="margin:0;max-width:52rem;line-height:1.6">
-        Official videos (YouTube) and photos will live here.
-      </p>
-    </div>
-  </section>
+<section class="section" id="media">
+  <div class="wrap">
+    <h2>Media</h2>
+    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
+      Official videos (YouTube) and photos will live here.
+    </p>
+  </div>
+</section>
 
-  <section class="section" id="about">
-    <div class="wrap">
-      <h2 style="margin:0 0 10px;font-size:22px">About</h2>
-      <p class="muted" style="margin:0;max-width:52rem;line-height:1.6">
-        Bavarian Endurance Battle is built around clarity, consistency, and serious track participation — aimed at teams who want to earn it on track.
-      </p>
-    </div>
-  </section>
+<section class="section" id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
+      Bavarian Endurance Battle is built around clarity, consistency, and serious track participation — aimed at teams who want to earn it on track.
+    </p>
+  </div>
+</section>
 
-  <section class="section" id="contact">
-    <div class="wrap">
-      <h2 style="margin:0 0 10px;font-size:22px">Contact</h2>
-      <p class="muted" style="margin:0;max-width:52rem;line-height:1.6">
-        Email is the fastest: <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
-      </p>
-    </div>
-  </section>
-</main>
+<section class="section" id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
+      Email is the fastest: <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
+    </p>
+  </div>
+</section>
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
