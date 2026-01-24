@@ -286,12 +286,78 @@
 
 <section class="section" id="contact">
   <div class="wrap">
-    <h2>Contact</h2>
+    <h2>Team Sign-Up / Updates</h2>
     <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
-      Email is the fastest: <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
+      This is the fastest way to get first notice when rules + registration go live. You can also use it to raise your hand as a serious team.
+      Prefer email? <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
     </p>
+
+    <div style="margin-top:18px" class="card">
+      <form action="PASTE_YOUR_FORMSPREE_URL_HERE" method="POST">
+        <div class="grid" style="grid-template-columns:1fr;gap:12px">
+          <div>
+            <label style="font-size:13px;color:var(--muted)">Name</label>
+            <input name="name" required
+              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+              placeholder="First + last name" />
+          </div>
+
+          <div>
+            <label style="font-size:13px;color:var(--muted)">Email</label>
+            <input type="email" name="email" required
+              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+              placeholder="you@email.com" />
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr;gap:12px">
+            <div>
+              <label style="font-size:13px;color:var(--muted)">Team / Shop (optional)</label>
+              <input name="team"
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+                placeholder="Team name / shop name" />
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label style="font-size:13px;color:var(--muted)">BMW Chassis (optional)</label>
+              <input name="chassis"
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+                placeholder="E30 / E36 / E46 / etc." />
+            </div>
+
+            <div>
+              <label style="font-size:13px;color:var(--muted)">Interest level</label>
+              <select name="interest" required
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none">
+                <option value="" selected disabled>Select</option>
+                <option>Just want updates</option>
+                <option>Considering a team</option>
+                <option>Serious — likely entering</option>
+              </select>
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:13px;color:var(--muted)">Notes (optional)</label>
+            <textarea name="notes" rows="4"
+              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+              placeholder="Anything we should know? (car plan, questions, sponsor interest, etc.)"></textarea>
+          </div>
+
+          <!-- anti-spam honeypot (leave hidden) -->
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn primary" type="submit">Submit</button>
+            <span class="muted" style="font-size:13px">You’ll receive a confirmation email.</span>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
+
 
 <footer>
   <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
