@@ -174,6 +174,56 @@
       h1{font-size:58px}
       .grid3{grid-template-columns:1fr 1fr 1fr}
     }
+    /* ===== Polish Pack v1 ===== */
+.hero{
+  padding: 86px 0 44px;
+  position: relative;
+}
+.topbg{
+  position: relative;
+  overflow: hidden;
+}
+.topbg:before{
+  content:"";
+  position:absolute;
+  inset:-200px -200px auto -200px;
+  height:520px;
+  background: radial-gradient(closest-side, color-mix(in oklab, var(--fg) 14%, transparent), transparent 70%);
+  opacity:.75;
+  pointer-events:none;
+}
+.topbg:after{
+  content:"";
+  position:absolute;
+  inset:auto -240px -240px auto;
+  width:620px;height:620px;
+  background: radial-gradient(circle, color-mix(in oklab, var(--fg) 10%, transparent), transparent 60%);
+  opacity:.55;
+  pointer-events:none;
+}
+.hero h1{
+  font-size: clamp(40px, 5vw, 62px);
+  line-height: 1.02;
+}
+.pill{
+  backdrop-filter: blur(10px);
+}
+.card{
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover{
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+  border-color: color-mix(in oklab, var(--border) 70%, var(--fg));
+}
+.btn.primary{
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn.primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.22);
+}
+
   </style>
 </head>
 
