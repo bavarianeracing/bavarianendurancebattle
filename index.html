@@ -246,6 +246,34 @@ main{ padding-top: 76px; }
   );
   z-index:0;
 }
+/* Vignette + grain */
+.topbg::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:0;
+  background:
+    radial-gradient(900px 520px at 30% 20%, rgba(255,255,255,.10), transparent 60%),
+    radial-gradient(1200px 680px at 70% 10%, rgba(255,255,255,.06), transparent 55%),
+    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.45), transparent 55%),
+    linear-gradient(0deg, rgba(0,0,0,.14), rgba(0,0,0,.14));
+  opacity:.85;
+  pointer-events:none;
+  mix-blend-mode: overlay;
+}
+
+/* Fine grain */
+.topbg .grain{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+  opacity:.10;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 2px),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 1px, transparent 1px 2px);
+  mix-blend-mode: soft-light;
+}
 
 /* Ensure content sits above overlay */
 .topbg > *{
@@ -317,6 +345,7 @@ main{ padding-top: 76px; }
 
 <body>
 <div class="topbg">
+  <div class="grain" aria-hidden="true"></div>
   <header>
     <div class="wrap">
       <nav>
