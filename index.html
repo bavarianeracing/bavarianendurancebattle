@@ -168,12 +168,28 @@ main{ padding-top: 76px; }
 }
 
     .snap{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:14px;
-      margin-top:14px;
-      font-size:14px;
-    }
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px 18px;
+  margin-top:14px;
+  font-size:14px;
+}
+.snap > div{
+  padding-top:12px;
+  border-top:1px solid color-mix(in oklab, var(--border) 70%, transparent);
+}
+.snap dt{
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  font-size:11px;
+  color: color-mix(in oklab, var(--muted) 92%, transparent);
+}
+.snap dd{
+  margin:6px 0 0;
+  font-weight:800;
+  letter-spacing:-.02em;
+}
+
     .snap dt{color:var(--muted);font-size:12px}
     .snap dd{margin:4px 0 0;font-weight:650}
 
