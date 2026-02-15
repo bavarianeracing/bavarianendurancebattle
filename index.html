@@ -104,11 +104,27 @@ main{ padding-top: 76px; }
       background: color-mix(in oklab, var(--card) 92%, transparent);
     }
     .btn.primary{
-      background: var(--btn);
-      color: var(--btnfg);
-      border-color: transparent;
-      box-shadow: 0 10px 22px rgba(0,0,0,.18);
-    }
+  background: linear-gradient(180deg, color-mix(in oklab, var(--btn) 92%, white), var(--btn));
+  color: var(--btnfg);
+  border-color: transparent;
+  box-shadow: 0 10px 22px rgba(0,0,0,.18);
+  position: relative;
+  overflow: hidden;
+}
+.btn.primary::after{
+  content:"";
+  position:absolute;
+  inset:-40% -20%;
+  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 55%);
+  opacity:.55;
+  transform: translateY(-8px);
+  pointer-events:none;
+}
+.btn.primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 16px 34px rgba(0,0,0,.24);
+}
+
     .btn:hover{transform: translateY(-1px); transition: .15s ease; }
     .btn:active{transform: translateY(0px)}
     .btn.small{padding:9px 12px}
