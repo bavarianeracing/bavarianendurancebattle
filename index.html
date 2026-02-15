@@ -96,13 +96,15 @@ main{ padding-top: 76px; }
     .actions{display:flex;align-items:center;gap:10px}
 
     .btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      padding:10px 14px;border-radius:14px;
-      border:1px solid var(--border);
-      text-decoration:none;font-size:14px;
-      box-shadow: 0 1px 0 var(--ring);
-      background: color-mix(in oklab, var(--card) 92%, transparent);
-    }
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:10px 14px;border-radius:14px;
+  border:1px solid var(--border);
+  text-decoration:none;font-size:14px;
+  box-shadow: 0 1px 0 var(--ring);
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+
     .btn.primary{
   background: linear-gradient(180deg, color-mix(in oklab, var(--btn) 92%, white), var(--btn));
   color: var(--btnfg);
@@ -125,7 +127,11 @@ main{ padding-top: 76px; }
   box-shadow: 0 16px 34px rgba(0,0,0,.24);
 }
 
-    .btn:hover{transform: translateY(-1px); transition: .15s ease; }
+  .btn:hover{
+  transform: translateY(-1px);
+  border-color: color-mix(in oklab, var(--border) 70%, var(--fg));
+}
+
     .btn:active{transform: translateY(0px)}
     .btn.small{padding:9px 12px}
 
