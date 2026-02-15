@@ -184,15 +184,36 @@ main{ padding-top: 76px; }
       h1{font-size:58px}
       .grid3{grid-template-columns:1fr 1fr 1fr}
     }
-    /* Hero background image */
+   /* Hero background image */
 .topbg{
+  position: relative;
   background:
-    linear-gradient(180deg, rgba(11,11,15,.82), rgba(11,11,15,.92)),
     url("hero.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
+
+/* Cinematic fade overlay */
+.topbg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: linear-gradient(
+    180deg,
+    rgba(10,10,14,.65) 0%,
+    rgba(10,10,14,.78) 40%,
+    rgba(10,10,14,.92) 100%
+  );
+  z-index:0;
+}
+
+/* Ensure content sits above overlay */
+.topbg > *{
+  position: relative;
+  z-index: 1;
+}
+
 :root.dark .topbg{
   background:
     linear-gradient(180deg, rgba(7,7,10,.78), rgba(7,7,10,.94)),
