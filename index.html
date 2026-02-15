@@ -149,12 +149,14 @@ main{ padding-top: 76px; }
     .dot{width:7px;height:7px;border-radius:99px;background: color-mix(in oklab, var(--fg) 22%, transparent);}
     h1{margin:16px 0 0;font-size:46px;letter-spacing:-.04em;line-height:1.02}
     .sub{
-      margin:16px 0 0;
-      font-size:18px;
-      line-height:1.6;
-      color: var(--muted);
-      max-width: 44rem;
-    }
+  margin:16px 0 0;
+  font-size:18px;
+  line-height:1.6;
+  color: var(--muted);
+  max-width: 44rem;
+  text-shadow: 0 4px 18px rgba(0,0,0,.55);
+}
+
 
     .grid{display:grid;gap:18px}
     .heroGrid{grid-template-columns:1fr}
@@ -336,7 +338,9 @@ main{ padding-top: 76px; }
 .hero h1{
   font-size: clamp(40px, 5vw, 62px);
   line-height: 1.02;
+  text-shadow: 0 8px 30px rgba(0,0,0,.65);
 }
+
 .pill{
   backdrop-filter: blur(10px);
 }
