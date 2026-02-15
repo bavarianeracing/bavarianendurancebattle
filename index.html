@@ -178,7 +178,24 @@ main{ padding-top: 76px; }
     .snap dd{margin:4px 0 0;font-weight:650}
 
     .section{padding:26px 0 62px}
-    .section h2{margin:0 0 10px;font-size:22px;letter-spacing:-.02em}
+   .section h2{
+  margin:0 0 18px;
+  font-size:22px;
+  letter-spacing:-.02em;
+  position:relative;
+  display:inline-block;
+}
+
+.section h2:after{
+  content:"";
+  display:block;
+  width:40px;
+  height:2px;
+  margin-top:8px;
+  background: color-mix(in oklab, var(--fg) 65%, transparent);
+  border-radius:2px;
+}
+
     .muted{color:var(--muted)}
 
     .grid3{grid-template-columns:1fr}
