@@ -393,6 +393,32 @@ main{ padding-top: 76px; }
 @media (prefers-reduced-motion: reduce){
   .hero .wrap{ animation:none; }
 }
+.statStrip{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:10px;
+}
+.stat{
+  padding:12px 14px;
+  border-radius:18px;
+  border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
+  background: color-mix(in oklab, var(--card) 86%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 1px 0 var(--ring);
+}
+.stat b{
+  display:block;
+  font-size:14px;
+  letter-spacing:-.02em;
+}
+.stat span{
+  display:block;
+  margin-top:4px;
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.45;
+}
 
   </style>
 </head>
