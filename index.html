@@ -380,6 +380,19 @@ main{ padding-top: 76px; }
 @media (prefers-reduced-motion: reduce){
   .hero .wrap{ animation:none; }
 }
+    
+@keyframes riseIn{
+  from{ opacity:0; transform: translateY(10px); }
+  to{ opacity:1; transform: translateY(0); }
+}
+
+.hero .wrap{
+  animation: riseIn .6s ease both;
+}
+
+@media (prefers-reduced-motion: reduce){
+  .hero .wrap{ animation:none; }
+}
 
   </style>
 </head>
