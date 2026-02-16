@@ -9,44 +9,153 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0b0b0f;color:#f6f6fb}
-    .wrap{max-width:1100px;margin:0 auto;padding:48px 18px}
-    h1{margin:0;font-size:48px;letter-spacing:-.04em}
-    p{line-height:1.6;opacity:.85}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px;margin-top:32px}
-    .card{border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;background:rgba(255,255,255,.04)}
-    .team{font-weight:700;font-size:18px}
-    .meta{margin-top:6px;font-size:14px;opacity:.7}
-    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:14px;
-      border:1px solid rgba(255,255,255,.18);text-decoration:none;margin-top:18px}
-    .teamGrid{
-  margin-top:24px;
-  display:grid;
-  grid-template-columns:1fr;
-  gap:14px;
-}
-@media (min-width:900px){
-  .teamGrid{
-    grid-template-columns:1fr 1fr 1fr;
+ <style>
+  :root{
+    --bg:#ffffff;
+    --fg:#0b0b0f;
+    --muted:#545461;
+    --card:#ffffff;
+    --border:#e7e7ee;
+    --shadow: 0 12px 30px rgba(0,0,0,.08);
+    --shadow2: 0 8px 20px rgba(0,0,0,.06);
+    --btn:#0b0b0f;
+    --btnfg:#ffffff;
+    --ring: rgba(11,11,15,.12);
+    --grad1: radial-gradient(900px 500px at 20% -10%, rgba(0,0,0,.06), transparent 55%),
+             radial-gradient(700px 450px at 90% 10%, rgba(0,0,0,.04), transparent 60%);
   }
-}
 
-.teamCard .tagRow{
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin-top:10px;
-}
-.teamCard .tag{
-  font-size:12px;
-  padding:6px 10px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.06);
-}
+  :root.dark{
+    --bg:#07070a;
+    --fg:#f6f6fb;
+    --muted:#a5a5b3;
+    --card:#0f0f14;
+    --border:#1f1f2a;
+    --shadow: 0 14px 34px rgba(0,0,0,.55);
+    --shadow2: 0 10px 24px rgba(0,0,0,.38);
+    --btn:#f6f6fb;
+    --btnfg:#0b0b0f;
+    --ring: rgba(246,246,251,.10);
+    --grad1: radial-gradient(900px 500px at 20% -10%, rgba(255,255,255,.08), transparent 55%),
+             radial-gradient(700px 450px at 90% 10%, rgba(255,255,255,.06), transparent 60%);
+  }
 
-  </style>
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+    background: var(--bg);
+    color: var(--fg);
+    letter-spacing: -0.01em;
+  }
+
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
+  .topbg{background: var(--grad1);}
+
+  header{
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    background: color-mix(in oklab, var(--bg) 78%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
+  }
+
+  nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
+  .brand{
+    font-weight:800;
+    text-decoration:none;
+    letter-spacing:-.03em;
+    display:flex;align-items:center;gap:10px
+  }
+  .mark{
+    width:26px;height:26px;border-radius:10px;
+    border:1px solid var(--border);
+    box-shadow: var(--shadow2);
+    background: linear-gradient(135deg, color-mix(in oklab, var(--fg) 18%, transparent), transparent);
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    padding:10px 14px;border-radius:14px;
+    border:1px solid var(--border);
+    text-decoration:none;font-size:14px;
+    box-shadow: 0 1px 0 var(--ring);
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+  }
+  .btn:hover{
+    transform: translateY(-1px);
+    border-color: color-mix(in oklab, var(--border) 70%, var(--fg));
+    box-shadow: 0 10px 24px rgba(0,0,0,.12);
+  }
+  .btn.primary{
+    background: linear-gradient(180deg, color-mix(in oklab, var(--btn) 92%, white), var(--btn));
+    color: var(--btnfg);
+    border-color: transparent;
+    box-shadow: 0 10px 22px rgba(0,0,0,.18);
+    position: relative;
+    overflow: hidden;
+  }
+
+  main{padding:46px 0 70px}
+  h1{margin:0;font-size:48px;letter-spacing:-.04em;line-height:1.02}
+  h2{margin:0 0 18px;font-size:22px;letter-spacing:-.02em;position:relative;display:inline-block}
+  h2:after{
+    content:"";
+    display:block;
+    width:40px;height:2px;margin-top:8px;border-radius:2px;
+    background: color-mix(in oklab, var(--fg) 65%, transparent);
+  }
+  p{line-height:1.65;color:var(--muted);margin:12px 0 0;max-width:56rem}
+
+  .card{
+    border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
+    background: color-mix(in oklab, var(--card) 86%, transparent);
+    border-radius: 22px;
+    padding: 18px;
+    box-shadow: var(--shadow2);
+    backdrop-filter: blur(10px);
+  }
+
+  .section{padding:26px 0 28px}
+  .muted{color:var(--muted)}
+  .grid{display:grid;gap:18px}
+  .teamGrid{
+    margin-top:18px;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:12px;
+  }
+  @media (min-width: 920px){
+    .teamGrid{ grid-template-columns: 1fr 1fr 1fr; }
+  }
+
+  .team{font-weight:900;font-size:18px;letter-spacing:-.02em}
+  .meta{margin-top:6px;font-size:14px;color:var(--muted)}
+
+  .teamCard .tagRow{
+    display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;
+  }
+  .teamCard .tag{
+    font-size:12px;
+    padding:6px 10px;
+    border-radius:999px;
+    border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
+    background: color-mix(in oklab, var(--card) 86%, transparent);
+    color: color-mix(in oklab, var(--fg) 85%, var(--muted));
+  }
+
+  footer{
+    border-top:1px solid var(--border);
+    padding:28px 0;
+    color: var(--muted);
+    font-size:14px;
+  }
+</style>
+
 </head>
 <body>
   <div class="wrap">
