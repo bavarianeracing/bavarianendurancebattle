@@ -29,6 +29,83 @@
       These teams have expressed serious interest or confirmed participation in the Bavarian Endurance Battle.
       Want your team listed here? Submit via the Team Sign-Up form.
     </p>
+<section class="section">
+  <div class="wrap">
+    <h2>Get Listed</h2>
+    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
+      Building a BMW endurance project for BEB? Submit your team and we’ll add you to the public Teams page.
+      This is how momentum becomes real.
+    </p>
+
+    <div class="card" style="margin-top:18px">
+      <form action="https://formspree.io/f/mdaeppov" method="POST">
+
+        <input type="hidden" name="_subject" value="BEB Team Listing Submission" />
+        <input type="hidden" name="_next" value="https://bavarianendurancebattle.com/thanks.html" />
+
+        <div class="grid" style="grid-template-columns:1fr;gap:12px">
+          <div>
+            <label style="font-size:13px;color:var(--muted)">Team Name</label>
+            <input name="team_name" required
+              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+              placeholder="Team / Shop name" />
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label style="font-size:13px;color:var(--muted)">Chassis</label>
+              <input name="chassis"
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+                placeholder="E30 / E36 / E46 / etc." />
+            </div>
+
+            <div>
+              <label style="font-size:13px;color:var(--muted)">Class</label>
+              <select name="class"
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none">
+                <option value="" selected>Unknown / TBD</option>
+                <option>Stock (BTCC-style)</option>
+                <option>Modified</option>
+                <option>Forced Induction (Turbo/Supercharger)</option>
+                <option>Swap Class</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label style="font-size:13px;color:var(--muted)">Contact Name</label>
+              <input name="contact_name"
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+                placeholder="First + last name" />
+            </div>
+
+            <div>
+              <label style="font-size:13px;color:var(--muted)">Email</label>
+              <input type="email" name="email" required
+                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+                placeholder="you@email.com" />
+            </div>
+          </div>
+
+          <div>
+            <label style="font-size:13px;color:var(--muted)">Build Notes (optional)</label>
+            <textarea name="build_notes" rows="4"
+              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
+              placeholder="Short description: goals, timeline, what you’re building, etc."></textarea>
+          </div>
+
+          <input type="text" name="_gotcha" style="display:none" />
+
+          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+            <button class="btn primary" type="submit">Submit Team</button>
+            <span class="muted" style="font-size:13px">We’ll review and publish verified teams.</span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
 
     <div class="grid">
 
