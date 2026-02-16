@@ -154,6 +154,20 @@
     color: var(--muted);
     font-size:14px;
   }
+   /* Teams background image */
+.topbg{
+  background:
+    linear-gradient(180deg, rgba(11,11,15,.85), rgba(11,11,15,.95)),
+    url("teams.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+main{
+  padding-top:40px;
+  padding-bottom:80px;
+}
+
 </style>
 
 </head>
@@ -172,7 +186,9 @@
     </header>
   </div>
 
-  <main>
+<div class="topbg">
+<main>
+
     <div class="wrap">
 
     <h1>Registered Teams</h1>
@@ -322,5 +338,7 @@
 
     <a class="btn" href="https://bavarianendurancebattle.com/">← Back to home</a>
   </div>
+  </div>
+
 </body>
 </html>
