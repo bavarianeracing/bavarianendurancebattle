@@ -1,1 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 
+<title>Team Profile — Bavarian Endurance Battle</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Inter,system-ui;
+background:#0b0b0f;
+color:#f6f6fb;
+}
+
+.wrap{
+max-width:1100px;
+margin:auto;
+padding:0 20px;
+}
+
+/* HERO */
+
+.hero{
+position:relative;
+height:420px;
+display:flex;
+align-items:flex-end;
+background:url("/team-hero.jpg") center/cover no-repeat;
+}
+
+.hero:after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(180deg,rgba(0,0,0,.2),rgba(0,0,0,.9));
+}
+
+.heroContent{
+position:relative;
+z-index:2;
+padding:40px;
+}
+
+.hero h1{
+margin:0;
+font-size:46px;
+letter-spacing:-.03em;
+}
+
+.heroMeta{
+margin-top:10px;
+opacity:.8;
+font-size:16px;
+}
+
+/* FACT BAR */
+
+.factBar{
+background:#121217;
+border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.factGrid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
+gap:20px;
+padding:20px 0;
+text-align:center;
+}
+
+.factLabel{
+font-size:12px;
+opacity:.6;
+}
+
+.factValue{
+font-weight:700;
+margin-top:4px;
+}
+
+/* SECTIONS */
+
+.section{
+padding:60px 0;
+}
+
+.section h2{
+margin:0 0 16px;
+font-size:28px;
+}
+
+.section p{
+max-width:700px;
+line-height:1.7;
+opacity:.85;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+margin-top:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:12px;
+}
+
+/* UPDATES */
+
+.update{
+border:1px solid rgba(255,255,255,.08);
+padding:18px;
+border-radius:14px;
+margin-top:16px;
+}
+
+.updateTitle{
+font-weight:700;
+}
+
+.updateDate{
+font-size:12px;
+opacity:.6;
+margin-bottom:6px;
+}
+
+/* SUPPORT BOX */
+
+.support{
+background:#14141a;
+border:1px solid rgba(255,255,255,.08);
+padding:30px;
+border-radius:20px;
+margin-top:20px;
+}
+
+.supportTitle{
+font-size:22px;
+font-weight:700;
+}
+
+.progressBar{
+height:8px;
+background:#1f1f27;
+border-radius:10px;
+margin-top:10px;
+overflow:hidden;
+}
+
+.progress{
+width:30%;
+height:100%;
+background:#4ade80;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+padding:12px 18px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.2);
+margin-top:16px;
+text-decoration:none;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+
+<div class="hero">
+<div class="heroContent wrap">
+
+<h1>Team Falcon Motorsport</h1>
+
+<div class="heroMeta">
+BMW E36 Coupe • Modified Class • California
+</div>
+
+</div>
+</div>
+
+<!-- FACT BAR -->
+
+<div class="factBar">
+<div class="wrap factGrid">
+
+<div>
+<div class="factLabel">Chassis</div>
+<div class="factValue">E36</div>
+</div>
+
+<div>
+<div class="factLabel">Engine</div>
+<div class="factValue">S54 Swap</div>
+</div>
+
+<div>
+<div class="factLabel">Drivers</div>
+<div class="factValue">3</div>
+</div>
+
+<div>
+<div class="factLabel">Status</div>
+<div class="factValue">Building</div>
+</div>
+
+<div>
+<div class="factLabel">Location</div>
+<div class="factValue">California</div>
+</div>
+
+</div>
+</div>
+
+<!-- TEAM STORY -->
+
+<div class="section wrap">
+
+<h2>The Team</h2>
+
+<p>
+Falcon Motorsport is a grassroots BMW endurance project built around a lightweight E36 platform.
+The goal is simple: reliability, clean driving, and a full 12-hour finish at the Bavarian Endurance Battle.
+</p>
+
+</div>
+
+<!-- BUILD GALLERY -->
+
+<div class="section wrap">
+
+<h2>Build Progress</h2>
+
+<div class="gallery">
+
+<img src="/build1.jpg">
+<img src="/build2.jpg">
+<img src="/build3.jpg">
+<img src="/build4.jpg">
+
+</div>
+
+</div>
+
+<!-- UPDATES -->
+
+<div class="section wrap">
+
+<h2>Build Updates</h2>
+
+<div class="update">
+
+<div class="updateDate">March 2026</div>
+
+<div class="updateTitle">
+Roll Cage Installed
+</div>
+
+<p>
+The cage is finally in. Next step is wiring and fuel system installation.
+</p>
+
+</div>
+
+<div class="update">
+
+<div class="updateDate">February 2026</div>
+
+<div class="updateTitle">
+Engine Mockup
+</div>
+
+<p>
+Test fitting the S54 drivetrain and planning cooling layout.
+</p>
+
+</div>
+
+</div>
+
+<!-- SUPPORT -->
+
+<div class="section wrap">
+
+<h2>Support This Team</h2>
+
+<div class="support">
+
+<div class="supportTitle">
+Credits Goal: 5,000
+</div>
+
+<div style="margin-top:6px;opacity:.7">
+Raised: 1,500 credits
+</div>
+
+<div class="progressBar">
+<div class="progress"></div>
+</div>
+
+<a class="btn" href="#">
+Support Team
+</a>
+
+</div>
+
+</div>
+
+</body>
+</html>
