@@ -306,6 +306,32 @@ font-size:12px;
 opacity:.6;
 margin-bottom:4px;
 }
+  /* Premium glass highlight effect */
+
+.card{
+position:relative;
+overflow:hidden;
+}
+
+.card::before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:120%;
+height:100%;
+background:linear-gradient(
+120deg,
+transparent 20%,
+rgba(255,255,255,0.06),
+transparent 80%
+);
+transition:all .8s ease;
+}
+
+.card:hover::before{
+left:100%;
+}
 </style>
 </head>
 
