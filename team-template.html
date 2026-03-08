@@ -275,6 +275,37 @@ opacity:.7;
 font-size:14px;
 margin-top:4px;
 }
+  .carProfile{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+margin-top:20px;
+align-items:center;
+}
+
+.carImage img{
+width:100%;
+border-radius:16px;
+}
+
+.carSpecs{
+display:grid;
+gap:12px;
+}
+
+.spec{
+background:#14141a;
+padding:14px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+.spec strong{
+display:block;
+font-size:12px;
+opacity:.6;
+margin-bottom:4px;
+}
 </style>
 </head>
 
@@ -340,6 +371,44 @@ The goal is simple: reliability, clean driving, and a full 12-hour finish at the
 
 </div>
   <div class="section wrap">
+    <h2>Race Car</h2>
+
+<div class="carProfile">
+
+  <div class="carImage">
+    <img src="/team-car.jpg">
+  </div>
+
+  <div class="carSpecs">
+
+    <div class="spec">
+      <strong>Chassis</strong>
+      BMW E46
+    </div>
+
+    <div class="spec">
+      <strong>Engine</strong>
+      M54B30
+    </div>
+
+    <div class="spec">
+      <strong>Class</strong>
+      Modified
+    </div>
+
+    <div class="spec">
+      <strong>Tires</strong>
+      Falken RT660
+    </div>
+
+    <div class="spec">
+      <strong>Status</strong>
+      Build in progress
+    </div>
+
+  </div>
+
+</div>
 
 <h2>Drivers</h2>
 
