@@ -544,6 +544,9 @@ Across California, Nevada & Arizona
 </div>
 
 </div>
+            <div id="countdown" style="margin-top:25px;color:white;font-size:22px;font-weight:600;">
+Race begins in: <span id="timer"></span>
+</div>
             <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;max-width:560px">
   <div class="card" style="padding:12px 14px">
     <div style="font-weight:800;letter-spacing:-.02em">BMW-only</div>
@@ -792,6 +795,24 @@ Across California, Nevada & Arizona
     apply(root.classList.contains("dark") ? "light" : "dark");
   });
   document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+  <script>
+const raceDate = new Date("December 1, 2026 08:00:00").getTime();
+
+setInterval(function() {
+
+const now = new Date().getTime();
+const distance = raceDate - now;
+
+const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("timer").innerHTML =
+days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+}, 1000);
 </script>
 </body>
 </html>
