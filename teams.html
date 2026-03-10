@@ -202,7 +202,7 @@ main{
     </p>
 
     <div class="card" style="margin-top:18px">
-      <form action="https://formspree.io/f/mdaeppov" method="POST">
+      <form action="https://formspree.io/f/mdaeppov" method="POST" enctype="multipart/form-data">
 
         <input type="hidden" name="_subject" value="BEB Team Listing Submission" />
         <input type="hidden" name="_next" value="https://bavarianendurancebattle.com/thanks.html" />
@@ -251,7 +251,21 @@ main{
                 placeholder="you@email.com" />
             </div>
           </div>
+<div>
+<label style="font-size:13px;color:var(--muted)">
+Team Project Banner (optional)
+</label>
 
+<input type="file"
+name="banner_image"
+accept="image/png, image/jpeg"
+style="margin-top:6px;width:100%;padding:10px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none">
+
+<div class="muted" style="font-size:12px;margin-top:6px">
+Upload a photo representing your project (car, garage, team, or build progress).
+Recommended size: 1600×600
+</div>
+</div>
           <div>
             <label style="font-size:13px;color:var(--muted)">Build Notes (optional)</label>
             <textarea name="build_notes" rows="4"
