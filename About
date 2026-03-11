@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>About — Bavarian Endurance Battle</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Inter,system-ui;
+background:#07070a;
+color:#f6f6fb;
+}
+
+.wrap{
+max-width:900px;
+margin:auto;
+padding:60px 20px;
+}
+
+h1{
+font-size:48px;
+letter-spacing:-.03em;
+margin-bottom:20px;
+}
+
+p{
+line-height:1.7;
+opacity:.9;
+margin-bottom:18px;
+}
+
+.hero{
+background:url("/hero.jpg");
+background-size:cover;
+background-position:center;
+padding:140px 20px;
+text-align:center;
+}
+
+.heroOverlay{
+background:rgba(0,0,0,.55);
+padding:60px 20px;
+}
+
+.hero h1{
+margin:0;
+font-size:54px;
+}
+
+.back{
+display:inline-block;
+margin-top:40px;
+padding:10px 16px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,.15);
+text-decoration:none;
+color:white;
+}
+
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<div class="heroOverlay">
+
+<h1>The Spirit of Endurance</h1>
+
+</div>
+</section>
+
+<div class="wrap">
+
+<p>
+Bavarian Endurance Battle was created for the builders, the dreamers, and the racers who believe motorsport should still be raw, mechanical, and human.
+</p>
+
+<p>
+Before professional teams and massive budgets, racing was built in garages, driveways, and small workshops. Friends came together, tools were shared, and machines were pushed beyond what anyone thought possible.
+</p>
+
+<p>
+BEB exists to bring that spirit back.
+</p>
+
+<p>
+This is not just another race weekend. It is a challenge that demands commitment, creativity, and endurance. Teams will spend months preparing their machines, solving problems, and transforming ordinary BMW chassis into race-ready machines capable of surviving twelve hours on track.
+</p>
+
+<p>
+Every car represents a story.
+</p>
+
+<p>
+Some will be built in professional shops. Others will come together late at night in small garages. What they share is the willingness to take on the challenge.
+</p>
+
+<p>
+Endurance racing rewards patience, teamwork, and resilience. Speed alone does not win. The teams that succeed are the ones that prepare, adapt, and refuse to quit.
+</p>
+
+<p>
+The Bavarian Endurance Battle is about celebrating that spirit — the builders, the drivers, and the community that makes grassroots motorsport possible.
+</p>
+
+<a class="back" href="/">
+Back to Home
+</a>
+
+</div>
+
+</body>
+</html>
