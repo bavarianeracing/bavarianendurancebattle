@@ -486,6 +486,40 @@ margin-top:4px;
 color:#ffffff;
 opacity:.85;
 }
+    /* Team leaderboard */
+
+.leaderboard{
+margin-top:20px;
+border:1px solid var(--border);
+border-radius:14px;
+overflow:hidden;
+}
+
+.leaderRow{
+display:flex;
+justify-content:space-between;
+padding:14px 18px;
+border-bottom:1px solid var(--border);
+background:rgba(0,0,0,.25);
+}
+
+.leaderRow:last-child{
+border-bottom:none;
+}
+
+.leaderRank{
+font-weight:700;
+width:30px;
+}
+
+.leaderTeam{
+flex:1;
+font-weight:600;
+}
+
+.leaderBuild{
+opacity:.75;
+}
   </style>
 </head>
 
@@ -622,6 +656,39 @@ Race begins in: <span id="timer"></span>
         height="420"
         style="border:0">
       </iframe>
+    </div>
+
+  </div>
+</section>
+    <section class="section">
+  <div class="wrap">
+
+    <h2>Teams Preparing for BEB</h2>
+
+    <p class="muted" style="max-width:52rem;line-height:1.65">
+      Builders across the West Coast are already preparing their BMW endurance projects.
+    </p>
+
+    <div class="leaderboard">
+
+      <div class="leaderRow">
+        <span class="leaderRank">1</span>
+        <span class="leaderTeam">Team Bavarian Track Rats</span>
+        <span class="leaderBuild">BMW E36 Endurance Build</span>
+      </div>
+
+      <div class="leaderRow">
+        <span class="leaderRank">2</span>
+        <span class="leaderTeam">NorCal Motorsport</span>
+        <span class="leaderBuild">BMW E30 Track Build</span>
+      </div>
+
+      <div class="leaderRow">
+        <span class="leaderRank">3</span>
+        <span class="leaderTeam">Desert BMW Crew</span>
+        <span class="leaderBuild">BMW E46 Endurance Build</span>
+      </div>
+
     </div>
 
   </div>
