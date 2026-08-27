@@ -73,9 +73,9 @@
       background:rgba(6,9,14,.78);
       border-bottom:1px solid rgba(255,255,255,.07)
     }
-    nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    nav{height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
     .brand{display:flex;align-items:center;text-decoration:none;gap:14px}
-    .brand img{width:118px;height:48px;object-fit:contain;border-radius:8px}
+    .brand img{width:190px;height:64px;object-fit:contain;border-radius:8px}
     .navlinks{display:flex;gap:26px;align-items:center}
     .navlinks a{text-decoration:none;color:#cbd3df;font-size:.92rem}
     .navlinks a:hover{color:#fff}
@@ -162,7 +162,7 @@
     .counter-note{font-size:.86rem;color:#8995a6}
 
     .form-shell{display:grid;grid-template-columns:.78fr 1.22fr;gap:36px;align-items:start;margin-top:42px}
-    .form-copy{position:sticky;top:105px}
+    .form-copy{position:sticky;top:117px}
     form{border:1px solid var(--line);background:#0d141e;padding:28px;border-radius:26px;box-shadow:var(--shadow)}
     .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
     label{display:block;font-size:.83rem;color:#dce3ed;font-weight:700;margin-bottom:7px}
@@ -208,7 +208,7 @@
     @media(max-width:620px){
       .wrap{width:min(var(--max),calc(100% - 24px))}
       .hero{min-height:auto;padding:125px 0 65px}
-      .brand img{width:96px}
+      .brand img{width:138px;height:54px}
       .navcta{font-size:.82rem;padding:0 15px}
       .cards,.classes,.field-grid,.check-grid{grid-template-columns:1fr}
       .section{padding:72px 0}
@@ -228,6 +228,7 @@
       <div class="navlinks">
         <a href="#why">Why BEB</a>
         <a href="#your-bmw">Your BMW</a>
+        <a href="#classes">Classes</a>
         <a href="#community">Community</a>
         <a href="#founding-grid">Founding Grid</a>
       </div>
@@ -244,9 +245,29 @@
       <div class="eyebrow">A historic first for Southern California</div>
       <h1>THE FIRST<br><span>BMW-ONLY 12-HOUR</span><br>ENDURANCE BATTLE<br>IN SOUTHERN CALIFORNIA.</h1>
       <span class="subline">History only gets one first chapter.</span>
-      <p class="lead">
-        Bavarian Endurance Battle is being built around a historic idea: bring generations of BMWs together in Southern California for a 12-hour endurance race unlike anything the region has seen before. The race happens here — but the invitation reaches everywhere. Teams and drivers from across California, across the country, and beyond are welcome to come battle with us. If it's a BMW, we want to see it on the grid.
-      </p>
+      <div class="lead" style="max-width:900px">
+        <h2 style="margin-top:28px;margin-bottom:14px">Welcome to the Bavarian Endurance Battle</h2>
+        <p><strong style="color:#fff">This is more than a race. It is an invitation to become part of BMW history.</strong></p>
+        <p>Bavarian Endurance Battle brings generations of BMWs together in Southern California for a 12 hour endurance battle celebrating the machines, the people, and the passion that have carried the BMW legacy across generations.</p>
+        <p>Every BMW arrives with a story.</p>
+        <p>Some are prepared in professional race shops. Others are built after work in garages, backyards, and barns, one bolt, one repair, one late night at a time. But when the green flag falls, where they came from no longer matters.</p>
+        <p><strong style="color:#fff">History does not care where greatness begins. It remembers what happens when the moment arrives.</strong></p>
+        <p>For twelve hours, driver, team, and machine will face more than their competitors. They will face heat, fatigue, mechanical failure, strategy, doubt, and time itself.</p>
+        <p><strong style="color:#fff">Every lap will ask the same question: Will you continue?</strong></p>
+        <p>Because speed may win a lap.</p>
+        <p><strong style="color:#fff">Endurance earns respect.</strong></p>
+        <p>And when the checkered flag finally falls, the racing ends, but what was created here remains. The impossible repairs, the friendships forged under pressure, the competitors who stopped to help one another, the machines that refused to surrender, and the teams that discovered they could endure more than they ever imagined.</p>
+        <p>That is why Bavarian Endurance Battle will celebrate more than podiums. We will honor perseverance, craftsmanship, sportsmanship, service, community, and those who embody the true spirit of endurance.</p>
+        <p><strong style="color:#fff">Because how you race can be remembered long after where you finished.</strong></p>
+        <p>The race happens here, but the invitation reaches everywhere.</p>
+        <p>Teams and drivers from across California, across the country, and beyond are invited to bring their BMWs, their stories, and their determination to the grid.</p>
+        <p><strong style="color:#fff">Every generation has a legacy.</strong><br>
+        <strong style="color:#fff">Every BMW has a story.</strong><br>
+        <strong style="color:#fff">Every team has a battle ahead.</strong></p>
+        <p>The next chapter is waiting.</p>
+        <p><strong style="color:#fff">Bring your BMW. Bring your team. Bring everything you have.</strong></p>
+        <h3 style="font-size:1.45rem;color:#fff;margin-top:28px">Welcome to the Battle.</h3>
+      </div>
       <div class="btn-row">
         <a class="btn primary" href="#join">Join the Founding Grid</a>
         <a class="btn secondary" href="#your-bmw">Could My BMW Race?</a>
@@ -333,19 +354,47 @@
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="classes">
     <div class="wrap">
-      <div class="eyebrow">Find your BMW</div>
-      <h2>Every generation has a story. Which one is yours?</h2>
-      <p class="lead">The class structure is being designed to give very different generations of BMW a meaningful place in the Battle.</p>
+      <div class="eyebrow">Choose your class</div>
+      <h2>Every BMW has a home. Every team has a chance.</h2>
+      <p class="lead">Choose your class, prepare your machine, and earn your place in the Battle.</p>
 
       <div class="classes">
-        <div class="class-card"><b>Vintage BMWs</b><span>2002 / E10, E3, E9, E12, E21, E28 and other approved classics</span></div>
-        <div class="class-card"><b>The Dreier Challenge</b><span>E30, E36, E46, E9X — non-M 3 Series</span></div>
-        <div class="class-card"><b>5 Series</b><span>E34, E39, E60</span></div>
-        <div class="class-card"><b>Long Roofs</b><span>BMW wagons across eligible generations</span></div>
-        <div class="class-card"><b>Z Cars</b><span>BMW roadsters and coupes</span></div>
-        <div class="class-card"><b>Modified BMWs</b><span>BMW chassis with approved engine swaps and modified configurations</span></div>
+        <div class="class-card">
+          <b>Vintage</b>
+          <span>E3 • E9 • E10 / 2002 • E12 • E21 • E24 • E28<br>Non-M</span>
+        </div>
+
+        <div class="class-card">
+          <b>Dreier Challenge</b>
+          <span>E30 • E36 • E46 • E9x<br>Non-M • Non-Touring</span>
+        </div>
+
+        <div class="class-card">
+          <b>Geschäftsklasse Challenge</b>
+          <span>E34 • E39 • E60<br>Non-M • Non-Touring</span>
+        </div>
+
+        <div class="class-card">
+          <b>Touring Challenge</b>
+          <span>E30 • E36 • E46 • E34 • E39 • E61 • E91 • X1<br>Non-M</span>
+        </div>
+
+        <div class="class-card">
+          <b>Zenith Challenge</b>
+          <span>Z3 E36/7 • Z3 E36/8 • Z4 E85 • Z4 E86 • Z4 E89</span>
+        </div>
+
+        <div class="class-card">
+          <b>Stock</b>
+          <span>Eligible BMWs in factory configuration, subject to required safety equipment and Stock Class regulations.</span>
+        </div>
+
+        <div class="class-card">
+          <b>WerkSport</b>
+          <span>BMW chassis with BMW or non-BMW engine swaps, naturally aspirated or forced induction.</span>
+        </div>
       </div>
 
       <div class="btn-row">
