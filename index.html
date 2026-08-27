@@ -1,992 +1,608 @@
-
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Bavarian Endurance Battle — Buttonwillow, December 2026</title>
-  <meta name="description" content="BMW-only 12 Hour Endurance Race at Buttonwillow Raceway — December 2026." />
+  <title>Bavarian Endurance Battle — BMW-Only 12-Hour Endurance</title>
+  <meta name="description" content="Help build Southern California's BMW-only 12-hour endurance tradition. Join the Founding Grid, tell us what you drive, and be part of the first chapter." />
 
-  <!-- Premium free font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
- 
-
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
   <style>
-    /* Fixed header (guaranteed) */
-header{
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 999;
-  backdrop-filter: blur(12px);
-  background: color-mix(in oklab, var(--bg) 86%, transparent);
-  border-bottom: 1px solid color-mix(in oklab, var(--border) 65%, transparent);
-}
-nav{ padding: 14px 0; }
-.links a{ opacity:.85; }
-.links a:hover{ opacity:1; }
-
-/* Prevent header overlap */
-main{ padding-top: 76px; }
-
     :root{
-      --bg:#ffffff;
-      --fg:#0b0b0f;
-      --muted:#545461;
-      --card:#ffffff;
-      --border:#e7e7ee;
-      --shadow: 0 12px 30px rgba(0,0,0,.08);
-      --shadow2: 0 8px 20px rgba(0,0,0,.06);
-      --btn:#0b0b0f;
-      --btnfg:#ffffff;
-      --ring: rgba(11,11,15,.12);
-      --grad1: radial-gradient(900px 500px at 20% -10%, rgba(0,0,0,.06), transparent 55%),
-               radial-gradient(700px 450px at 90% 10%, rgba(0,0,0,.04), transparent 60%);
-    }
-
-    :root.dark{
-      --bg:#07070a;
-      --fg:#f6f6fb;
-      --muted:#a5a5b3;
-      --card:#0f0f14;
-      --border:#1f1f2a;
-      --shadow: 0 14px 34px rgba(0,0,0,.55);
-      --shadow2: 0 10px 24px rgba(0,0,0,.38);
-      --btn:#f6f6fb;
-      --btnfg:#0b0b0f;
-      --ring: rgba(246,246,251,.10);
-      --grad1: radial-gradient(900px 500px at 20% -10%, rgba(255,255,255,.08), transparent 55%),
-               radial-gradient(700px 450px at 90% 10%, rgba(255,255,255,.06), transparent 60%);
+      --bg:#070a10;
+      --bg2:#0c111a;
+      --panel:#111824;
+      --panel2:#0d141e;
+      --text:#f5f7fb;
+      --muted:#a9b3c3;
+      --line:#222c3a;
+      --blue:#2f8cff;
+      --blue2:#6bc0ff;
+      --red:#e33b32;
+      --white:#ffffff;
+      --max:1180px;
+      --shadow:0 20px 60px rgba(0,0,0,.34);
     }
 
     *{box-sizing:border-box}
-    html,body{height:100%}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      background: var(--bg);
-      color: var(--fg);
-      letter-spacing: -0.01em;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.55;
+      letter-spacing:-.01em;
     }
-
+    img{max-width:100%;display:block}
     a{color:inherit}
-    .wrap{max-width:1120px;margin:0 auto;padding:0 18px}
-    .topbg{background: var(--grad1);}
-
-    
-
-    nav{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 0}
-    .brand{
-      font-weight:700;
-      text-decoration:none;
-      letter-spacing:-.03em;
-      display:flex;align-items:center;gap:10px
+    .wrap{width:min(var(--max),calc(100% - 36px));margin:0 auto}
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:10px;
+      font-weight:800;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--blue2)
     }
-    .mark{
-      width:26px;height:26px;border-radius:10px;
-      border:1px solid var(--border);
-      box-shadow: var(--shadow2);
-      background: linear-gradient(135deg, color-mix(in oklab, var(--fg) 18%, transparent), transparent);
-    }
-
-    .links{display:none;gap:18px;font-size:14px;color:var(--muted)}
-    .links a{text-decoration:none}
-    .links a:hover{color:var(--fg)}
-
-    .actions{display:flex;align-items:center;gap:10px}
-
+    .eyebrow:before{content:"";width:34px;height:2px;background:linear-gradient(90deg,var(--blue),var(--red));display:inline-block}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.7rem,7vw,6.2rem);line-height:.96;letter-spacing:-.055em;margin-bottom:22px}
+    h2{font-size:clamp(2rem,4vw,4rem);line-height:1.02;letter-spacing:-.04em;margin-bottom:18px}
+    h3{font-size:1.15rem;line-height:1.2}
+    p{color:var(--muted)}
+    .lead{font-size:clamp(1.05rem,1.6vw,1.35rem);max-width:760px;color:#dce3ee}
+    .section{padding:92px 0;border-top:1px solid var(--line)}
+    .section.compact{padding:68px 0}
     .btn{
-  display:inline-flex;align-items:center;justify-content:center;
-  padding:10px 14px;border-radius:14px;
-  border:1px solid var(--border);
-  text-decoration:none;font-size:14px;
-  box-shadow: 0 1px 0 var(--ring);
-  background: color-mix(in oklab, var(--card) 92%, transparent);
-  transition: transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-}
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:52px;padding:0 22px;border-radius:999px;
+      text-decoration:none;font-weight:800;border:1px solid var(--line);
+      transition:.18s ease;cursor:pointer;font-family:inherit;font-size:.96rem;
+    }
+    .btn:hover{transform:translateY(-2px)}
+    .btn.primary{background:linear-gradient(90deg,var(--blue),#1e6de0);border-color:transparent;box-shadow:0 12px 30px rgba(47,140,255,.28)}
+    .btn.secondary{background:rgba(255,255,255,.04)}
+    .btn.red{background:linear-gradient(90deg,var(--red),#b82121);border-color:transparent}
+    .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .micro{font-size:.84rem;color:#8f9aaa;margin-top:12px}
 
-    .btn.primary{
-  background: linear-gradient(180deg, color-mix(in oklab, var(--btn) 92%, white), var(--btn));
-  color: var(--btnfg);
-  border-color: transparent;
-  box-shadow: 0 10px 22px rgba(0,0,0,.18);
-  position: relative;
-  overflow: hidden;
-}
-.btn.primary::after{
-  content:"";
-  position:absolute;
-  inset:-40% -20%;
-  background: radial-gradient(circle at 30% 20%, rgba(255,255,255,.22), transparent 55%);
-  opacity:.55;
-  transform: translateY(-8px);
-  pointer-events:none;
-}
-.btn.primary:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 16px 34px rgba(0,0,0,.24);
-}
+    header{
+      position:fixed;z-index:40;top:0;left:0;right:0;
+      backdrop-filter:blur(14px);
+      background:rgba(6,9,14,.78);
+      border-bottom:1px solid rgba(255,255,255,.07)
+    }
+    nav{height:88px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;text-decoration:none;gap:14px}
+    .brand img{width:190px;height:64px;object-fit:contain;border-radius:8px}
+    .navlinks{display:flex;gap:26px;align-items:center}
+    .navlinks a{text-decoration:none;color:#cbd3df;font-size:.92rem}
+    .navlinks a:hover{color:#fff}
+    .navcta{white-space:nowrap}
 
-  .btn:hover{
-  transform: translateY(-1px);
-  border-color: color-mix(in oklab, var(--border) 70%, var(--fg));
-  box-shadow: 0 10px 24px rgba(0,0,0,.12);
-}
-
-
-    .btn:active{transform: translateY(0px)}
-    .btn.small{padding:9px 12px}
-
-    .hero{padding:74px 0 28px}
+    .hero{
+      min-height:92vh;display:grid;align-items:end;
+      position:relative;overflow:hidden;padding:140px 0 80px;
+      background:
+        linear-gradient(180deg,rgba(6,9,14,.28) 0%,rgba(6,9,14,.45) 44%,rgba(6,9,14,.92) 82%,var(--bg) 100%),
+        url("hero.jpg") center/cover no-repeat;
+    }
+    .hero:after{
+      content:"";position:absolute;inset:0;
+      background:radial-gradient(circle at 75% 30%,rgba(47,140,255,.14),transparent 28%);
+      pointer-events:none
+    }
+    .hero-inner{position:relative;z-index:2;max-width:980px}
+    .hero h1 span{color:var(--blue2)}
+    .hero .subline{
+      display:block;font-size:clamp(1.25rem,2.4vw,2rem);font-weight:800;
+      color:#fff;margin-bottom:16px
+    }
+    .hero .proofline{
+      display:flex;gap:10px;flex-wrap:wrap;margin-top:28px
+    }
     .pill{
-      display:inline-flex;align-items:center;gap:8px;
-      border:1px solid var(--border);
-      border-radius:999px;
-      padding:7px 12px;
-      font-size:12px;
-      color: var(--muted);
-      background: color-mix(in oklab, var(--card) 92%, transparent);
-      box-shadow: 0 1px 0 var(--ring);
-    }
-    .dot{width:7px;height:7px;border-radius:99px;background: color-mix(in oklab, var(--fg) 22%, transparent);}
-    h1{margin:16px 0 0;font-size:46px;letter-spacing:-.04em;line-height:1.02}
-    .sub{
-  margin:16px 0 0;
-  font-size:18px;
-  line-height:1.6;
-  color: #f3f3f7;
-  max-width: 44rem;
-  text-shadow: 0 4px 18px rgba(0,0,0,.55);
-}
-
-
-    .grid{display:grid;gap:18px}
-    .heroGrid{grid-template-columns:1fr}
-.card{
-  border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  background: color-mix(in oklab, var(--card) 86%, transparent);
-  border-radius: 22px;
-  padding: 18px;
-  box-shadow: var(--shadow2);
-  backdrop-filter: blur(10px);
-}
-
-    .snap{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px 18px;
-  margin-top:14px;
-  font-size:14px;
-}
-.snap > div{
-  padding-top:12px;
-  border-top:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-}
-.snap dt{
-  text-transform: uppercase;
-  letter-spacing: .08em;
-  font-size:11px;
-  color: color-mix(in oklab, var(--muted) 92%, transparent);
-}
-.snap dd{
-  margin:6px 0 0;
-  font-weight:800;
-  letter-spacing:-.02em;
-}
-
-    .snap dt{color:var(--muted);font-size:12px}
-    .snap dd{margin:4px 0 0;font-weight:650}
-
-    .section{padding:26px 0 62px}
-   .section h2{
-  margin:0 0 18px;
-  font-size:22px;
-  letter-spacing:-.02em;
-  position:relative;
-  display:inline-block;
-}
-
-.section h2:after{
-  content:"";
-  display:block;
-  width:40px;
-  height:2px;
-  margin-top:8px;
-  background: color-mix(in oklab, var(--fg) 65%, transparent);
-  border-radius:2px;
-}
-
-    .muted{color:var(--muted)}
-
-    .grid3{grid-template-columns:1fr}
-    .feature h3{margin:0;font-size:16px;letter-spacing:-.02em}
-    .feature p{margin:10px 0 0;color:var(--muted);line-height:1.65;font-size:14px}
-
-    .cta{
-      display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;
-      padding:18px;border-radius:22px;border:1px solid var(--border);
-      background: linear-gradient(180deg, color-mix(in oklab, var(--card) 92%, transparent), transparent);
-      box-shadow: var(--shadow2);
+      border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.24);
+      padding:9px 13px;border-radius:999px;font-size:.86rem;color:#e4e9f0
     }
 
-    footer{
-      border-top:1px solid var(--border);
-      padding:28px 0;
-      color: var(--muted);
-      font-size:14px;
+    .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+    .quote-card{
+      border:1px solid var(--line);background:linear-gradient(180deg,#111926,#0c121b);
+      padding:34px;border-radius:26px;box-shadow:var(--shadow)
+    }
+    .quote-card strong{display:block;font-size:clamp(1.55rem,3vw,2.6rem);line-height:1.08;letter-spacing:-.035em;color:#fff}
+    .quote-card .accent{color:var(--blue2)}
+    .quote-card p{margin:18px 0 0}
+
+    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:34px}
+    .card{border:1px solid var(--line);background:linear-gradient(180deg,var(--panel),var(--panel2));padding:25px;border-radius:22px}
+    .card .num{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--blue2);margin-bottom:18px}
+    .card p{margin-bottom:0}
+
+    .racecar{
+      background:
+        linear-gradient(90deg,rgba(5,8,12,.95),rgba(5,8,12,.74) 50%,rgba(5,8,12,.28)),
+        url("team-car.jpg") center/cover no-repeat;
+      border-top:1px solid var(--line);border-bottom:1px solid var(--line)
+    }
+    .racecar .content{max-width:700px;padding:105px 0}
+    .orgs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+    .org{padding:10px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-weight:700;font-size:.87rem}
+
+    .classes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+    .class-card{border:1px solid var(--line);border-radius:20px;padding:22px;background:#0d141e}
+    .class-card b{display:block;font-size:1.08rem;color:white;margin-bottom:8px}
+    .class-card span{font-size:.9rem;color:#98a4b5}
+
+    .community{
+      background:
+        linear-gradient(180deg,rgba(5,7,11,.62),rgba(5,7,11,.95)),
+        url("team-strip.jpg.png") center/cover no-repeat;
+    }
+    .community .wrap{padding-top:28px;padding-bottom:28px}
+    .community-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:44px;align-items:center}
+    .inclusion{
+      border:1px solid rgba(255,255,255,.12);background:rgba(6,9,14,.65);backdrop-filter:blur(10px);
+      padding:28px;border-radius:24px
     }
 
-    @media (min-width: 920px){
-      .links{display:flex}
-      .hero{padding:92px 0 34px}
-      .heroGrid{grid-template-columns:1.15fr .85fr;align-items:center}
-      h1{font-size:58px}
-      .grid3{grid-template-columns:1fr 1fr 1fr}
+    .founding{
+      background:
+        radial-gradient(circle at 20% 15%,rgba(47,140,255,.18),transparent 30%),
+        radial-gradient(circle at 85% 30%,rgba(227,59,50,.12),transparent 27%),
+        #080c12;
     }
-   /* Hero background image */
-.topbg{
-  position: relative;
-  background:
-    url("hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+    .counter{
+      display:flex;align-items:baseline;gap:14px;margin:22px 0 8px
+    }
+    .counter strong{font-size:clamp(3.8rem,9vw,7.5rem);line-height:.9;color:white;letter-spacing:-.06em}
+    .counter span{font-size:1rem;color:var(--muted);max-width:180px}
+    .counter-note{font-size:.86rem;color:#8995a6}
 
-/* Cinematic fade overlay */
-.topbg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: linear-gradient(
-    180deg,
-    rgba(10,10,14,.65) 0%,
-    rgba(10,10,14,.78) 40%,
-    rgba(10,10,14,.92) 100%
-  );
-  z-index:0;
-}
-/* Vignette + grain */
-.topbg::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  z-index:0;
-  background:
-    radial-gradient(900px 520px at 30% 20%, rgba(255,255,255,.10), transparent 60%),
-    radial-gradient(1200px 680px at 70% 10%, rgba(255,255,255,.06), transparent 55%),
-    radial-gradient(900px 700px at 50% 120%, rgba(0,0,0,.45), transparent 55%),
-    linear-gradient(0deg, rgba(0,0,0,.14), rgba(0,0,0,.14));
-  opacity:.85;
-  pointer-events:none;
-  mix-blend-mode: overlay;
-}
+    .form-shell{display:grid;grid-template-columns:.78fr 1.22fr;gap:36px;align-items:start;margin-top:42px}
+    .form-copy{position:sticky;top:117px}
+    form{border:1px solid var(--line);background:#0d141e;padding:28px;border-radius:26px;box-shadow:var(--shadow)}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    label{display:block;font-size:.83rem;color:#dce3ed;font-weight:700;margin-bottom:7px}
+    input,select,textarea{
+      width:100%;background:#090e15;border:1px solid #263140;color:white;border-radius:14px;
+      padding:13px 14px;font:inherit;outline:none
+    }
+    input:focus,select:focus,textarea:focus{border-color:var(--blue)}
+    textarea{min-height:110px;resize:vertical}
+    .field{margin-bottom:16px}
+    .choice-list{display:grid;gap:10px}
+    .choice{
+      display:flex;gap:12px;align-items:flex-start;border:1px solid #263140;background:#0a1018;padding:14px;border-radius:16px
+    }
+    .choice input{width:auto;margin-top:3px}
+    .choice b{display:block;color:#fff;margin-bottom:3px}
+    .choice span{font-size:.84rem;color:#93a0b1}
+    .check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .check{display:flex;align-items:center;gap:10px;font-size:.9rem;color:#d8dee8;border:1px solid #263140;background:#0a1018;padding:12px;border-radius:14px}
+    .check input{width:auto}
+    .full{width:100%}
+    .privacy{font-size:.78rem;color:#7f8a9a;margin-top:12px}
 
-/* Fine grain */
-.topbg .grain{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  pointer-events:none;
-  opacity:.10;
-  background-image:
-    repeating-linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 2px),
-    repeating-linear-gradient(90deg, rgba(0,0,0,.06) 0 1px, transparent 1px 2px);
-  mix-blend-mode: soft-light;
-}
+    .final{
+      text-align:center;padding:110px 0;
+      background:
+        linear-gradient(180deg,rgba(6,8,12,.72),rgba(6,8,12,.96)),
+        url("about-hero.jpg") center/cover no-repeat;
+    }
+    .final .wrap{max-width:900px}
+    .final h2{font-size:clamp(2.5rem,6vw,5.4rem)}
+    .final p{font-size:1.08rem;max-width:720px;margin-left:auto;margin-right:auto}
 
-/* Ensure content sits above overlay */
-.topbg > *{
-  position: relative;
-  z-index: 1;
-}
+    footer{border-top:1px solid var(--line);padding:30px 0;color:#8995a6;font-size:.85rem}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 
-:root.dark .topbg{
-  background:
-    linear-gradient(180deg, rgba(7,7,10,.78), rgba(7,7,10,.94)),
-    url("hero.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-    /* ===== Polish Pack v1 ===== */
-.hero{
-  padding: 86px 0 44px;
-  position: relative;
-}
-.topbg{
-  position: relative;
-  overflow: hidden;
-}
-.topbg:before{
-  content:"";
-  position:absolute;
-  inset:-200px -200px auto -200px;
-  height:520px;
-  background: radial-gradient(closest-side, color-mix(in oklab, var(--fg) 14%, transparent), transparent 70%);
-  opacity:.75;
-  pointer-events:none;
-}
-.topbg:after{
-  content:"";
-  position:absolute;
-  inset:auto -240px -240px auto;
-  width:620px;height:620px;
-  background: radial-gradient(circle, color-mix(in oklab, var(--fg) 10%, transparent), transparent 60%);
-  opacity:.55;
-  pointer-events:none;
-}
-.hero h1{
-  font-size: clamp(40px, 5vw, 62px);
-  line-height: 1.02;
-  color: #ffffff;
-  text-shadow:
-    0 6px 18px rgba(0,0,0,.85),
-    0 12px 40px rgba(0,0,0,.65),
-    0 0 22px rgba(0,0,0,.45);
-}
-.pill{
-  backdrop-filter: blur(10px);
-}
-.card{
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.card:hover{
-  transform: translateY(-2px);
-  box-shadow: var(--shadow);
-  border-color: color-mix(in oklab, var(--border) 70%, var(--fg));
-}
-.btn.primary{
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.btn.primary:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 14px 30px rgba(0,0,0,.22);
-}
-  @keyframes riseIn{
-  from{ opacity:0; transform: translateY(10px); }
-  to{ opacity:1; transform: translateY(0); }
-}
-
-.hero .wrap{
-  animation: riseIn .6s ease both;
-}
-
-@media (prefers-reduced-motion: reduce){
-  .hero .wrap{ animation:none; }
-}
-    
-@keyframes riseIn{
-  from{ opacity:0; transform: translateY(10px); }
-  to{ opacity:1; transform: translateY(0); }
-}
-
-.hero .wrap{
-  animation: riseIn .6s ease both;
-}
-
-@media (prefers-reduced-motion: reduce){
-  .hero .wrap{ animation:none; }
-}
-.statStrip{
-  margin-top:14px;
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:10px;
-}
-.stat{
-  padding:12px 14px;
-  border-radius:18px;
-  border:1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  background: color-mix(in oklab, var(--card) 86%, transparent);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 1px 0 var(--ring);
-}
-.stat b{
-  display:block;
-  font-size:14px;
-  letter-spacing:-.02em;
-}
-.stat span{
-  display:block;
-  margin-top:4px;
-  font-size:13px;
-  color:var(--muted);
-  line-height:1.45;
-}
-/* Racing telemetry grid background */
-
-100%{
-transform: translateY(60px);
-}
-}
-    /* Motorsport telemetry grid */
-
-.topbg::after{
-content:"";
-position:absolute;
-top:0;
-left:0;
-width:100%;
-height:100%;
-pointer-events:none;
-
-background-image:
-linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
-linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-
-background-size:80px 80px;
-
-opacity:.25;
-
-animation: gridMove 60s linear infinite;
-}
-
-@keyframes gridMove{
-0%{
-background-position:0 0;
-}
-
-100%{
-background-position:0 80px;
-}
-}
-    .teamCounter{
-margin-top:28px;
-padding:18px 22px;
-background:rgba(0,0,0,.35);
-border:1px solid rgba(255,255,255,.08);
-border-radius:14px;
-backdrop-filter:blur(10px);
-display:inline-block;
-}
-
-.teamNumber{
-font-size:42px;
-font-weight:700;
-color:#ffffff;
-line-height:1;
-}
-
-.teamLabel{
-font-size:14px;
-margin-top:4px;
-color:#ffffff;
-opacity:1;
-}
-
-.teamRegion{
-font-size:12px;
-margin-top:4px;
-color:#ffffff;
-opacity:.85;
-}
-    /* Team leaderboard */
-
-.leaderboard{
-margin-top:20px;
-border:1px solid var(--border);
-border-radius:14px;
-overflow:hidden;
-}
-
-.leaderRow{
-display:flex;
-justify-content:space-between;
-padding:14px 18px;
-border-bottom:1px solid var(--border);
-background:rgba(0,0,0,.25);
-}
-
-.leaderRow:last-child{
-border-bottom:none;
-}
-
-.leaderRank{
-font-weight:700;
-width:30px;
-}
-
-.leaderTeam{
-flex:1;
-font-weight:600;
-}
-
-.leaderBuild{
-opacity:.75;
-}
-    /* ================================= */
-/* GLOBAL RESPONSIVE SYSTEM */
-/* ================================= */
-
-html,body{
-max-width:100%;
-overflow-x:hidden;
-}
-
-/* Images automatically scale */
-img{
-max-width:100%;
-height:auto;
-}
-
-/* Responsive titles */
-h1{
-font-size:clamp(34px,6vw,58px);
-}
-
-h2{
-font-size:clamp(24px,4vw,32px);
-}
-
-/* Responsive containers */
-.wrap{
-width:100%;
-max-width:1120px;
-margin:auto;
-padding:40px 20px;
-}
-
-/* Responsive buttons */
-.btn{
-width:auto;
-}
-
-/* Tablet adjustments */
-@media (max-width:900px){
-
-.heroGrid{
-grid-template-columns:1fr;
-}
-
-.snap{
-grid-template-columns:1fr 1fr;
-}
-
-.grid3{
-grid-template-columns:1fr;
-}
-
-.actions{
-display:none;
-}
-
-.links{
-display:none;
-}
-
-}
-
-/* Phone adjustments */
-@media (max-width:600px){
-
-.hero{
-padding:80px 20px 40px;
-}
-
-.pill{
-font-size:11px;
-}
-
-.sub{
-font-size:16px;
-}
-
-.snap{
-grid-template-columns:1fr;
-}
-
-.btn{
-width:100%;
-text-align:center;
-}
-
-}
+    @media(max-width:900px){
+      .navlinks{display:none}
+      .split,.community-grid,.form-shell{grid-template-columns:1fr}
+      .cards,.classes{grid-template-columns:1fr 1fr}
+      .form-copy{position:static}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(var(--max),calc(100% - 24px))}
+      .hero{min-height:auto;padding:125px 0 65px}
+      .brand img{width:138px;height:54px}
+      .navcta{font-size:.82rem;padding:0 15px}
+      .cards,.classes,.field-grid,.check-grid{grid-template-columns:1fr}
+      .section{padding:72px 0}
+      form{padding:20px}
+    }
   </style>
 </head>
-
 <body>
-<div class="topbg">
-  <div class="grain" aria-hidden="true"></div>
-  <header>
-    <div class="wrap">
-      <nav>
-        <a class="brand" href="#top">
-          <span class="mark" aria-hidden="true"></span>
-          <span>Bavarian Endurance Battle</span>
-        </a>
 
-        <div class="links" aria-label="Primary navigation">
-          <a href="#event">Event</a>
-          <a href="/teams.html">Teams</a>
-
-          <a href="#rules">Rules</a>
-          <a href="#media">Media</a>
-         <a href="/about.html">About</a>
-          <a href="#contact">Contact</a>
-        </div>
-
-        <div class="actions">
-          <a class="btn primary small" href="#contact">Get Updates</a>
-          <button class="btn small" id="theme" type="button" aria-label="Toggle theme">Theme</button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <div class="grid heroGrid">
-          <div>
-            <div class="pill"><span class="dot" aria-hidden="true"></span> Buttonwillow Raceway • December 2026 • 12 Hour Endurance</div>
-            <h1>Are you ready to show what you’re made of?</h1>
-            <p class="sub">
-              BMW-only endurance. Real teams. Real strategy. No fluff — just preparation, consistency, and execution.
-              This is the official hub for rules, updates, and team interest.
-            </p>
-            <div class="teamCounter">
-
-<div class="teamNumber">
-12
-</div>
-
-<div class="teamLabel">
-Teams already building cars
-</div>
-
-<div class="teamRegion">
-Across California, Nevada & Arizona
-</div>
-
-</div>
-            <div id="countdown" style="margin-top:25px;color:white;font-size:22px;font-weight:600;">
-Race begins in: <span id="timer"></span>
-</div>
-            <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;max-width:560px">
-  <div class="card" style="padding:12px 14px">
-    <div style="font-weight:800;letter-spacing:-.02em">BMW-only</div>
-    <div class="muted" style="font-size:13px;margin-top:2px">Chassis rule stays clean</div>
-  </div>
-  <div class="card" style="padding:12px 14px">
-    <div style="font-weight:800;letter-spacing:-.02em">Street tires</div>
-    <div class="muted" style="font-size:13px;margin-top:2px">Accessible, closer racing</div>
-  </div>
-  <div class="card" style="padding:12px 14px">
-    <div style="font-weight:800;letter-spacing:-.02em">Headlights required</div>
-    <div class="muted" style="font-size:13px;margin-top:2px">Real night endurance</div>
-  </div>
-</div>
-
-
-            <div style="margin-top:22px;display:flex;gap:10px;flex-wrap:wrap">
-  <a class="btn primary" href="#contact">Get Updates / Team Interest</a>
-  <a class="btn" href="/teams.html">View Teams</a>
-  <a class="btn" href="/sponsors.html">Sponsors</a>
-  <a class="btn" href="/BEB_Rules_Draft_v0.pdf" target="_blank">Download Rules</a>
-</div>
-
-
-            <p class="muted" style="margin-top:12px;font-size:14px">
-              Contact: <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
-            </p>
-          </div>
-
-          <div class="card">
-           <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
-  <div style="font-weight:900;font-size:18px;letter-spacing:-.02em">Event Snapshot</div>
-  <div class="muted" style="font-size:12px;letter-spacing:.08em;text-transform:uppercase">BEB • Draft</div>
-</div>
-
-<div class="muted" style="margin-top:6px;font-size:13px;line-height:1.5">
-  BMW-only. Street tires. Headlights required. Built for real endurance.
-</div>
-
-            <dl class="snap">
-              <div><dt>Track</dt><dd>Buttonwillow Raceway</dd></div>
-              <div><dt>Race Length</dt><dd>12 Hours</dd></div>
-              <div><dt>Date</dt><dd>December 2026</dd></div>
-              <div><dt>Platform</dt><dd>BMW-only</dd></div>
-            </dl>
-
-            <div style="margin-top:14px" class="cta">
-              <div style="max-width:28rem">
-                <div style="font-weight:650;letter-spacing:-.02em">What’s next</div>
-                <div class="muted" style="margin-top:6px;line-height:1.55;font-size:14px">
-                  Rules PDFs and registration details will be published here as they’re finalized. If you want first notice, get on the update list.
-                </div>
-              </div>
-              <a class="btn" href="#contact">Join the list</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <section class="section">
+<header>
   <div class="wrap">
-
-    <h2>Where Teams Are Building Cars</h2>
-
-    <p class="muted" style="max-width:52rem;line-height:1.65">
-      Teams preparing for the Bavarian Endurance Battle are already building cars across the West Coast.
-    </p>
-
-    <div style="margin-top:20px;border-radius:16px;overflow:hidden;border:1px solid var(--border)">
-      <iframe
-       <iframe src="https://www.google.com/maps/d/embed?mid=12LLjFdAcra1B5bqPBxE2GTlMbRaCB6Y&ehbc=2E312F" width="640" height="480"></iframe>
-        width="100%"
-        height="420"
-        style="border:0">
-      </iframe>
-    </div>
-
-  </div>
-</section>
-    <section class="section">
-  <div class="wrap">
-
-    <h2>Teams Preparing for BEB</h2>
-
-    <p class="muted" style="max-width:52rem;line-height:1.65">
-      Builders across the West Coast are already preparing their BMW endurance projects.
-    </p>
-
-    <div class="leaderboard">
-
-      <div class="leaderRow">
-        <span class="leaderRank">1</span>
-        <span class="leaderTeam">Team Bavarian Track Rats</span>
-        <span class="leaderBuild">BMW E36 Endurance Build</span>
-      </div>
-
-      <div class="leaderRow">
-        <span class="leaderRank">2</span>
-        <span class="leaderTeam">NorCal Motorsport</span>
-        <span class="leaderBuild">BMW E30 Track Build</span>
-      </div>
-
-      <div class="leaderRow">
-        <span class="leaderRank">3</span>
-        <span class="leaderTeam">Desert BMW Crew</span>
-        <span class="leaderBuild">BMW E46 Endurance Build</span>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-  </main>
-</div>
-
-<section class="section" id="event">
-  <div class="wrap">
-    <h2>Event</h2>
-    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
-      Buttonwillow Raceway • December 2026 • 12 Hour Endurance. Schedule, entry format, class structure, and tech expectations will be published here.
-    </p>
-  </div>
-</section>
-  <section class="section">
-  <div class="wrap">
-    <h2>Teams Building for BEB</h2>
-
-    <p class="muted" style="max-width:52rem;line-height:1.65">
-      Builders and teams are already preparing BMW endurance projects for December 2026.
-      See who’s in progress — and where your team fits.
-    </p>
-<div class="statStrip">
-  <div class="stat">
-    <b>Target Date</b>
-    <span>December 2026 • Buttonwillow Raceway</span>
-  </div>
-  <div class="stat">
-    <b>Format</b>
-    <span>12-hour endurance • team strategy wins</span>
-  </div>
-  <div class="stat">
-    <b>Eligibility</b>
-    <span>BMW chassis only • class-based competition</span>
-  </div>
-</div>
-
-    <div class="card" style="margin-top:18px">
-      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
-        <div>
-          <div style="font-weight:700;font-size:18px">Momentum is forming</div>
-          <div class="muted" style="font-size:14px;margin-top:4px">
-            Track-prep builds. Shop-backed projects. Grassroots teams.
-          </div>
-        </div>
-
-        <a class="btn primary" href="/teams.html">
-          View Active Teams
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="rules">
-  <div class="wrap">
-    <h2>Rules</h2>
-
-    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
-      Download the current draft rules here:<br>
-      <a href="/BEB_Rules_Draft_v0.pdf" target="_blank" style="text-decoration:underline">
-        BEB Rules – Draft v0 (PDF)
+    <nav>
+      <a class="brand" href="#top" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle logo">
       </a>
-    </p>
 
-    <p class="muted" style="margin-top:12px;max-width:52rem;line-height:1.65">
-      Rules PDFs and bulletins will be posted here (technical, safety, sporting). If it matters, it’ll be published.
-    </p>
+      <div class="navlinks">
+        <a href="#why">Why BEB</a>
+        <a href="#your-bmw">Your BMW</a>
+        <a href="#classes">Classes</a>
+        <a href="#community">Community</a>
+        <a href="#founding-grid">Founding Grid</a>
+      </div>
+
+      <a class="btn primary navcta" href="#join">Join the Founding Grid</a>
+    </nav>
   </div>
-</section>
+</header>
 
-<section class="section" id="media">
-  <div class="wrap">
-    <h2>Media</h2>
-    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
-      Official videos (YouTube) and photos will live here.
-    </p>
-  </div>
-</section>
+<main id="top">
 
-<section class="section" id="about">
-  <div class="wrap">
-    <h2>About</h2>
-    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
-      Bavarian Endurance Battle is built around clarity, consistency, and serious track participation — aimed at teams who want to earn it on track.
-    </p>
-  </div>
-</section>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="eyebrow">A historic first for Southern California</div>
+      <h1>THE FIRST<br><span>BMW-ONLY 12-HOUR</span><br>ENDURANCE BATTLE<br>IN SOUTHERN CALIFORNIA.</h1>
+      <span class="subline">History only gets one first chapter.</span>
+      <div class="lead" style="max-width:900px">
+        <h2 style="margin-top:28px;margin-bottom:14px">Welcome to the Bavarian Endurance Battle</h2>
+        <p><strong style="color:#fff">This is more than a race. It is an invitation to become part of BMW history.</strong></p>
+        <p>Bavarian Endurance Battle brings generations of BMWs together in Southern California for a 12 hour endurance battle celebrating the machines, the people, and the passion that have carried the BMW legacy across generations.</p>
+        <p>Every BMW arrives with a story.</p>
+        <p>Some are prepared in professional race shops. Others are built after work in garages, backyards, and barns, one bolt, one repair, one late night at a time. But when the green flag falls, where they came from no longer matters.</p>
+        <p><strong style="color:#fff">History does not care where greatness begins. It remembers what happens when the moment arrives.</strong></p>
+        <p>For twelve hours, driver, team, and machine will face more than their competitors. They will face heat, fatigue, mechanical failure, strategy, doubt, and time itself.</p>
+        <p><strong style="color:#fff">Every lap will ask the same question: Will you continue?</strong></p>
+        <p>Because speed may win a lap.</p>
+        <p><strong style="color:#fff">Endurance earns respect.</strong></p>
+        <p>And when the checkered flag finally falls, the racing ends, but what was created here remains. The impossible repairs, the friendships forged under pressure, the competitors who stopped to help one another, the machines that refused to surrender, and the teams that discovered they could endure more than they ever imagined.</p>
+        <p>That is why Bavarian Endurance Battle will celebrate more than podiums. We will honor perseverance, craftsmanship, sportsmanship, service, community, and those who embody the true spirit of endurance.</p>
+        <p><strong style="color:#fff">Because how you race can be remembered long after where you finished.</strong></p>
+        <p>The race happens here, but the invitation reaches everywhere.</p>
+        <p>Teams and drivers from across California, across the country, and beyond are invited to bring their BMWs, their stories, and their determination to the grid.</p>
+        <p><strong style="color:#fff">Every generation has a legacy.</strong><br>
+        <strong style="color:#fff">Every BMW has a story.</strong><br>
+        <strong style="color:#fff">Every team has a battle ahead.</strong></p>
+        <p>The next chapter is waiting.</p>
+        <p><strong style="color:#fff">Bring your BMW. Bring your team. Bring everything you have.</strong></p>
+        <h3 style="font-size:1.45rem;color:#fff;margin-top:28px">Welcome to the Battle.</h3>
+      </div>
+      <div class="btn-row">
+        <a class="btn primary" href="#join">Join the Founding Grid</a>
+        <a class="btn secondary" href="#your-bmw">Could My BMW Race?</a>
+      </div>
+      <div class="micro">The Founding Grid is not race registration — it's your chance to raise your hand early. Tell us how interested you are, receive future updates, and help show that the BMW community is ready for this historic event.</div>
 
-<section class="section" id="contact">
-  <div class="wrap">
-    <h2>Team Sign-Up / Updates</h2>
-    <p class="muted" style="margin:0;max-width:52rem;line-height:1.65">
-      This is the fastest way to get first notice when rules + registration go live. You can also use it to raise your hand as a serious team.
-      Prefer email? <a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a>
-    </p>
+      <div class="proofline">
+        <span class="pill">Historic first grid</span>
+        <span class="pill">BMW only</span>
+        <span class="pill">12-hour endurance</span>
+        <span class="pill">Southern California</span>
+        <span class="pill">Grassroots by design</span>
+      </div>
+    </div>
+  </section>
 
-    <div style="margin-top:18px" class="card">
-     <form action="https://formspree.io/f/mdaeppov" method="POST">
+  <section class="section" id="why">
+    <div class="wrap split">
+      <div>
+        <div class="eyebrow">Why this exists</div>
+        <h2>We want to race too.</h2>
+        <p class="lead">
+          There are BMWs built in famous race shops, and BMWs built in one-car garages after work.
+          We respect both.
+        </p>
+        <p>
+          BEB is being built around a simple belief: your passion should matter more than the size of your budget.
+          The backyard builder should be able to line up shoulder-to-shoulder with an established BMW shop and know
+          that both earned their place by showing up prepared.
+        </p>
+      </div>
 
-  <input type="hidden" name="_subject" value="BEB Team Interest Submission" />
-  <input type="hidden" name="_next" value="https://bavarianendurancebattle.com/thanks.html" />
+      <div class="quote-card">
+        <strong>The Bavarian Endurance Battle was not created to celebrate the most expensive BMW.</strong>
+        <strong class="accent">It was created to celebrate the people who refused to give up on building one.</strong>
+        <p>Build it. Prepare it. Bring it. Race it.</p>
+      </div>
+    </div>
 
-  <div class="grid" style="grid-template-columns:1fr;gap:12px">
+    <div class="wrap">
+      <div class="cards">
+        <div class="card">
+          <div class="num">01 — Identity</div>
+          <h3>BMW Only</h3>
+          <p>One paddock built around the cars, chassis codes, engines, stories and culture BMW enthusiasts already love.</p>
+        </div>
+        <div class="card">
+          <div class="num">02 — Access</div>
+          <h3>Grassroots by Design</h3>
+          <p>Focused on teamwork, reliability, preparation and racecraft—not creating an environment where only huge budgets feel welcome.</p>
+        </div>
+        <div class="card">
+          <div class="num">03 — History</div>
+          <h3>Be Part of the First Grid</h3>
+          <p>This is not an established race asking for another entry. It is an invitation to help create the first BMW-only 12-hour endurance battle of its kind in Southern California. There will never be another first one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          <div>
-            <label style="font-size:13px;color:var(--muted)">Name</label>
-            <input name="name" required
-              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
-              placeholder="First + last name" />
+  <section class="racecar" id="your-bmw">
+    <div class="wrap">
+      <div class="content">
+        <div class="eyebrow">Already have a BMW race car?</div>
+        <h2>You may already be closer to the grid than you think.</h2>
+        <p class="lead">
+          If your BMW already runs with another grassroots or club racing organization, we do not want to make you start over.
+        </p>
+        <div class="orgs">
+          <span class="org">24 Hours of Lemons</span>
+          <span class="org">Lucky Dog</span>
+          <span class="org">NASA</span>
+          <span class="org">SCCA</span>
+          <span class="org">Gridlife</span>
+          <span class="org">HPDE / Time Attack</span>
+          <span class="org">Other endurance series</span>
+        </div>
+        <p>
+          BEB is being designed to welcome existing BMW race cars wherever practical while maintaining its own safety and technical standards.
+          Your current car may need only limited changes—or it may already be close.
+        </p>
+        <a class="btn primary" href="#join">Tell Us What You Race</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="classes">
+    <div class="wrap">
+      <div class="eyebrow">Choose your class</div>
+      <h2>Every BMW has a home. Every team has a chance.</h2>
+      <p class="lead">Choose your class, prepare your machine, and earn your place in the Battle.</p>
+
+      <div class="classes">
+        <div class="class-card">
+          <b>Vintage</b>
+          <span>E3 • E9 • E10 / 2002 • E12 • E21 • E24 • E28<br>Non-M</span>
+        </div>
+
+        <div class="class-card">
+          <b>Dreier Challenge</b>
+          <span>E30 • E36 • E46 • E9x<br>Non-M • Non-Touring</span>
+        </div>
+
+        <div class="class-card">
+          <b>Geschäftsklasse Challenge</b>
+          <span>E34 • E39 • E60<br>Non-M • Non-Touring</span>
+        </div>
+
+        <div class="class-card">
+          <b>Touring Challenge</b>
+          <span>E30 • E36 • E46 • E34 • E39 • E61 • E91 • X1<br>Non-M</span>
+        </div>
+
+        <div class="class-card">
+          <b>Zenith Challenge</b>
+          <span>Z3 E36/7 • Z3 E36/8 • Z4 E85 • Z4 E86 • Z4 E89</span>
+        </div>
+
+        <div class="class-card">
+          <b>Stock</b>
+          <span>Eligible BMWs in factory configuration, subject to required safety equipment and Stock Class regulations.</span>
+        </div>
+
+        <div class="class-card">
+          <b>WerkSport</b>
+          <span>BMW chassis with BMW or non-BMW engine swaps, naturally aspirated or forced induction.</span>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn secondary" href="#join">My BMW Belongs Here</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section community" id="community">
+    <div class="wrap community-grid">
+      <div>
+        <div class="eyebrow">The BMW community</div>
+        <h2>Race it. Show it. Build it. Support it.</h2>
+        <p class="lead">
+          BEB is bigger than the starting grid. The vision includes a BMW car show, festival atmosphere, vendors, families and a paddock where enthusiasts can actually connect.
+        </p>
+        <p>
+          You do not need a roll cage to belong here. If your BMW is part of your story, we want to know about it.
+        </p>
+      </div>
+
+      <div class="inclusion">
+        <h3>This community should look like the BMW community itself.</h3>
+        <p>
+          Women behind the wheel. Women building cars. First-time racers. Veteran competitors. Backyard builders.
+          Professional shops. Families. Volunteers. Photographers. Clubs. Car-show participants.
+        </p>
+        <p><strong style="color:#fff">If BMW is part of your story, there is a place for you here.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section founding" id="founding-grid">
+    <div class="wrap">
+      <div class="eyebrow">Real momentum</div>
+      <h2>The race hasn't started. The community already has.</h2>
+      <p class="lead">
+        Every real submission helps demonstrate demand for a BMW-only endurance event in Southern California.
+        Publicly, every person simply counts as one Founding Grid member. Your personal interest level stays private.
+      </p>
+
+      <div class="counter">
+        <strong id="foundingCount">0</strong>
+        <span>BMW enthusiasts on the Founding Grid</span>
+      </div>
+      <div class="counter-note">
+        Counter starts at the real verified total. Update the number in the page code as submissions are confirmed.
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <div class="wrap form-shell">
+      <div class="form-copy">
+        <div class="eyebrow">Join the Founding Grid</div>
+        <h2>Tell us where you stand.</h2>
+        <p class="lead">
+          Joining the Founding Grid is an expression of interest, not race registration. It helps us measure real demand and learn what BMW enthusiasts want as the event develops.
+        </p>
+        <p>
+          Leave your email and we can keep you updated as the concept develops, rules evolve, partners join and the event moves closer to reality.
+        </p>
+      </div>
+
+      <form action="https://formspree.io/f/mdaeppov" method="POST">
+        <input type="hidden" name="_subject" value="BEB Founding Grid Submission">
+        <input type="hidden" name="_next" value="https://bavarianendurancebattle.com/thanks.html">
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" name="name" type="text" required>
           </div>
-
-          <div>
-            <label style="font-size:13px;color:var(--muted)">Email</label>
-            <input type="email" name="email" required
-              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
-              placeholder="you@email.com" />
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr;gap:12px">
-            <div>
-              <label style="font-size:13px;color:var(--muted)">Team / Shop (optional)</label>
-              <input name="team"
-                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
-                placeholder="Team name / shop name" />
-            </div>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-            <div>
-              <label style="font-size:13px;color:var(--muted)">BMW Chassis (optional)</label>
-              <input name="chassis"
-                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
-                placeholder="E30 / E36 / E46 / etc." />
-            </div>
-
-            <div>
-              <label style="font-size:13px;color:var(--muted)">Interest level</label>
-              <select name="interest" required
-                style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none">
-                <option value="" selected disabled>Select</option>
-                <option>Just want updates</option>
-                <option>Considering a team</option>
-                <option>Serious — likely entering</option>
-              </select>
-            </div>
-          </div>
-
-          <div>
-            <label style="font-size:13px;color:var(--muted)">Notes (optional)</label>
-            <textarea name="notes" rows="4"
-              style="margin-top:6px;width:100%;padding:12px 12px;border-radius:14px;border:1px solid var(--border);background:transparent;color:var(--fg);outline:none"
-              placeholder="Anything we should know? (car plan, questions, sponsor interest, etc.)"></textarea>
-          </div>
-
-          <!-- anti-spam honeypot (leave hidden) -->
-          <input type="text" name="_gotcha" style="display:none" />
-
-          <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
-            <button class="btn primary" type="submit">Submit</button>
-            <span class="muted" style="font-size:13px">You’ll receive a confirmation email.</span>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" required>
           </div>
         </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="location">City / State</label>
+            <input id="location" name="location" type="text" placeholder="Los Angeles, CA">
+          </div>
+          <div class="field">
+            <label for="team">Team / Shop / Club</label>
+            <input id="team" name="team" type="text" placeholder="Optional">
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="bmw">BMW chassis / model</label>
+            <input id="bmw" name="bmw" type="text" placeholder="E36 325i, E46 330i, 2002, Z3...">
+          </div>
+          <div class="field">
+            <label for="carstatus">Current car status</label>
+            <select id="carstatus" name="car_status">
+              <option value="">Select one</option>
+              <option>Street car</option>
+              <option>HPDE / track car</option>
+              <option>Autocross car</option>
+              <option>Time Attack car</option>
+              <option>Existing race car</option>
+              <option>Endurance race car</option>
+              <option>Currently building one</option>
+              <option>I don't have a car yet</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>How interested are you?</label>
+          <div class="choice-list">
+            <label class="choice">
+              <input type="radio" name="interest_level" value="Following the Project" required>
+              <span><b>Following the Project</b>I want updates and want to see how this develops.</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="interest_level" value="Seriously Interested">
+              <span><b>Seriously Interested</b>If the event develops as proposed, I would seriously consider participating.</span>
+            </label>
+            <label class="choice">
+              <input type="radio" name="interest_level" value="I'd Build or Prepare a BMW for This">
+              <span><b>I'd Build or Prepare a BMW for This</b>If BEB moves forward under the proposed format, I would be willing to prepare a car or team.</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="organization">Do you currently race with another organization?</label>
+            <select id="organization" name="current_organization">
+              <option value="">Select one</option>
+              <option>24 Hours of Lemons</option>
+              <option>Lucky Dog</option>
+              <option>NASA</option>
+              <option>SCCA</option>
+              <option>Gridlife</option>
+              <option>Other endurance series</option>
+              <option>Not currently racing</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="travel">How far would you consider traveling?</label>
+            <select id="travel" name="travel_distance">
+              <option value="">Select one</option>
+              <option>Local / Southern California</option>
+              <option>Anywhere in California</option>
+              <option>Western United States</option>
+              <option>Anywhere in the United States</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>How would you like to be involved?</label>
+          <div class="check-grid">
+            <label class="check"><input type="checkbox" name="involvement" value="Race"> Race</label>
+            <label class="check"><input type="checkbox" name="involvement" value="Car Show"> Bring a BMW to the car show</label>
+            <label class="check"><input type="checkbox" name="involvement" value="Volunteer"> Volunteer</label>
+            <label class="check"><input type="checkbox" name="involvement" value="Vendor"> Vendor</label>
+            <label class="check"><input type="checkbox" name="involvement" value="Sponsor or Partner"> Sponsor / Partner</label>
+            <label class="check"><input type="checkbox" name="involvement" value="Follow Updates"> Follow updates</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="why">What attracts you most to Bavarian Endurance Battle?</label>
+          <textarea id="why" name="why_beb" placeholder="BMW-only racing, affordability, endurance, the first event, community, car show, something else..."></textarea>
+        </div>
+
+        <button class="btn primary full" type="submit">Join the Founding Grid</button>
+        <div class="privacy">Your interest level is for internal planning and investor validation. We do not publicly identify your level of commitment.</div>
       </form>
     </div>
-  </div>
-</section>
+  </section>
 
+  <section class="final">
+    <div class="wrap">
+      <div class="eyebrow">The invitation</div>
+      <h2>There will only be one beginning.</h2>
+      <p>
+        Before there are trophies, lap records or a first champion, there are people who believe enough to show up.
+        Builders. Drivers. Shops. Women and men. Families. First-timers. Veterans of the paddock.
+      </p>
+      <p><strong style="color:#fff">The first grid begins long before the first green flag.</strong></p>
+      <div class="btn-row" style="justify-content:center">
+        <a class="btn red" href="#join">Come Build It With Us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
 
 <footer>
-  <div class="wrap" style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
-    <div>© <span id="y"></span> Bavarian Endurance Battle</div>
-    <div><a href="mailto:info@bavarianendurancebattle.com" style="text-decoration:underline">info@bavarianendurancebattle.com</a></div>
+  <div class="wrap footer-row">
+    <div>© Bavarian Endurance Battle</div>
+    <div>BMW enthusiast event concept. Not affiliated with BMW AG.</div>
   </div>
 </footer>
 
 <script>
-  const root = document.documentElement;
-  const saved = localStorage.getItem("theme");
-  const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  function apply(theme){
-    if(theme === "dark") root.classList.add("dark");
-    else root.classList.remove("dark");
-    localStorage.setItem("theme", theme);
-  }
-  apply(saved ?? (prefersDark ? "dark" : "light"));
-
-  document.getElementById("theme").addEventListener("click", () => {
-    apply(root.classList.contains("dark") ? "light" : "dark");
-  });
-  document.getElementById("y").textContent = new Date().getFullYear();
+  // IMPORTANT:
+  // Replace this number only with the real number of verified Founding Grid submissions.
+  const FOUNDING_GRID_COUNT = 0;
+  document.getElementById("foundingCount").textContent = FOUNDING_GRID_COUNT.toLocaleString();
 </script>
-  <script>
-const raceDate = new Date("December 1, 2026 08:00:00").getTime();
 
-setInterval(function() {
-
-const now = new Date().getTime();
-const distance = raceDate - now;
-
-const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-document.getElementById("timer").innerHTML =
-days + "d " + hours + "h " + minutes + "m " + seconds + "s";
-
-}, 1000);
-</script>
 </body>
 </html>
