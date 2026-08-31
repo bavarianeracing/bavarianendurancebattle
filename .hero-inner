@@ -94,6 +94,7 @@
       pointer-events:none
     }
     .hero-inner{position:relative;z-index:2;max-width:980px}
+    .hero .lead p{color:#fff}
     .hero h1 span{color:var(--blue2)}
     .hero .subline{
       display:block;font-size:clamp(1.25rem,2.4vw,2rem);font-weight:800;
