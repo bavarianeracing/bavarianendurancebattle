@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Vintage | Bavarian Endurance Battle</title>
+  <meta name="description" content="The Vintage category of the Bavarian Endurance Battle. Bring BMW history back to the track.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --panel:#0d1117;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --blue:#6bc0ff;
+      --gold:#c7a96b;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    /* HEADER */
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(3,5,7,.04) 0%,
+          rgba(3,5,7,.08) 48%,
+          rgba(3,5,7,.70) 80%,
+          #07090c 100%
+        ),
+        url("vintage-hero.png") center 20% / cover no-repeat;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 75px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(4rem,11vw,9rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.8);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:800;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .heritage-line{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:800;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* ELIGIBLE CARS */
+
+    .cars{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#0a0d11;
+      padding:75px 0;
+      text-align:center;
+    }
+
+    .cars-title{
+      color:#8d929a;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .car-list{
+      font-size:clamp(1.5rem,4vw,3.2rem);
+      line-height:1.4;
+      font-weight:900;
+      letter-spacing:-.025em;
+      color:#fff;
+    }
+
+    .non-m{
+      margin-top:15px;
+      color:#90959d;
+      font-size:.9rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    /* FINAL STATEMENT */
+
+    .final{
+      position:relative;
+      padding:140px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(199,169,107,.12),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      font-size:clamp(1.2rem,2.5vw,1.8rem);
+      color:#c5c5bf;
+      max-width:850px;
+      margin:0 auto 55px;
+    }
+
+    .respect{
+      font-size:clamp(3.4rem,10vw,8.5rem);
+      line-height:.88;
+      font-weight:900;
+      letter-spacing:-.06em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .history{
+      margin-top:30px;
+      font-size:clamp(1.1rem,3vw,2rem);
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:82vh;
+        background-position:center top;
+      }
+
+      .hero-content{
+        padding-bottom:45px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .cars{
+        padding:55px 0;
+      }
+
+      .final{
+        padding:95px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- VINTAGE HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>Vintage</h1>
+
+        <div class="hero-tag">
+          Where the reputation was forged.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- HERITAGE STORY -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Bloodline</div>
+
+      <h2>Where the reputation was forged.</h2>
+
+      <p>
+        Before M became a badge, BMW was building its reputation the hard way:
+        on the racetrack. In 1970, a BMW 2002 ti won the inaugural Nürburgring
+        24 Hours, with BMWs occupying nine of the first ten finishing positions.
+        Two years later, BMW Motorsport GmbH was born, and the legendary 3.0 CSL
+        soon became one of Europe's dominant touring cars, collecting championship
+        titles and major endurance victories at Sebring and Daytona.
+      </p>
+
+      <p>
+        Then came another generation of warriors. The E21 320 was transformed
+        into a radical Group 5 machine, eventually producing more than 500
+        horsepower in turbocharged form. The E28 carried the fight into the
+        Group A era with a 528i victory at the 1982 24 Hours of Spa, while the
+        E24 635 CSi became an endurance legend of its own, winning Spa three
+        times and the Nürburgring 24 Hours twice.
+      </p>
+
+      <div class="heritage-line">
+        This was the era when BMW's motorsport reputation was forged.
+      </div>
+
+      <p>
+        The 2002. E3. E9. E12. E21. E24. E28.
+      </p>
+
+      <p>
+        Mechanical cars from a mechanical age, when racing was about engines,
+        chassis, brakes, balance and the person behind the wheel. These were
+        the generations that fought the battles, earned the victories and helped
+        establish the motorsport bloodline every BMW that followed would inherit.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ELIGIBLE GENERATIONS -->
+
+  <section class="cars">
+
+    <div class="wrap">
+
+      <div class="cars-title">
+        Vintage Class Generations
+      </div>
+
+      <div class="car-list">
+        E3 &nbsp;•&nbsp; E9 &nbsp;•&nbsp; 2002 &nbsp;•&nbsp; E12<br>
+        E21 &nbsp;•&nbsp; E24 &nbsp;•&nbsp; E28
+      </div>
+
+      <div class="non-m">
+        Non-M
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THE INVITATION -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Invitation</div>
+
+      <h2>Now, the story is yours.</h2>
+
+      <p>
+        Bavarian Endurance Battle created the Vintage category to bring these
+        generations together once again, this time with a new grid, a new challenge
+        and new stories waiting to be written.
+      </p>
+
+      <div class="heritage-line">
+        We are not here to recreate BMW's history.
+        <br>
+        We are here to give you a place to continue it.
+      </div>
+
+      <p>
+        Bring that vintage BMW warrior you saved.
+        <strong>Every warrior deserves another chance to conquer glory.</strong>
+        Bring your team, your passion and your determination, because the cars
+        that helped forge BMW's motorsport legacy don't belong spending the rest
+        of their lives behind ropes or beneath car covers.
+      </p>
+
+      <p>
+        <strong>They belong at the track</strong>, performing, devouring asphalt,
+        stealing glory from younger cars and reminding every generation that
+        followed exactly where the bloodline began.
+      </p>
+
+      <p>
+        Vintage doesn't ask for respect.
+        <strong>It imposes it.</strong>
+      </p>
+
+      <p>
+        And when one of these old warriors appears in the mirrors of a BMW thirty
+        or forty years younger, there is only one statement left to make:
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <p class="respect">
+        Respect<br>Your Elders.
+      </p>
+
+      <div class="history">
+        Bring History Back to the Track.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
