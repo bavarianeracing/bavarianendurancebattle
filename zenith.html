@@ -1,0 +1,681 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Zenith Challenge | Bavarian Endurance Battle</title>
+  <meta name="description" content="The Zenith Challenge of the Bavarian Endurance Battle. Compact BMW sports cars built to devour corners.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --blue:#4db8ff;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:url("zenith-hero.png") center center / cover no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.01) 0%,
+        rgba(0,0,0,.02) 55%,
+        rgba(0,0,0,.80) 100%
+      );
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 65px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--blue);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(4rem,11vw,9rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.95);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--blue);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .statement{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* ELIGIBLE CARS */
+
+    .cars{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#0a0d11;
+      padding:75px 0;
+      text-align:center;
+    }
+
+    .cars-title{
+      color:#8d929a;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .car-list{
+      font-size:clamp(1.35rem,3.5vw,2.8rem);
+      line-height:1.55;
+      font-weight:900;
+      letter-spacing:-.025em;
+      color:#fff;
+    }
+
+    /* ZENITH IDENTITY */
+
+    .zenith{
+      padding:120px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(77,184,255,.10),transparent 48%),
+        #07090c;
+    }
+
+    .zenith-small{
+      color:var(--blue);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+
+    .zenith h2{
+      font-size:clamp(3rem,8vw,7rem);
+      margin-bottom:40px;
+    }
+
+    .zenith-text{
+      max-width:850px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .zenith-text strong{
+      color:#fff;
+    }
+
+    /* FINAL */
+
+    .final{
+      position:relative;
+      padding:140px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(77,184,255,.12),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      color:#bfc4cb;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:35px;
+    }
+
+    .gravity{
+      font-size:clamp(3.5rem,10vw,9rem);
+      line-height:.86;
+      font-weight:900;
+      letter-spacing:-.065em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .keep-up{
+      margin-top:34px;
+      font-size:clamp(1.2rem,3vw,2.2rem);
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--blue);
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:85vh;
+        background-position:center center;
+      }
+
+      .hero-content{
+        padding-bottom:40px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .cars{
+        padding:55px 0;
+      }
+
+      .zenith{
+        padding:85px 0;
+      }
+
+      .final{
+        padding:95px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- ZENITH HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>Zenith</h1>
+
+        <div class="hero-tag">
+          The Future Doesn't Wait For The Corner.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- THE FUTURE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">Zukunft</div>
+
+      <h2>The future doesn't wait for the corner.</h2>
+
+      <p>
+        BMW chose the letter <strong>Z</strong> from the German word
+        <em>Zukunft</em>, meaning <strong>future</strong>. When the Z3 arrived,
+        BMW's idea of the future was refreshingly simple: two seats, engine in
+        front, power to the rear wheels and as little automobile as necessary
+        surrounding the person driving it.
+      </p>
+
+      <p>
+        The Z3 took that philosophy racing, with the Roadster and especially the
+        Coupé appearing in GT and endurance competition. The Germans even gave
+        the Z3 M Coupé a nickname: <strong>Turnschuh</strong>, literally
+        “gym shoe” or “sports shoe.” Small, unusual and remarkably light on its
+        feet, the name fit perfectly.
+      </p>
+
+      <p>
+        Then BMW kept sharpening the idea.
+      </p>
+
+      <p>
+        The Z4 eventually evolved into the <strong>BMW Z4 GT3</strong>, a serious
+        international endurance racing machine. It fought at the Nürburgring,
+        Spa and circuits around the world, finishing second overall at the 2015
+        Nürburgring 24 Hours before achieving its greatest victory that same
+        year: <strong>winning the 24 Hours of Spa outright.</strong>
+      </p>
+
+      <p>
+        The funny little two seat BMW had grown up.
+      </p>
+
+      <div class="statement">
+        And apparently it had learned how to fight.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ELIGIBLE GENERATIONS -->
+
+  <section class="cars">
+
+    <div class="wrap">
+
+      <div class="cars-title">
+        Zenith Challenge Generations
+      </div>
+
+      <div class="car-list">
+        Z3 E36/7 • Z3 Coupé E36/8<br>
+        Z4 E85 • Z4 Coupé E86 • Z4 E89
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WELCOME TO ZENITH -->
+
+  <section class="zenith">
+
+    <div class="wrap">
+
+      <div class="zenith-small">
+        Welcome To The Zenith Class
+      </div>
+
+      <h2>That's The Weapon.</h2>
+
+      <div class="zenith-text">
+
+        Bavarian Endurance Battle created the Zenith Class for the smallest,
+        lowest and perhaps most irritating members of the family.
+
+        <div class="statement">
+          Z3. Z4. Two seats. Rear wheel drive. Compact dimensions.<br>
+          Basically, a German go kart with headlights.
+        </div>
+
+        While the bigger BEB categories can bring horsepower, torque and
+        intimidating numbers, the Zenith Class brings considerably less car.
+
+        <br><br>
+
+        <strong>That's the weapon.</strong>
+
+        <br><br>
+
+        Brake late. Turn in. Clip the apex. Get back on the throttle. Then do it
+        again until the driver behind begins wondering why this annoying little
+        BMW keeps appearing in the mirrors.
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THE MOSQUITO -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Mosquito</div>
+
+      <h2>There it is again.</h2>
+
+      <p>
+        The Germans called the Z3 M Coupé <strong>Turnschuh</strong>.
+      </p>
+
+      <p>
+        Drivers in the other BEB categories may eventually call it something
+        else:
+      </p>
+
+      <div class="statement">
+        “That annoying little shit.”
+      </div>
+
+      <p>
+        Pull away from it on the straight? There it is again. Outpower it
+        leaving the next corner? There it is again. Finally think you've shaken
+        the little bastard?
+      </p>
+
+      <div class="statement">
+        Goddammit. There it is again.
+      </div>
+
+      <p>
+        Because horsepower is impressive right up until the racetrack starts
+        changing direction.
+      </p>
+
+      <p>
+        <strong>That's where the Zenith Class lives.</strong>
+      </p>
+
+      <p>
+        A Miata may have built an empire around the lightweight sports car
+        formula. Mention that comparison to the little Bavarian, however, and
+        the response is remarkably simple:
+      </p>
+
+      <div class="statement">
+        “Miata? Never heard of her.”
+      </div>
+
+      <p>
+        Because the Z doesn't merely negotiate corners.
+      </p>
+
+      <p>
+        <strong>It devours apex angles.</strong>
+      </p>
+
+      <p>
+        Gravity showed up.
+      </p>
+
+      <p>
+        G force showed up.
+      </p>
+
+      <div class="statement">
+        The Z had already left the corner.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <div class="final-small">
+        Zenith
+      </div>
+
+      <p class="gravity">
+        Gravity<br>Can Follow.
+      </p>
+
+      <div class="keep-up">
+        If It Can Keep Up.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
