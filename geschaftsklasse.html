@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Geschäftsklasse Challenge | Bavarian Endurance Battle</title>
+  <meta name="description" content="The Geschäftsklasse Challenge of the Bavarian Endurance Battle. Business class just became a contact sport.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --panel:#0d1117;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --blue:#6bc0ff;
+      --gold:#c7a96b;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:url("geschaftsklasse-hero.png") center center / cover no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.02) 0%,
+        rgba(0,0,0,.03) 55%,
+        rgba(0,0,0,.78) 100%
+      );
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 65px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--gold);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(3rem,8vw,7rem);
+      line-height:.9;
+      letter-spacing:-.055em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.95);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--gold);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .statement{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* CARS */
+
+    .cars{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#0a0d11;
+      padding:75px 0;
+      text-align:center;
+    }
+
+    .cars-title{
+      color:#8d929a;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .car-list{
+      font-size:clamp(2rem,6vw,4.5rem);
+      line-height:1.25;
+      font-weight:900;
+      letter-spacing:-.035em;
+      color:#fff;
+    }
+
+    .restriction{
+      margin-top:15px;
+      color:#90959d;
+      font-size:.9rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    /* EXECUTIVE INTERLUDE */
+
+    .executive{
+      padding:120px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(199,169,107,.10),transparent 48%),
+        #07090c;
+    }
+
+    .executive-small{
+      color:var(--gold);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+
+    .executive h2{
+      font-size:clamp(3rem,8vw,7rem);
+      margin-bottom:35px;
+    }
+
+    .executive-text{
+      max-width:850px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    /* FINAL */
+
+    .final{
+      position:relative;
+      padding:140px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(107,192,255,.08),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      color:#bfc4cb;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:35px;
+    }
+
+    .business{
+      font-size:clamp(3.1rem,9vw,8rem);
+      line-height:.88;
+      font-weight:900;
+      letter-spacing:-.06em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .racing{
+      margin-top:34px;
+      font-size:clamp(1.1rem,3vw,2rem);
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--gold);
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:85vh;
+        background-position:center center;
+      }
+
+      .hero-content{
+        padding-bottom:40px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .cars{
+        padding:55px 0;
+      }
+
+      .executive{
+        padding:85px 0;
+      }
+
+      .final{
+        padding:95px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- GESCHÄFTSKLASSE HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>Geschäftsklasse</h1>
+
+        <div class="hero-tag">
+          Business Class Just Became A Contact Sport.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- THE DOUBLE LIFE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Double Life</div>
+
+      <h2>Business class just became a contact sport.</h2>
+
+      <p>
+        The BMW 5 Series has always lived a double life. Elegant enough for the
+        executive world, sophisticated enough to cross countries in comfort,
+        yet engineered with the unmistakable belief that the person behind the
+        wheel should still enjoy getting there.
+      </p>
+
+      <p>
+        But somewhere along the way, BMW decided that winning formula needed
+        another ingredient.
+      </p>
+
+      <div class="statement">
+        Muscle.
+      </div>
+
+      <p>
+        The V8 found its way beneath the tailored suit, and the character of the
+        executive sedan changed. The E34, E39 and E60 generations all offered
+        eight cylinder power, combining refinement, balance and authority with
+        something considerably less civilized hiding underneath.
+      </p>
+
+      <p>
+        BMW had created an executive car that could shake your hand politely
+        while carrying a very large hammer behind its back.
+      </p>
+
+      <p>
+        And the 5 Series had already proven that the big sedan wasn't afraid of
+        a fight. BMW's four door 528i racers became formidable European touring
+        cars, winning the <strong>1982 European Touring Car Championship</strong>
+        and the <strong>1982 24 Hours of Spa</strong>, where BMW 528is filled the
+        first six finishing positions.
+      </p>
+
+      <div class="statement">
+        BMW had engineered a monster and put it in a suit.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ELIGIBLE GENERATIONS -->
+
+  <section class="cars">
+
+    <div class="wrap">
+
+      <div class="cars-title">
+        Geschäftsklasse Challenge Generations
+      </div>
+
+      <div class="car-list">
+        E34 &nbsp;•&nbsp; E39 &nbsp;•&nbsp; E60
+      </div>
+
+      <div class="restriction">
+        Non-M • Non-Touring
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NOW LOOSEN THE TIE -->
+
+  <section class="executive">
+
+    <div class="wrap">
+
+      <div class="executive-small">
+        The Invitation
+      </div>
+
+      <h2>Now Loosen The Tie.</h2>
+
+      <div class="executive-text">
+
+        Bavarian Endurance Battle created Geschäftsklasse for the people who
+        understand exactly what makes that contradiction so appealing.
+
+        <br><br>
+
+        <strong>E34. E39. E60.</strong>
+
+        <br><br>
+
+        This isn't the lightweight generational argument of Dreier.
+        Geschäftsklasse arrives differently. Bigger bodies. Longer wheelbases.
+        Executive presence. And underneath it all, the heritage of BMW
+        performance with the possibility of eight cylinders providing the muscle.
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THE CHALLENGE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Assignment</div>
+
+      <h2>Bring the big sedan.</h2>
+
+      <p>
+        Bring the torque. Bring the BMW that looks like it should be parked
+        outside the boardroom instead of fighting its way through twelve hours
+        at Buttonwillow.
+      </p>
+
+      <p>
+        Straighten your jacket. Look at your watch.
+      </p>
+
+      <p>
+        Then forget both.
+      </p>
+
+      <div class="statement">
+        Loosen the tie. Roll up your sleeves.
+      </div>
+
+      <p>
+        <strong>“Cancel my next appointment.”</strong>
+      </p>
+
+      <p>
+        Hand somebody the briefcase.
+      </p>
+
+      <p>
+        <strong>“Hold my briefcase.”</strong>
+      </p>
+
+      <p>
+        Then get in the car.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <div class="final-small">
+        E34 &nbsp;•&nbsp; E39 &nbsp;•&nbsp; E60
+      </div>
+
+      <p class="business">
+        Business Can Wait.
+      </p>
+
+      <div class="racing">
+        There Is Racing To Do.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
