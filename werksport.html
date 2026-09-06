@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>WerkSport | Bavarian Endurance Battle</title>
+  <meta name="description" content="WerkSport is the engine swap class of Bavarian Endurance Battle. Welcome to the laboratory.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --orange:#ff7a32;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:url("werksport-hero.png") center center / cover no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.01) 0%,
+        rgba(0,0,0,.02) 55%,
+        rgba(0,0,0,.82) 100%
+      );
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 65px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--orange);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(3.7rem,11vw,9rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.95);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--orange);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .statement{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* FOUR BATTLES */
+
+    .battles{
+      padding:100px 0;
+      background:#0a0d11;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+    }
+
+    .battles-header{
+      text-align:center;
+      margin-bottom:55px;
+    }
+
+    .battles-header span{
+      color:var(--orange);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+    }
+
+    .battles-header h2{
+      margin:12px 0 0;
+    }
+
+    .battle-grid{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:14px;
+    }
+
+    .battle{
+      min-height:220px;
+      padding:36px;
+      border:1px solid var(--line);
+      background:
+        linear-gradient(145deg,rgba(255,122,50,.07),transparent 60%),
+        #080a0d;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+    }
+
+    .battle-number{
+      color:var(--orange);
+      font-size:.75rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .battle h3{
+      margin:25px 0 0;
+      font-size:clamp(1.3rem,3vw,2rem);
+      line-height:1.15;
+      text-transform:uppercase;
+    }
+
+    .battle h3 span{
+      color:#858b94;
+    }
+
+    /* MOTTO */
+
+    .motto{
+      padding:130px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(255,122,50,.12),transparent 47%),
+        #07090c;
+    }
+
+    .motto-small{
+      color:var(--orange);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:20px;
+    }
+
+    .motto-stock{
+      color:#8e949c;
+      font-weight:800;
+      text-transform:uppercase;
+      font-size:clamp(1rem,2.5vw,1.5rem);
+      margin-bottom:30px;
+    }
+
+    .motto h2{
+      font-size:clamp(3.2rem,9vw,8rem);
+      margin:0;
+    }
+
+    /* LAB */
+
+    .lab{
+      padding:120px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(255,122,50,.08),transparent 48%),
+        #07090c;
+    }
+
+    .lab-small{
+      color:var(--orange);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+
+    .lab h2{
+      font-size:clamp(3rem,8vw,7rem);
+      margin-bottom:40px;
+    }
+
+    .lab-text{
+      max-width:850px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .lab-text strong{
+      color:#fff;
+    }
+
+    /* FINAL */
+
+    .final{
+      position:relative;
+      padding:150px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(255,122,50,.15),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      color:#bfc4cb;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:35px;
+    }
+
+    .final-title{
+      font-size:clamp(3.5rem,10vw,9rem);
+      line-height:.86;
+      font-weight:900;
+      letter-spacing:-.065em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .final-answer{
+      margin-top:35px;
+      color:var(--orange);
+      font-size:clamp(1.1rem,3vw,2rem);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:750px){
+      .battle-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:85vh;
+        background-position:center center;
+      }
+
+      .hero-content{
+        padding-bottom:40px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .battles{
+        padding:75px 0;
+      }
+
+      .motto{
+        padding:90px 0;
+      }
+
+      .lab{
+        padding:85px 0;
+      }
+
+      .final{
+        padding:100px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- WERKSPORT HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>WerkSport</h1>
+
+        <div class="hero-tag">
+          Welcome To The Mad Scientist Class.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- MAD SCIENTIST -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Mad Scientist Class</div>
+
+      <h2>Some people simply cannot leave anything alone.</h2>
+
+      <p>
+        BMW has given us some extraordinary things over the years. Brilliant
+        engines, beautiful chassis and some of the greatest combinations of the
+        two. But sometimes BMW gave us the right engine in the wrong car.
+        Sometimes they gave us a gorgeous chassis that makes you wonder whether
+        another BMW powerplant would have been better between those Bavarian
+        fenders.
+      </p>
+
+      <p>
+        And sometimes you look at that beautiful BMW and think:
+      </p>
+
+      <div class="statement">
+        “You know what would fit perfectly in there? An engine BMW didn't even make.”
+      </div>
+
+      <p>
+        Welcome to Werksport,
+        <strong>the engine swap class of Bavarian Endurance Battle.</strong>
+        The Frankenstein experiment happens under the hood. The BMW chassis
+        remains the foundation.
+      </p>
+
+      <p>
+        This isn't about tube chassis prototypes or completely reinventing the
+        car. It's about taking a BMW and giving it the heart you believe it
+        should have had.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOUR BATTLES -->
+
+  <section class="battles">
+
+    <div class="wrap">
+
+      <div class="battles-header">
+        <span>WerkSport Divisions</span>
+        <h2>The Madness Is Divided Into Four Battles.</h2>
+      </div>
+
+      <div class="battle-grid">
+
+        <div class="battle">
+          <div class="battle-number">Experiment 01</div>
+          <h3>
+            BMW Chassis<br>
+            + BMW Engine Swap<br>
+            <span>Naturally Aspirated</span>
+          </h3>
+        </div>
+
+        <div class="battle">
+          <div class="battle-number">Experiment 02</div>
+          <h3>
+            BMW Chassis<br>
+            + BMW Engine Swap<br>
+            <span>Forced Induction</span>
+          </h3>
+        </div>
+
+        <div class="battle">
+          <div class="battle-number">Experiment 03</div>
+          <h3>
+            BMW Chassis<br>
+            + Non-BMW Engine Swap<br>
+            <span>Naturally Aspirated</span>
+          </h3>
+        </div>
+
+        <div class="battle">
+          <div class="battle-number">Experiment 04</div>
+          <h3>
+            BMW Chassis<br>
+            + Non-BMW Engine Swap<br>
+            <span>Forced Induction</span>
+          </h3>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- INVITATION -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">Pick Your Experiment</div>
+
+      <h2>Give it the heart you think it deserves.</h2>
+
+      <p>
+        Whether you believe an E36 deserves an S54, an old 5 Series needs a
+        completely inappropriate BMW V8, or your Bavarian chassis has been
+        secretly begging for a powerplant designed somewhere very far from
+        Munich, <strong>we built you a place to find out.</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- MOTTO -->
+
+  <section class="motto">
+
+    <div class="wrap">
+
+      <div class="motto-small">
+        Two Completely Different Philosophies
+      </div>
+
+      <div class="motto-stock">
+        Stock Class: “DON'T F%$#K WITH IT!!”
+      </div>
+
+      <h2>HOW CAN I F&$%K WITH IT?</h2>
+
+    </div>
+
+  </section>
+
+
+  <!-- PERSON RESPONSIBLE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">Now, About The Person Responsible For This...</div>
+
+      <h2>There is a particular kind of gearhead.</h2>
+
+      <p>
+        There is a particular kind of gearhead who simply cannot leave anything
+        alone. These are the fabricators, tuners, engine builders and dangerously
+        curious people who actually understand how this shit works.
+      </p>
+
+      <div class="statement">
+        Or at least they're extremely confident that they do.
+      </div>
+
+      <p>
+        Mention the word <strong>“stock”</strong> to one of these guys and
+        you'll probably watch him gag before quietly walking away from you.
+        To the Werksport mind, leaving something exactly the way BMW built it
+        isn't preservation. <strong>It's a missed opportunity.</strong>
+      </p>
+
+      <p>
+        Ask him about his BMW at a party and twenty minutes later some poor girl
+        is holding a drink while receiving an unsolicited explanation of
+        compression ratios, injector duty cycles, weight transfer and why his
+        particular engine combination is obviously superior.
+      </p>
+
+      <div class="statement">
+        She stopped listening six parties ago. He still hasn't noticed.
+      </div>
+
+      <p>
+        This is the guy who has a welder for a nightstand. There is no wall
+        separating his bedroom from the engine build room because, according to
+        him, <strong>“the wall was just unnecessary weight.”</strong>
+      </p>
+
+      <p>
+        His kitchen table has connecting rods on it, his laptop is datalogging
+        instead of playing Netflix, and somewhere in the house there is probably
+        an engine waiting for a car he hasn't bought yet.
+      </p>
+
+      <p>
+        Underneath all the insanity, however, is something we genuinely respect.
+        These are builders, fabricators and problem solvers. When the part they
+        need doesn't exist, <strong>they make it.</strong> When two things were
+        never designed to work together, they figure out how to introduce them.
+      </p>
+
+      <p>
+        This guy actually knows how shit works.
+      </p>
+
+      <div class="statement">
+        Or at least he REALLY thinks he does.
+      </div>
+
+      <p>
+        Twelve hours is going to tell us which one.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- LABORATORY -->
+
+  <section class="lab">
+
+    <div class="wrap">
+
+      <div class="lab-small">
+        Welcome To The Laboratory
+      </div>
+
+      <h2>Build Frankenstein.</h2>
+
+      <div class="lab-text">
+
+        Werksport is where engine combinations BMW never imagined are finally
+        given somewhere to prove themselves. Bavarian heart or foreign
+        transplant. Naturally aspirated or forced induction. Sensible engineering
+        or something conceived at two in the morning while staring at an engine
+        hoist.
+
+        <div class="statement">
+          Because building Frankenstein is one thing.<br>
+          Making the bastard survive twelve hours is another.
+        </div>
+
+        The dyno sheet doesn't matter when the hood is open in the pits. Your
+        engineering doesn't merely have to make horsepower.
+
+        <br><br>
+
+        <strong>It has to survive.</strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ENGINEER -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">Munich Had A Plan</div>
+
+      <h2>You had another idea.</h2>
+
+      <p>
+        Somewhere in Munich, a BMW engineer spent thousands of hours deciding
+        exactly which engine belonged in that car.
+      </p>
+
+      <p>
+        The Werksport builder looked at it, reached for the engine hoist and said:
+      </p>
+
+      <div class="statement">
+        “Yeah... but I have an idea.”
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <div class="final-small">
+        Twelve Hours Will Answer One Question
+      </div>
+
+      <p class="final-title">
+        Does Your Shit<br>
+        Actually Work?
+      </p>
+
+      <div class="final-answer">
+        Welcome To WerkSport.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
