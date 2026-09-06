@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Touring Challenge | Bavarian Endurance Battle</title>
+  <meta name="description" content="The Touring Challenge of the Bavarian Endurance Battle. Never underestimate the family car.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --blue:#6bc0ff;
+      --orange:#e8923a;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:url("touring-hero.png") center center / cover no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.01) 0%,
+        rgba(0,0,0,.02) 55%,
+        rgba(0,0,0,.78) 100%
+      );
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 65px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--orange);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(4rem,11vw,9rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.95);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--orange);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .statement{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* ELIGIBLE CARS */
+
+    .cars{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#0a0d11;
+      padding:75px 0;
+      text-align:center;
+    }
+
+    .cars-title{
+      color:#8d929a;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .car-list{
+      font-size:clamp(1.5rem,4vw,3.2rem);
+      line-height:1.45;
+      font-weight:900;
+      letter-spacing:-.025em;
+      color:#fff;
+    }
+
+    .restriction{
+      margin-top:15px;
+      color:#90959d;
+      font-size:.9rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    /* LONG ROOFS */
+
+    .longroof{
+      padding:120px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(232,146,58,.10),transparent 48%),
+        #07090c;
+    }
+
+    .longroof-small{
+      color:var(--orange);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+
+    .longroof h2{
+      font-size:clamp(3rem,8vw,7rem);
+      margin-bottom:40px;
+    }
+
+    .longroof-text{
+      max-width:850px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .longroof-text strong{
+      color:#fff;
+    }
+
+    /* FINAL */
+
+    .final{
+      position:relative;
+      padding:140px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(232,146,58,.11),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      color:#bfc4cb;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:35px;
+    }
+
+    .roof{
+      font-size:clamp(3rem,9vw,8rem);
+      line-height:.88;
+      font-weight:900;
+      letter-spacing:-.06em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .bmw{
+      margin-top:34px;
+      font-size:clamp(1.1rem,3vw,2rem);
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--orange);
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:85vh;
+        background-position:center center;
+      }
+
+      .hero-content{
+        padding-bottom:40px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .cars{
+        padding:55px 0;
+      }
+
+      .longroof{
+        padding:85px 0;
+      }
+
+      .final{
+        padding:95px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- TOURING HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>Touring</h1>
+
+        <div class="hero-tag">
+          Never Underestimate The Family Car.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- THE FAMILY CAR -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Family Car</div>
+
+      <h2>Never underestimate the family car.</h2>
+
+      <p>
+        There is something wonderfully German about taking a perfectly sensible
+        family car and deciding that what it really needs is more power, better
+        suspension and the ability to embarrass sports cars.
+      </p>
+
+      <p>
+        Audi did it. Mercedes did it. And BMW created some of the most beautiful
+        Tourings ever built, combining the practicality of a wagon with the
+        engineering, balance and performance expected from a BMW. They were
+        designed to carry families, luggage, tools and groceries while quietly
+        hiding the fact that underneath all that practicality was still a
+        driver's car.
+      </p>
+
+      <p>
+        And if you still think the long roof doesn't belong on a racetrack,
+        don't take our word for it.
+      </p>
+
+      <div class="statement">
+        Ask BMW.
+      </div>
+
+      <p>
+        What began as an April Fools' joke became the
+        <strong>BMW M3 Touring 24H</strong>, a genuine BMW M Motorsport race car
+        based on the G81 M3 Touring and incorporating racing technology from the
+        M4 GT3 EVO. BMW took it to one of the most unforgiving endurance races
+        in the world, the Nürburgring 24 Hours.
+      </p>
+
+      <p>
+        And the grocery getter didn't just show up.
+      </p>
+
+      <div class="statement">
+        It finished fifth overall and won its class.
+      </div>
+
+      <p>
+        Apparently even BMW eventually looked at the Touring and asked the same
+        question we did:
+      </p>
+
+      <p>
+        <strong>Why shouldn't the grocery getter go racing?</strong>
+      </p>
+
+      <p>
+        So yes, the long roof belongs here.
+      </p>
+
+      <p>
+        <strong>Now it's your turn.</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ELIGIBLE GENERATIONS -->
+
+  <section class="cars">
+
+    <div class="wrap">
+
+      <div class="cars-title">
+        Touring Challenge Generations
+      </div>
+
+      <div class="car-list">
+        E30 • E36 • E46 • E34<br>
+        E39 • E61 • E91 • X1
+      </div>
+
+      <div class="restriction">
+        Non-M
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- LONG ROOFS -->
+
+  <section class="longroof">
+
+    <div class="wrap">
+
+      <div class="longroof-small">
+        Welcome To The Long Roofs
+      </div>
+
+      <h2>Agility Meets Muscle.</h2>
+
+      <div class="longroof-text">
+
+        Bavarian Endurance Battle created Touring as the place where the BMW
+        family lines finally cross. This is where
+        <strong>3 Series and 5 Series get to race together</strong>, creating a
+        battle that doesn't exist anywhere else in BEB.
+
+        <br><br>
+
+        The smaller 3 Series Tourings bring the agility, compact dimensions and
+        nimble character that made the 3 Series famous. Across the grid, the
+        larger 5 Series Tourings arrive with more size, more presence and the
+        potential for considerably more muscle.
+
+        <div class="statement">
+          Agility meets muscle. 3 Series meets 5 Series.<br>
+          And the long roof is the price of admission.
+        </div>
+
+        With that long, smooth roofline stretching toward the rear of the car,
+        the Touring even <em>looks</em> like it was designed to cheat the wind.
+
+        <br><br>
+
+        The extra windows, however, contribute absolutely nothing to the
+        aerodynamics.
+
+        <div class="statement">
+          They're there so everybody you pass can get a better look.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THE GROCERY GETTER -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Grocery Getter</div>
+
+      <h2>Nobody expects the wagon.</h2>
+
+      <p>
+        Touring doesn't demand respect. It doesn't particularly care whether
+        you give it any.
+      </p>
+
+      <p>
+        Let Vintage talk about heritage. Let Dreier argue about which generation
+        is superior. Let Geschäftsklasse straighten its tie and discuss
+        important business.
+      </p>
+
+      <div class="statement">
+        The wagon has groceries to deliver.
+      </div>
+
+      <p>
+        Nobody expects the wagon. That's part of its advantage. Let them see the
+        extra doors, the long roof and all that glass and assume the family
+        hauler doesn't belong in a twelve hour endurance race.
+      </p>
+
+      <p>
+        That assumption tends to disappear rather quickly when the grocery getter
+        fills the mirrors, follows them into Turn 3 and comes out the other side
+        in front, <strong>shaking that big Bavarian ass as it disappears from
+        view through the next few corners.</strong>
+      </p>
+
+      <p>
+        Don't be mad.
+      </p>
+
+      <div class="statement">
+        You underestimated the grocery getter.
+      </div>
+
+      <p>
+        Besides, BMW gave the Touring extra cargo capacity for life's necessities:
+        groceries, luggage, tools, <strong>someone else's dignity, two or three
+        shattered egos, a few hearts stolen at Turn 3, and enough trophies to
+        make the trip home slightly heavier.</strong>
+      </p>
+
+      <p>
+        And with the rear seats folded down?
+      </p>
+
+      <div class="statement">
+        There's probably room for the excuses too.
+      </div>
+
+      <p>
+        Bring the wagon. Bring the family hauler. Bring the BMW nobody expected
+        to become a twelve hour endurance race car. Because practicality never
+        erased the engineering underneath it.
+      </p>
+
+      <p>
+        <strong>The roof simply got longer.</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <div class="final-small">
+        The Long Roofs
+      </div>
+
+      <p class="roof">
+        Don't Let The<br>Long Roof Fool You.
+      </p>
+
+      <div class="bmw">
+        There's A BMW Hiding Under There.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
