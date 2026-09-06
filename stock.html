@@ -1,1 +1,807 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
 
+  <title>Stock Class | Bavarian Endurance Battle</title>
+  <meta name="description" content="The Stock Class of the Bavarian Endurance Battle. Less is more. Prepare it, protect it, and keep it moving.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --green:#86c96f;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:url("stock-hero.png") center center / cover no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.01) 0%,
+        rgba(0,0,0,.02) 55%,
+        rgba(0,0,0,.80) 100%
+      );
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 65px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--green);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(4rem,11vw,9rem);
+      line-height:.82;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.95);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--green);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .statement{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* GOLDEN RULE */
+
+    .golden-rule{
+      padding:115px 0;
+      text-align:center;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(134,201,111,.10),transparent 48%),
+        #0a0d11;
+    }
+
+    .golden-small{
+      color:var(--green);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:22px;
+    }
+
+    .golden-rule h2{
+      font-size:clamp(3.5rem,9vw,8rem);
+      margin:0;
+    }
+
+    .golden-sub{
+      margin-top:30px;
+      color:var(--muted);
+      font-size:1.05rem;
+    }
+
+    /* TORTOISE */
+
+    .tortoise{
+      padding:120px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(134,201,111,.08),transparent 48%),
+        #07090c;
+    }
+
+    .tortoise-small{
+      color:var(--green);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+
+    .tortoise h2{
+      font-size:clamp(3rem,8vw,7rem);
+      margin-bottom:40px;
+    }
+
+    .tortoise-text{
+      max-width:850px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    .tortoise-text strong{
+      color:#fff;
+    }
+
+    .hello{
+      margin:40px 0;
+      font-size:clamp(2rem,5vw,4rem);
+      font-weight:900;
+      color:#fff;
+      line-height:1.4;
+    }
+
+    /* PHILOSOPHY */
+
+    .philosophy{
+      padding:90px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#0a0d11;
+      text-align:center;
+    }
+
+    .philosophy-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:1px;
+      background:var(--line);
+      border:1px solid var(--line);
+    }
+
+    .philosophy-item{
+      background:#0a0d11;
+      padding:40px 20px;
+    }
+
+    .philosophy-item b{
+      display:block;
+      font-size:1.1rem;
+      color:#fff;
+      text-transform:uppercase;
+      margin-bottom:8px;
+    }
+
+    .philosophy-item span{
+      color:#858b94;
+      font-size:.9rem;
+    }
+
+    /* FINAL */
+
+    .final{
+      position:relative;
+      padding:140px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(134,201,111,.11),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      color:#bfc4cb;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:35px;
+    }
+
+    .final-title{
+      font-size:clamp(3.2rem,9vw,8rem);
+      line-height:.88;
+      font-weight:900;
+      letter-spacing:-.06em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .final-answer{
+      margin-top:34px;
+      font-size:clamp(1.2rem,3vw,2.2rem);
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color:var(--green);
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:750px){
+
+      .philosophy-grid{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:85vh;
+        background-position:center center;
+      }
+
+      .hero-content{
+        padding-bottom:40px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .golden-rule{
+        padding:80px 0;
+      }
+
+      .tortoise{
+        padding:85px 0;
+      }
+
+      .philosophy-grid{
+        grid-template-columns:1fr;
+      }
+
+      .final{
+        padding:95px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- STOCK HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>Stock</h1>
+
+        <div class="hero-tag">
+          Less Is More.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- LESS IS MORE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Golden Rule</div>
+
+      <h2>Here is where the old saying becomes a golden rule: Less is more.</h2>
+
+      <p>
+        BMW built its reputation by creating cars that were already exceptional
+        from the factory. Balanced chassis, responsive engines, rear wheel drive
+        and a connection between driver and machine became part of what made
+        generations of BMWs special.
+        <strong>Stock Class celebrates what BMW engineered in the first place.</strong>
+      </p>
+
+      <p>
+        You don't need to become a race car engineer before becoming a race car
+        driver. Maybe your BMW is sitting in the backyard. Maybe it's been
+        forgotten behind the shop with four flat tires. Maybe you found it on
+        Marketplace for less than somebody else's set of wheels. Perfect. Get it
+        running, freshen it up, make it mechanically healthy and install the
+        required racing safety equipment.
+      </p>
+
+      <p>
+        Then follow perhaps the simplest endurance racing strategy of all:
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- DON'T TOUCH IT -->
+
+  <section class="golden-rule">
+
+    <div class="wrap">
+
+      <div class="golden-small">
+        Stock Class Rule Number One
+      </div>
+
+      <h2>DON'T F%$#K WITH IT!!</h2>
+
+      <div class="golden-sub">
+        Sometimes the best modification is the one you never installed.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FACTORY ENGINEERING -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">Factory Engineering</div>
+
+      <h2>BMW already did the engineering.</h2>
+
+      <p>
+        No complicated engine build. No engineering arms race. No chasing
+        horsepower before you've ever taken a green flag. Bring the engine BMW
+        gave it, the transmission BMW put behind it, the suspension architecture
+        BMW designed and the bodywork it left the factory wearing.
+      </p>
+
+      <p>
+        <strong>What modifications are you running?</strong>
+      </p>
+
+      <div class="statement">
+        “A roll cage, a little optimism, and a truckload of BMW engineering from
+        people who know a hell of a lot more about building cars than I do.”
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TORTOISE -->
+
+  <section class="tortoise">
+
+    <div class="wrap">
+
+      <div class="tortoise-small">
+        Endurance Strategy
+      </div>
+
+      <h2>The Tortoise Has A Plan.</h2>
+
+      <div class="tortoise-text">
+
+        Stock may be the simplest way into Bavarian Endurance Battle, but
+        simplicity can also become a weapon in endurance racing. Fewer
+        modifications mean fewer variables, fewer complications and fewer things
+        you introduced that can go wrong.
+
+        <br><br>
+
+        That doesn't mean an old stock BMW can't break. Preparation still
+        matters enormously. But while everyone else is trying to make their car
+        faster, the Stock team can concentrate on something much more important:
+
+        <div class="statement">
+          Keeping the damn thing moving.
+        </div>
+
+        The fastest car on the grid might lap you five times. Let it. Six hours
+        later, that same car might be sitting in the pits with its hood open
+        while half the team is trying to figure out what broke.
+
+        <br><br>
+
+        Meanwhile, here comes the Stock BMW again.
+
+        <div class="hello">
+          👋 Hi.<br>
+          Another lap.<br>
+          👋 Hi again.
+        </div>
+
+        Keep circulating long enough and something funny begins to happen.
+
+        <div class="statement">
+          The tortoise starts collecting rabbits.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ENDURANCE PHILOSOPHY -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Long Game</div>
+
+      <h2>Speed creates the gap. Reliability can take it back.</h2>
+
+      <p>
+        There is an old piece of endurance racing wisdom often associated with
+        Le Mans: <strong>“In order to win Le Mans, you have to finish Le Mans.”</strong>
+        That philosophy sits at the heart of Stock Class.
+      </p>
+
+      <p>
+        Endurance racing isn't simply about how quickly you can complete one
+        lap. It's about how many laps you can complete before the clock runs out.
+      </p>
+
+      <div class="statement">
+        Speed creates the gap. Reliability can take it back.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- STOCK PHILOSOPHY -->
+
+  <section class="philosophy">
+
+    <div class="wrap">
+
+      <div class="philosophy-grid">
+
+        <div class="philosophy-item">
+          <b>Make It Healthy</b>
+          <span>Preparation before horsepower.</span>
+        </div>
+
+        <div class="philosophy-item">
+          <b>Make It Safe</b>
+          <span>Install the required racing safety equipment.</span>
+        </div>
+
+        <div class="philosophy-item">
+          <b>Keep It Simple</b>
+          <span>Let BMW's engineering do its job.</span>
+        </div>
+
+        <div class="philosophy-item">
+          <b>Keep It Moving</b>
+          <span>Twelve hours rewards the car that survives.</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RACING STARTS SOMEWHERE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">Your First Green Flag</div>
+
+      <h2>Racing has to start somewhere.</h2>
+
+      <p>
+        Stock Class is for the person who wants to experience endurance racing
+        without first spending years, a fortune or an engineering degree building
+        the perfect race car.
+      </p>
+
+      <p>
+        It's for the person staring at an old BMW in the backyard wondering
+        whether that thing could actually become a race car. And it's equally at
+        home with the purist who simply wants to discover what a BMW can
+        accomplish when you stop trying to reinvent it.
+      </p>
+
+      <p>
+        Find the BMW. Bring some friends. Make it healthy. Make it safe.
+        <strong>Show up with what BMW engineered.</strong>
+      </p>
+
+      <p>
+        Maybe someday you'll build something faster. Maybe Stock becomes your
+        first step toward another BEB category. Or maybe twelve hours later
+        you'll discover that the simple old BMW you started with was exactly the
+        race car you needed all along.
+      </p>
+
+      <div class="statement">
+        You don't need to build the perfect race car before you start racing.
+        You need to prepare a BMW to survive a race.
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <div class="final-small">
+        Stock Class
+      </div>
+
+      <p class="final-title">
+        You Don't Have<br>
+        To Be The Fastest.
+      </p>
+
+      <div class="final-answer">
+        You Have To Be There At The End.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
