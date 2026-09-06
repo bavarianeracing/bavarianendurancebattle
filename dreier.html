@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Dreier Challenge | Bavarian Endurance Battle</title>
+  <meta name="description" content="The Dreier Challenge of the Bavarian Endurance Battle. Four generations. One argument. Twelve hours decide.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#07090c;
+      --panel:#0d1117;
+      --text:#f4f4f2;
+      --muted:#b8b8b2;
+      --line:rgba(255,255,255,.12);
+      --red:#e33b32;
+      --blue:#6bc0ff;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      line-height:1.7;
+    }
+
+    a{color:inherit}
+
+    .wrap{
+      width:min(var(--max),calc(100% - 40px));
+      margin:0 auto;
+    }
+
+    header{
+      position:fixed;
+      z-index:50;
+      top:0;
+      left:0;
+      right:0;
+      background:rgba(5,7,10,.82);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    nav{
+      height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand img{
+      width:185px;
+      height:62px;
+      object-fit:contain;
+      border-radius:8px;
+      display:block;
+    }
+
+    .back{
+      text-decoration:none;
+      font-weight:800;
+      font-size:.9rem;
+      padding:11px 18px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      transition:.2s ease;
+    }
+
+    .back:hover{
+      background:#fff;
+      color:#080a0d;
+    }
+
+    /* HERO */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-end;
+      overflow:hidden;
+      background:url("dreier-hero.png") center center / cover no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:linear-gradient(
+        180deg,
+        rgba(0,0,0,.02) 0%,
+        rgba(0,0,0,.02) 52%,
+        rgba(0,0,0,.76) 100%
+      );
+      pointer-events:none;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      padding:150px 0 65px;
+    }
+
+    .class-label{
+      display:inline-block;
+      font-size:.78rem;
+      font-weight:900;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--blue);
+      margin-bottom:12px;
+    }
+
+    .hero h1{
+      margin:0;
+      font-size:clamp(3.8rem,10vw,8.5rem);
+      line-height:.84;
+      letter-spacing:-.065em;
+      text-transform:uppercase;
+      text-shadow:0 8px 40px rgba(0,0,0,.95);
+    }
+
+    .hero-tag{
+      margin-top:20px;
+      font-size:clamp(1.15rem,2.4vw,1.8rem);
+      font-weight:900;
+      letter-spacing:.04em;
+      text-transform:uppercase;
+      color:#fff;
+      text-shadow:0 4px 20px #000;
+    }
+
+    /* STORY */
+
+    .story{
+      padding:105px 0;
+    }
+
+    .story-inner{
+      max-width:900px;
+      margin:0 auto;
+    }
+
+    .eyebrow{
+      color:var(--blue);
+      text-transform:uppercase;
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      margin-bottom:15px;
+    }
+
+    h2{
+      font-size:clamp(2.4rem,5vw,4.8rem);
+      line-height:1;
+      letter-spacing:-.045em;
+      margin:0 0 34px;
+      text-transform:uppercase;
+    }
+
+    .story p{
+      color:var(--muted);
+      font-size:1.08rem;
+      margin:0 0 24px;
+    }
+
+    .story strong{
+      color:#fff;
+    }
+
+    .statement{
+      margin:55px 0;
+      padding:28px 0;
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      font-size:clamp(1.4rem,3vw,2.2rem);
+      font-weight:900;
+      line-height:1.35;
+      color:#fff;
+    }
+
+    /* GENERATIONS */
+
+    .cars{
+      border-top:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      background:#0a0d11;
+      padding:75px 0;
+      text-align:center;
+    }
+
+    .cars-title{
+      color:#8d929a;
+      text-transform:uppercase;
+      letter-spacing:.18em;
+      font-size:.75rem;
+      font-weight:900;
+      margin-bottom:20px;
+    }
+
+    .car-list{
+      font-size:clamp(2rem,6vw,4.5rem);
+      line-height:1.25;
+      font-weight:900;
+      letter-spacing:-.035em;
+      color:#fff;
+    }
+
+    .restriction{
+      margin-top:15px;
+      color:#90959d;
+      font-size:.9rem;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+    }
+
+    /* THE ARGUMENT */
+
+    .argument{
+      padding:120px 0;
+      text-align:center;
+      border-bottom:1px solid var(--line);
+      background:
+        radial-gradient(circle at center,rgba(107,192,255,.09),transparent 48%),
+        #07090c;
+    }
+
+    .argument-small{
+      color:var(--blue);
+      font-size:.8rem;
+      letter-spacing:.18em;
+      font-weight:900;
+      text-transform:uppercase;
+      margin-bottom:15px;
+    }
+
+    .argument h2{
+      font-size:clamp(3rem,8vw,7rem);
+      margin-bottom:40px;
+    }
+
+    .argument-text{
+      max-width:850px;
+      margin:0 auto;
+      color:var(--muted);
+      font-size:1.08rem;
+    }
+
+    /* FINAL */
+
+    .final{
+      position:relative;
+      padding:140px 0;
+      text-align:center;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at center,rgba(227,59,50,.12),transparent 45%),
+        #07090c;
+    }
+
+    .final-small{
+      color:#bfc4cb;
+      font-size:clamp(1rem,2vw,1.4rem);
+      font-weight:800;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      margin-bottom:35px;
+    }
+
+    .decide{
+      font-size:clamp(3.1rem,9vw,8rem);
+      line-height:.88;
+      font-weight:900;
+      letter-spacing:-.06em;
+      margin:0;
+      color:#fff;
+      text-transform:uppercase;
+    }
+
+    .settle{
+      margin-top:34px;
+      font-size:clamp(1.1rem,3vw,2rem);
+      font-weight:900;
+      letter-spacing:.13em;
+      text-transform:uppercase;
+      color:var(--blue);
+    }
+
+    .actions{
+      margin-top:55px;
+      display:flex;
+      justify-content:center;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:52px;
+      padding:0 23px;
+      border-radius:999px;
+      text-decoration:none;
+      font-weight:800;
+      border:1px solid var(--line);
+      transition:.18s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-2px);
+    }
+
+    .btn.primary{
+      background:linear-gradient(90deg,var(--red),#b82121);
+      border-color:transparent;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      border-top:1px solid var(--line);
+      padding:30px 0;
+      color:#777e88;
+      font-size:.82rem;
+    }
+
+    .footer-row{
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    @media(max-width:650px){
+
+      .wrap{
+        width:min(var(--max),calc(100% - 26px));
+      }
+
+      nav{
+        height:76px;
+      }
+
+      .brand img{
+        width:135px;
+        height:52px;
+      }
+
+      .back{
+        font-size:.76rem;
+        padding:9px 13px;
+      }
+
+      .hero{
+        min-height:85vh;
+        background-position:center center;
+      }
+
+      .hero-content{
+        padding-bottom:40px;
+      }
+
+      .story{
+        padding:75px 0;
+      }
+
+      .cars{
+        padding:55px 0;
+      }
+
+      .argument{
+        padding:85px 0;
+      }
+
+      .final{
+        padding:95px 0;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+
+      <a class="brand" href="index.html" aria-label="Bavarian Endurance Battle home">
+        <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+
+      <a class="back" href="index.html#classes">← ALL CLASSES</a>
+
+    </nav>
+  </div>
+</header>
+
+
+<main>
+
+  <!-- DREIER HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+      <div class="wrap">
+
+        <div class="class-label">
+          Bavarian Endurance Battle
+        </div>
+
+        <h1>Dreier</h1>
+
+        <div class="hero-tag">
+          Four Generations. One Argument.
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- MOTORSPORT BLOODLINE -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Bloodline</div>
+
+      <h2>Four generations. One argument.</h2>
+
+      <p>
+        Few automotive bloodlines have created the kind of loyalty, rivalry and
+        endless debate that surrounds the BMW 3 Series. Across generations, the
+        formula changed, the technology evolved and the cars became faster, but
+        one thing never disappeared: the belief that <strong>your</strong>
+        generation was the one BMW got exactly right.
+      </p>
+
+      <p>
+        The E30 didn't simply enter touring car racing.
+        <strong>It conquered it.</strong> The E30 M3 accumulated more than 1,400
+        race victories, captured championships across the world and became one
+        of the most successful touring cars ever created. It fought larger, more
+        powerful machines and defeated established rivals on circuits across
+        Europe and beyond, earning a reputation perfectly captured by a German
+        word: <strong>GIGANTENTÖTER. Giant Killer.</strong>
+      </p>
+
+      <p>
+        But even that name wasn't enough to contain the legend. As the victories
+        accumulated and the years turned a dominant race car into an automotive
+        icon, enthusiasts gave the E30 M3 another, almost immortal name:
+        <strong>God's Chariot.</strong>
+      </p>
+
+      <div class="statement">
+        The E30 created the legend.<br>
+        The generations that followed had to answer it.
+      </div>
+
+      <p>
+        That was the legacy the E36 had to follow. Instead of disappearing
+        beneath the enormous shadow of its predecessor, the E36 built a racing
+        reputation of its own. It became a formidable competitor during the
+        Super Touring era, winning the British Touring Car Championship and
+        competing successfully around the world, proving that the dominance of
+        the 3 Series was not the achievement of a single legendary generation.
+      </p>
+
+      <p>
+        Then came the E46, and BMW's rivalry with Porsche produced one of the
+        most intimidating 3 Series race cars ever created: the
+        <strong>V8 powered E46 M3 GTR.</strong> After Porsche dominated the 2000
+        American Le Mans Series GT season, BMW answered. In 2001, the M3 GTR took
+        seven victories, six pole positions and swept the Drivers', Teams' and
+        Manufacturers' championships.
+        <strong>Porsche had thrown down the challenge. BMW answered.</strong>
+      </p>
+
+      <p>
+        The E9X generation carried the fight into another era. The E90 320si
+        entered the World Touring Car Championship in 2006 and won its very first
+        race. By the end of that season BMW had captured both the Drivers' and
+        Manufacturers' World Championships, then repeated both achievements in
+        2007. Different technology, different engineering and a different
+        generation, but the bloodline was still winning.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- ELIGIBLE GENERATIONS -->
+
+  <section class="cars">
+
+    <div class="wrap">
+
+      <div class="cars-title">
+        Dreier Challenge Generations
+      </div>
+
+      <div class="car-list">
+        E30 &nbsp;•&nbsp; E36 &nbsp;•&nbsp; E46 &nbsp;•&nbsp; E9X
+      </div>
+
+      <div class="restriction">
+        Non-M • Non-Touring
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THE ARGUMENT -->
+
+  <section class="argument">
+
+    <div class="wrap">
+
+      <div class="argument-small">
+        The Question
+      </div>
+
+      <h2>Which One Is The Best?</h2>
+
+      <div class="argument-text">
+
+        One is lighter. One has the better chassis. One has better suspension
+        geometry. One has more power. One is simpler. One is stronger. One
+        responds better to modification.
+
+        <br><br>
+
+        For decades we've heard the arguments, read the forums, compared the
+        spec sheets, watched the lap times and studied the build threads.
+
+        <div class="statement">
+          Enough.
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- THE INVITATION -->
+
+  <section class="story">
+
+    <div class="wrap story-inner">
+
+      <div class="eyebrow">The Challenge</div>
+
+      <h2>Settle it where it belongs.</h2>
+
+      <p>
+        Bavarian Endurance Battle created the Dreier category to give that
+        argument a place to finally be settled where an argument about BMW
+        performance belongs: <strong>on the racetrack.</strong>
+      </p>
+
+      <p>
+        No more forum flexing. No more theoretical builds. No more cherry picked
+        numbers and no more explaining what your car <em>would</em> do.
+      </p>
+
+      <div class="statement">
+        Bring your E30, E36, E46 or E9X.<br>
+        Build it. Bring your team. Prove it.
+      </div>
+
+      <p>
+        Bring everything you believe your generation does better than the others,
+        and prove it.
+      </p>
+
+      <p>
+        Because twelve hours won't care about reputation. Horsepower alone won't
+        win the argument, and neither will weight, technology or a perfect spec
+        sheet. Twelve hours will expose speed, balance, reliability, preparation,
+        fuel strategy, tire management, driver consistency and whether the machine
+        can keep fighting when the easy laps are long gone.
+      </p>
+
+      <p>
+        This isn't a comparison test.
+        <strong>It's an argument settled at racing speed.</strong>
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="final">
+
+    <div class="wrap">
+
+      <div class="final-small">
+        E30 &nbsp;•&nbsp; E36 &nbsp;•&nbsp; E46 &nbsp;•&nbsp; E9X
+      </div>
+
+      <p class="decide">
+        Four Generations Enter.<br>
+        Twelve Hours Decide.
+      </p>
+
+      <div class="settle">
+        No More Arguments. Settle It On The Track.
+      </div>
+
+      <div class="actions">
+
+        <a class="btn primary" href="index.html#join">
+          Join the Founding Grid
+        </a>
+
+        <a class="btn secondary" href="index.html#classes">
+          Explore Other Classes
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<footer>
+
+  <div class="wrap footer-row">
+
+    <div>
+      © Bavarian Endurance Battle
+    </div>
+
+    <div>
+      BMW enthusiast event concept. Not affiliated with BMW AG.
+    </div>
+
+  </div>
+
+</footer>
+
+</body>
+</html>
