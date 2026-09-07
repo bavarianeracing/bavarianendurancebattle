@@ -610,8 +610,11 @@
 <script>
   // IMPORTANT:
   // Replace this number only with the real number of verified Founding Grid submissions.
-  const FOUNDING_GRID_COUNT = 0;
-  document.getElementById("foundingCount").textContent = FOUNDING_GRID_COUNT.toLocaleString();
+ fetch("https://script.google.com/macros/s/AKfycbzJ3hjnt296P86D7WkPwJUdSUP-4Bpv51IUZ56pbTrYPa_sMUwkj24rirY-L251z85T/exec")
+  .then(response => response.json())
+  .then(data => {
+    document.getElementById("foundingCount").textContent = data.interested.toLocaleString();
+  });
 </script>
 
 </body>
