@@ -7,6 +7,14 @@
   featured: true puts it in the featured collection.
 */
 window.BEB_INSPIRATION_VIDEOS = [
+  {
+  url: "https://www.youtube.com/watch?v=cJ-b3g9c4pM",
+  title: "How BMW won Le Mans, and why they never went back",
+  categories: ["lemans", "endurance", "history"],
+  description: "Explore BMW's Le Mans victory and the story behind the decision not to return.",
+  source: "BMW racing history video",
+  featured: true
+},
   
 {
   url: "https://www.youtube.com/watch?v=SKm3pRCPrEU",
