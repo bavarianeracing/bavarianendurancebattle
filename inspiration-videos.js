@@ -7,6 +7,16 @@
   featured: true puts it in the featured collection.
 */
 window.BEB_INSPIRATION_VIDEOS = [
+  
+{
+  url: "https://www.youtube.com/watch?v=t6JcYLeW1K0",
+  title: "The History Of BMW M Motorsport Racing (50th Anniversary Edition)",
+  categories: ["history", "compilations"],
+  description: "Explore the heritage of BMW M Motorsport, celebrating the racing machines, championships, and people behind decades of competition.",
+  source: "BMW M Motorsport history documentary",
+  featured: true
+},
+  
   {
     url: "https://www.youtube.com/watch?v=Uv-rhnyDVP8",
     title: "BMW E30 M3 — Group A DTM Racing",
