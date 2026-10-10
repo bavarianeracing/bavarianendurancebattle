@@ -9,6 +9,16 @@
 window.BEB_INSPIRATION_VIDEOS = [
   
 {
+  url: "https://www.youtube.com/watch?v=SKm3pRCPrEU",
+  title: "Why This BMW Terrified Every Competitor",
+  categories: ["history"],
+  description: "A look at a formidable BMW and the competitive reputation that made it a legend.",
+  source: "BMW motorsport documentary",
+  featured: false
+},
+  
+  
+{
   url: "https://www.youtube.com/watch?v=t6JcYLeW1K0",
   title: "The History Of BMW M Motorsport Racing (50th Anniversary Edition)",
   categories: ["history", "compilations"],
