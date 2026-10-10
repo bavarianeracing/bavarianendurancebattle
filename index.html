@@ -149,10 +149,210 @@
     .orgs{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
     .org{padding:10px 13px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-weight:700;font-size:.87rem}
 
-    .classes{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
-    .class-card{border:1px solid var(--line);border-radius:20px;padding:22px;background:#0d141e}
-    .class-card b{display:block;font-size:1.08rem;color:white;margin-bottom:8px}
-    .class-card span{font-size:.9rem;color:#98a4b5}
+   
+/* BEB CLASSES — CINEMATIC RACING BANNERS */
+
+.beb-classes-heading {
+  font-size: clamp(3rem, 7vw, 6rem);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: -.055em;
+  color: #fff;
+  margin: 12px 0 18px;
+}
+
+.beb-class-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 38px;
+}
+
+.beb-class-banner {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: 410px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 14px;
+  background-color: #080d15;
+  background-image:
+    linear-gradient(
+      90deg,
+      rgba(4,7,13,.99) 0%,
+      rgba(4,7,13,.96) 28%,
+      rgba(4,7,13,.79) 48%,
+      rgba(4,7,13,.18) 100%
+    ),
+    var(--car-image);
+  background-position: center, center right;
+  background-size: cover, cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
+}
+
+/* BMW Motorsport accents */
+
+.beb-class-banner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 165px;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    #62c5ee 0%,
+    #62c5ee 33%,
+    #164caa 33%,
+    #164caa 66%,
+    #e63340 66%
+  );
+  z-index: 2;
+}
+
+.beb-class-banner::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 19%;
+  width: 110px;
+  height: 100%;
+  transform: skewX(-18deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(45,132,235,.07),
+    transparent
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.beb-class-content {
+  position: relative;
+  z-index: 1;
+  width: min(620px, 66%);
+  padding: 42px 48px;
+}
+
+.beb-class-content h3 {
+  color: #fff;
+  font-size: clamp(2rem, 3.6vw, 3.3rem);
+  font-style: italic;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -.045em;
+  margin-bottom: 20px;
+  overflow-wrap: anywhere;
+}
+
+.beb-class-content h3 small {
+  display: inline-block;
+  font-size: .38em;
+  font-style: normal;
+  letter-spacing: .1em;
+  vertical-align: middle;
+  color: #c9d6e7;
+}
+
+.beb-class-content p {
+  color: #dce3ed;
+  font-size: .95rem;
+  line-height: 1.55;
+  margin-bottom: 14px;
+}
+
+.beb-class-content strong {
+  display: block;
+  color: #6bc0ff;
+  font-size: .77rem;
+  font-weight: 900;
+  letter-spacing: .13em;
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+
+.beb-class-content .beb-class-note {
+  color: #b9c4d2;
+  font-size: .85rem;
+}
+
+.beb-class-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 12px 22px;
+  margin-top: 12px;
+  background: linear-gradient(90deg,#e33b32,#b82121);
+  border-radius: 4px;
+  color: #fff;
+  text-decoration: none;
+  font-size: .82rem;
+  font-weight: 900;
+  letter-spacing: .045em;
+  transition: transform .2s, filter .2s;
+}
+
+.beb-class-button:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.15);
+}
+
+/* TABLET */
+
+@media (max-width: 900px) {
+  .beb-class-banner {
+    min-height: 380px;
+  }
+
+  .beb-class-content {
+    width: 76%;
+    padding: 34px;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 620px) {
+  .beb-class-banner {
+    min-height: 460px;
+    align-items: flex-end;
+    background-image:
+      linear-gradient(
+        0deg,
+        rgba(4,7,13,.99) 0%,
+        rgba(4,7,13,.94) 43%,
+        rgba(4,7,13,.12) 100%
+      ),
+      var(--car-image);
+    background-position: center, center top;
+    background-size: cover, auto 62%;
+  }
+
+  .beb-class-content {
+    width: 100%;
+    padding: 24px 22px;
+  }
+
+  .beb-class-content h3 {
+    font-size: clamp(1.8rem, 8vw, 2.6rem);
+  }
+
+  .beb-class-content p {
+    font-size: .86rem;
+    margin-bottom: 9px;
+  }
+
+  .beb-class-button {
+    font-size: .72rem;
+    padding: 11px 14px;
+  }
+}
+
 
     .community{
       background:
@@ -400,63 +600,102 @@
     </div>
   </section>
 
-  <section class="section" id="classes">
-    <div class="wrap">
-      <div class="eyebrow">Choose your class</div>
-      <h2>Every BMW has a home. Every team has a chance.</h2>
-      <p class="lead">Choose your class, prepare your machine, and earn your place in the Battle.</p>
+ 
+<section class="section beb-classes-section" id="classes">
+  <div class="wrap">
+    <div class="eyebrow">Choose your class</div>
+    <h2 class="beb-classes-heading">BEB CLASSES</h2>
+    <p class="lead">EVERY BMW HAS A HOME. EVERY TEAM HAS A CHANCE.</p>
 
-     <div class="classes">
+    <div class="beb-class-list">
 
-  <div class="class-card">
-    <b>Vintage</b>
-    <span>E3 • E9 • E10 / 2002 • E12 • E21 • E24 • E28<br>Non-M</span>
-    <a class="btn secondary" href="vintage.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('vintage.jpg')">
+        <div class="beb-class-content">
+          <h3>VINTAGE <small>CLASS</small></h3>
+          <p>A celebration of the BMWs that started it all. The machines that built the legacy, now racing together in true endurance spirit.</p>
+          <strong>ACCEPTED CHASSIS</strong>
+          <p>E3 | E9 | E10 / 2002 | E12 | E21 | E24 | E28</p>
+          <p class="beb-class-note">Non-M vehicles only.</p>
+          <a href="vintage.html" class="beb-class-button">EXPLORE VINTAGE CLASS →</a>
+        </div>
+      </article>
 
-  <div class="class-card">
-    <b>Dreier Challenge</b>
-    <span>E30 • E36 • E46 • E9x<br>Non-M • Non-Touring</span>
-    <a class="btn secondary" href="dreier.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('dreier.jpg')">
+        <div class="beb-class-content">
+          <h3>DREIER <small>CLASS</small></h3>
+          <p>Iconic 3-Series chassis known for their balance, agility and endurance capability.</p>
+          <strong>ACCEPTED CHASSIS</strong>
+          <p>E30 | E36 | E46 | E90 | E92 | E93</p>
+          <p class="beb-class-note">Non-M vehicles only. No Touring models.</p>
+          <a href="dreier.html" class="beb-class-button">EXPLORE DREIER CLASS →</a>
+        </div>
+      </article>
 
-  <div class="class-card">
-    <b>Geschäftsklasse Challenge</b>
-    <span>E34 • E39 • E60<br>Non-M • Non-Touring</span>
-    <a class="btn secondary" href="geschaftsklasse.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('geschaftsklasse.jpg')">
+        <div class="beb-class-content">
+          <h3>GESCHÄFTSKLASSE <small>CLASS</small></h3>
+          <p>BMW's executive class, built for long distances and high speeds. Powerful, refined and capable on the endurance stage.</p>
+          <strong>ACCEPTED CHASSIS</strong>
+          <p>E34 | E39 | E60</p>
+          <p class="beb-class-note">Non-M vehicles only. No Touring models.</p>
+          <a href="geschaftsklasse.html" class="beb-class-button">EXPLORE GESCHÄFTSKLASSE CLASS →</a>
+        </div>
+      </article>
 
-  <div class="class-card">
-    <b>Touring Challenge</b>
-    <span>E30 • E36 • E46 • E34 • E39 • E61 • E91 • X1<br>Non-M</span>
-    <a class="btn secondary" href="touring.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('touring.jpg')">
+        <div class="beb-class-content">
+          <h3>TOURING <small>CLASS</small></h3>
+          <p>The long-roof BMWs that prove practicality and performance go hand in hand. Wagons and utility models ready for endurance racing.</p>
+          <strong>ACCEPTED CHASSIS</strong>
+          <p>E30T | E36T | E46T | E34T | E39T | E61 | E91 | E84 (X1)</p>
+          <p class="beb-class-note">Non-M vehicles only.</p>
+          <a href="touring.html" class="beb-class-button">EXPLORE TOURING CLASS →</a>
+        </div>
+      </article>
 
-  <div class="class-card">
-    <b>Zenith Challenge</b>
-    <span>Z3 E36/7 • Z3 E36/8 • Z4 E85 • Z4 E86 • Z4 E89</span>
-    <a class="btn secondary" href="zenith.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('zenith.jpg')">
+        <div class="beb-class-content">
+          <h3>ZENITH <small>CLASS</small></h3>
+          <p>Lightweight, balanced and unique. Z-Series platforms that bring a different kind of excitement to the grid.</p>
+          <strong>ACCEPTED CHASSIS</strong>
+          <p>Z3 Coupe / Roadster | Z4 Coupe / Convertible</p>
+          <p class="beb-class-note">Non-M vehicles only.</p>
+          <a href="zenith.html" class="beb-class-button">EXPLORE ZENITH CLASS →</a>
+        </div>
+      </article>
 
-  <div class="class-card">
-    <b>Stock</b>
-    <span>Eligible BMWs in factory configuration, subject to required safety equipment and Stock Class regulations.</span>
-    <a class="btn secondary" href="stock.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('stock.jpg')">
+        <div class="beb-class-content">
+          <h3>STOCK <small>CLASS</small></h3>
+          <p>A strictly OEM-focused category designed for grassroots endurance racing. Factory configuration with mandatory racing safety equipment.</p>
+          <strong>ACCEPTED CHASSIS</strong>
+          <p>Eligible 1, 3, 5, 6 and 7 Series BMW models, subject to Stock Class regulations.</p>
+          <p class="beb-class-note">Non-M vehicles only. No SUVs permitted.</p>
+          <a href="stock.html" class="beb-class-button">EXPLORE STOCK CLASS →</a>
+        </div>
+      </article>
 
-  <div class="class-card">
-    <b>WerkSport</b>
-    <span>BMW chassis with BMW or non-BMW engine swaps, naturally aspirated or forced induction.</span>
-    <a class="btn secondary" href="werksport.html" style="margin-top:16px">Explore the Class</a>
-  </div>
+      <article class="beb-class-banner" style="--car-image:url('werksport.jpg')">
+        <div class="beb-class-content">
+          <h3>WERK SPORT <small>CLASS</small></h3>
+          <p>The ultimate expression of BMW engineering and creativity. Built for teams who push the limits.</p>
+          <strong>FOUR DIVISIONS</strong>
+          <p>BMW chassis / BMW engine swap — Naturally Aspirated</p>
+          <p>BMW chassis / BMW engine swap — Boosted</p>
+          <p>BMW chassis / Other engine — Naturally Aspirated</p>
+          <p>BMW chassis / Other engine — Boosted</p>
+          <a href="werksport.html" class="beb-class-button">EXPLORE WERK SPORT CLASS →</a>
+        </div>
+      </article>
 
-</div>
-
-      <div class="btn-row">
-        <a class="btn secondary" href="#join">My BMW Belongs Here</a>
-      </div>
     </div>
-  </section>
+
+    <div class="btn-row">
+      <a class="btn secondary" href="#join">My BMW Belongs Here</a>
+    </div>
+  </div>
+</section>
+
     <!-- RULES & REGULATIONS -->
 <section class="section" id="rules">
   <div class="wrap">
