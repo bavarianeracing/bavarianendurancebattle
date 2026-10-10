@@ -1,0 +1,26 @@
+/*
+  BEB INSPIRATION VIDEO CATALOG
+  To add a video, copy one object inside the array below.
+  You can send ChatGPT a YouTube link and ask for the updated file.
+  Categories: dtm, btcc, gt3, lemans, endurance, m1, csl, group5, history, compilations, engineering, privateers.
+  A video can have multiple categories.
+  featured: true puts it in the featured collection.
+*/
+window.BEB_INSPIRATION_VIDEOS = [
+  {
+    url: "https://www.youtube.com/watch?v=Uv-rhnyDVP8",
+    title: "BMW E30 M3 — Group A DTM Racing",
+    categories: ["dtm", "history"],
+    description: "An original Group A-era E30 M3 in action. A window into one of BMW's most celebrated touring-car chapters.",
+    source: "Historic racing footage",
+    featured: true
+  },
+  {
+    url: "https://www.youtube.com/watch?v=8ZLbFpg76l4",
+    title: "BMW E30 M3 DTM — Onboard at Salzburgring",
+    categories: ["dtm", "compilations"],
+    description: "High-revving touring-car machinery and an unmistakable BMW motorsport soundtrack.",
+    source: "Onboard footage",
+    featured: false
+  }
+];
