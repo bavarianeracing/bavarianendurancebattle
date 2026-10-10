@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=0hjA6jtWlXY",
+  title: "Inside the Legendary 2001 BMW M3 (E46) GTR",
+  categories: ["engineering", "history"],
+  description: "An informative look inside the 2001 BMW M3 (E46) GTR.",
+  source: "BMW race car overview",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=8VbsV59fQsE",
   title: "BMW M3 GTR ELMS 2001 Donington Park Race",
   categories: ["endurance", "history"],
