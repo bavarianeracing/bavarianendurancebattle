@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=8VbsV59fQsE",
+  title: "BMW M3 GTR ELMS 2001 Donington Park Race",
+  categories: ["endurance", "history"],
+  description: "BMW M3 GTR racing at Donington Park during the 2001 European Le Mans Series.",
+  source: "Historic race footage",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=cJ-b3g9c4pM",
   title: "How BMW won Le Mans, and why they never went back",
   categories: ["lemans", "endurance", "history"],
