@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=J6yvfA5R1Ow",
+  title: "BMW M3 GTR ALMS 2001 Laguna Seca Race",
+  categories: ["endurance", "history"],
+  description: "BMW M3 GTR racing at Laguna Seca during the 2001 American Le Mans Series.",
+  source: "Historic race footage",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=0hjA6jtWlXY",
   title: "Inside the Legendary 2001 BMW M3 (E46) GTR",
   categories: ["engineering", "history"],
