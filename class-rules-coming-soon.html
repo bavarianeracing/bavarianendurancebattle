@@ -1,0 +1,239 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Class Regulations Coming Soon | Bavarian Endurance Battle</title>
+  <meta name="description" content="Bavarian Endurance Battle class regulations are currently in development.">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(35,102,190,.17), transparent 40%),
+        radial-gradient(circle at 15% 80%, rgba(227,59,50,.12), transparent 35%),
+        #070a10;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      padding: 22px 6%;
+      border-bottom: 1px solid #27303c;
+      background: rgba(0,0,0,.35);
+    }
+
+    header img {
+      width: 185px;
+      max-width: 100%;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 90px 24px 110px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      color: #6bc0ff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+
+    .stripes {
+      display: flex;
+      width: 160px;
+      height: 6px;
+      margin: 32px auto;
+    }
+
+    .stripes span { flex: 1; }
+    .stripes span:nth-child(1) { background: #62c5ee; }
+    .stripes span:nth-child(2) { background: #164caa; }
+    .stripes span:nth-child(3) { background: #e63340; }
+
+    h1 {
+      margin: 24px 0 8px;
+      font-size: clamp(40px, 8vw, 84px);
+      font-style: italic;
+      font-weight: 900;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -2px;
+    }
+
+    .class-name {
+      color: #6bc0ff;
+      font-size: clamp(19px, 4vw, 32px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin: 22px 0;
+    }
+
+    .coming {
+      color: #fff;
+      font-size: clamp(25px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin: 25px 0;
+    }
+
+    p {
+      color: #bac4d1;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .notice {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 26px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid #293441;
+      border-radius: 12px;
+    }
+
+    .notice strong { color: #fff; }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 35px;
+    }
+
+    .button {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 15px 22px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 900;
+      text-transform: uppercase;
+      transition: transform .2s, filter .2s;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.15);
+    }
+
+    .primary { background: #cf302b; color: #fff; }
+    .secondary { border: 1px solid #667181; color: #fff; }
+
+    footer {
+      padding: 30px;
+      border-top: 1px solid #27303c;
+      color: #8d98a7;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    @media(max-width: 600px) {
+      main { padding-top: 65px; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <a href="index.html">
+    <img src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+  </a>
+</header>
+
+<main>
+  <div class="eyebrow">Bavarian Endurance Battle</div>
+
+  <div class="stripes" aria-hidden="true">
+    <span></span><span></span><span></span>
+  </div>
+
+  <h1>Class Regulations</h1>
+
+  <div class="class-name" id="className">
+    Class Regulations
+  </div>
+
+  <div class="coming">COMING SOON</div>
+
+  <p>
+    The technical regulations for this category are currently
+    being developed and reviewed.
+  </p>
+
+  <p>
+    Our goal is to establish clear standards for safety,
+    preparation and fair competition while preserving
+    the unique character of each BMW racing class.
+  </p>
+
+  <div class="notice">
+    <p>
+      <strong>Preparing your race car?</strong>
+    </p>
+    <p>
+      Our General Vehicle Requirements and Roll Cage Requirements
+      are already available. These requirements apply
+      independently of the class-specific regulations.
+    </p>
+  </div>
+
+  <div class="buttons">
+    <a class="button primary"
+       href="BEB_General_Vehicle_Requirements_Review_Draft.pdf"
+       target="_blank" rel="noopener noreferrer">
+      General Vehicle Rules
+    </a>
+
+    <a class="button primary"
+       href="BEB roll cage rules.pdf"
+       target="_blank" rel="noopener noreferrer">
+      Roll Cage Rules
+    </a>
+
+    <a class="button secondary" href="index.html#classes">
+      Back to Classes
+    </a>
+  </div>
+</main>
+
+<footer>
+  &copy; Bavarian Endurance Battle.
+  Not affiliated with BMW AG.
+</footer>
+
+<script>
+  const names = {
+    vintage: "Vintage",
+    dreier: "Dreier",
+    geschaftsklasse: "Geschäftsklasse",
+    touring: "Touring",
+    zenith: "Zenith",
+    werksport: "Werk Sport"
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const key = params.get("class");
+  const name = names[key] || "Class Regulations";
+
+  document.getElementById("className").textContent = name;
+  document.title = name + " Regulations | Coming Soon | BEB";
+</script>
+
+</body>
+</html>
+  
