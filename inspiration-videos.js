@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=1PBU_l0pP18",
+  title: "8 best BMW racing cars ever",
+  categories: ["history", "compilations"],
+  description: "A selection of eight BMW racing cars celebrating the brand's motorsport heritage.",
+  source: "BMW racing car compilation",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=J6yvfA5R1Ow",
   title: "BMW M3 GTR ALMS 2001 Laguna Seca Race",
   categories: ["endurance", "history"],
