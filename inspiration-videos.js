@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=UnfVpxnNDtA",
+  title: "BMW at the 1988 BTCC part 1",
+  categories: ["btcc", "history"],
+  description: "Part one of a look back at BMW in the 1988 British Touring Car Championship.",
+  source: "Historic touring car racing video",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=kSotWJrmRkg",
   title: "STEVE SOPER vs JOHN CLELAND. SUPER TOURING Explosion. 1992 BTCC",
   categories: ["btcc", "history"],
