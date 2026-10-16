@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=BIw8FtRag1c",
+  title: "BMW at the 1988 BTCC part 2",
+  categories: ["btcc", "history"],
+  description: "Part two of a look back at BMW in the 1988 British Touring Car Championship.",
+  source: "Historic touring car racing video",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=UnfVpxnNDtA",
   title: "BMW at the 1988 BTCC part 1",
   categories: ["btcc", "history"],
