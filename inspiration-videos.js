@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=DRwEmfvkn9Y",
+  title: "How hard can it be? - When Top Gear did endurance racing",
+  categories: ["endurance"],
+  description: "A look back at Top Gear's endurance racing adventure and the challenge of making it to the finish.",
+  source: "Endurance racing retrospective",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=Q180dRN5QhA",
   title: "GO LIKE SCHNELL: The Story of BMW Motorsport in the USA. Green Flag 1975.",
   categories: ["csl", "endurance", "history"],
