@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=U-4Km-8X8g4",
+  title: "BMW 320si WTCC Development",
+  categories: ["engineering", "history"],
+  description: "A look at the development of the BMW 320si for the World Touring Car Championship.",
+  source: "Race car development video",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=BIw8FtRag1c",
   title: "BMW at the 1988 BTCC part 2",
   categories: ["btcc", "history"],
