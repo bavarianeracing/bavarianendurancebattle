@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=Q180dRN5QhA",
+  title: "GO LIKE SCHNELL: The Story of BMW Motorsport in the USA. Green Flag 1975.",
+  categories: ["csl", "endurance", "history"],
+  description: "The story of BMW Motorsport in America, exploring the CSL's 1975 season and victory at the 12 Hours of Sebring.",
+  source: "Motorsport history documentary",
+  featured: true
+},
+  {
   url: "https://www.youtube.com/watch?v=1PBU_l0pP18",
   title: "8 best BMW racing cars ever",
   categories: ["history", "compilations"],
