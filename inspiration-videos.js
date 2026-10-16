@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=kSotWJrmRkg",
+  title: "STEVE SOPER vs JOHN CLELAND. SUPER TOURING Explosion. 1992 BTCC",
+  categories: ["btcc", "history"],
+  description: "A look back at Steve Soper and John Cleland's confrontation in the 1992 British Touring Car Championship.",
+  source: "Touring car racing retrospective",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=DRwEmfvkn9Y",
   title: "How hard can it be? - When Top Gear did endurance racing",
   categories: ["endurance"],
