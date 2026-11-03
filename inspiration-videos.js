@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=3zfkd4ERf28",
+  title: "McLaren F1: The Road Car That Conquered Le Mans",
+  categories: ["lemans", "endurance", "history"],
+  description: "Explore the McLaren F1's journey from road car to Le Mans winner.",
+  source: "Motorsport history video",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=Iqa0qtJglGc",
   title: "BMW’s McLaren F1 GTR: The Le Mans Legend",
   categories: ["lemans", "endurance", "history"],
