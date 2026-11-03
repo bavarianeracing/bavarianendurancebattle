@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=OUQKwlgi6Y4",
+  title: "BMW M3 DTM - the German racing car which tried to revolutionise the motorsport world",
+  categories: ["dtm", "engineering", "history"],
+  description: "Explore the BMW M3 DTM and its ambition to reshape motorsport.",
+  source: "Motorsport retrospective",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=RbiAOLhWzm8",
   title: "The Engineering Behind BMW’s DTM Beast",
   categories: ["dtm", "engineering"],
