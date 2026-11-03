@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=ck1zkni8CFM",
+  title: "BMW M1: The Entire Untold History of the BMW M1 Procar Series",
+  categories: ["m1", "history"],
+  description: "Explore the history of the BMW M1 Procar Series and its place in BMW motorsport.",
+  source: "Motorsport history video",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=sxOEpCp2XUM&t=22s",
   title: "BMW 3-SERIES TOURINGCARS | E21, E30, E36, E46, E90, G20 | 80.000 subs special",
   categories: ["compilations", "history"],
