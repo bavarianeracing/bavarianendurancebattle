@@ -8,6 +8,38 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=sxOEpCp2XUM&t=22s",
+  title: "BMW 3-SERIES TOURINGCARS | E21, E30, E36, E46, E90, G20 | 80.000 subs special",
+  categories: ["compilations", "history"],
+  description: "A compilation spanning generations of BMW 3 Series touring cars, from the E21 through the G20.",
+  source: "Touring car compilation",
+  featured: false
+},
+  {
+  url: "https://www.youtube.com/watch?v=KLTxwpsj3Y4",
+  title: "Driving the 2013 BMW M3 DTM - /CHRIS HARRIS ON CARS",
+  categories: ["dtm"],
+  description: "Chris Harris gets behind the wheel of the 2013 BMW M3 DTM race car.",
+  source: "Race car driving review",
+  featured: false
+},
+  {
+  url: "https://www.youtube.com/watch?v=KLTxwpsj3Y4",
+  title: "Driving the 2013 BMW M3 DTM - /CHRIS HARRIS ON CARS",
+  categories: ["dtm"],
+  description: "Chris Harris gets behind the wheel of the 2013 BMW M3 DTM race car.",
+  source: "Race car driving review",
+  featured: false
+},
+  {
+  url: "https://www.youtube.com/watch?v=DbPTKYrocos",
+  title: "BMW DTM Racing Documentary",
+  categories: ["dtm", "history"],
+  description: "A documentary exploring BMW's involvement in DTM racing.",
+  source: "Motorsport documentary",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=OUQKwlgi6Y4",
   title: "BMW M3 DTM - the German racing car which tried to revolutionise the motorsport world",
   categories: ["dtm", "engineering", "history"],
