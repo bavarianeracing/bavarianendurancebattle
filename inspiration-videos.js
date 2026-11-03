@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=Iqa0qtJglGc",
+  title: "BMW’s McLaren F1 GTR: The Le Mans Legend",
+  categories: ["lemans", "endurance", "history"],
+  description: "A look at the McLaren F1 GTR and its BMW-powered Le Mans legacy.",
+  source: "Motorsport history video",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=XABDXUV3P6s",
   title: "BMW E36 Explained in 36 Minutes",
   categories: ["engineering"],
