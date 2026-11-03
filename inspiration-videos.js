@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=RbiAOLhWzm8",
+  title: "The Engineering Behind BMW’s DTM Beast",
+  categories: ["dtm", "engineering"],
+  description: "A closer look at the engineering behind BMW's DTM racing machinery.",
+  source: "Race car engineering overview",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=Db7K4pWvKNw",
   title: "Racecar Review: E36 BMW 325is Spec3 Tour & Race Footage",
   categories: ["engineering"],
