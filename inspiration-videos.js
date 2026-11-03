@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=XABDXUV3P6s",
+  title: "BMW E36 Explained in 36 Minutes",
+  categories: ["engineering"],
+  description: "A 36-minute overview exploring the BMW E36.",
+  source: "BMW model explainer",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=U-4Km-8X8g4",
   title: "BMW 320si WTCC Development",
   categories: ["engineering", "history"],
