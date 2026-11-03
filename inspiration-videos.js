@@ -23,14 +23,7 @@ window.BEB_INSPIRATION_VIDEOS = [
   source: "Touring car compilation",
   featured: false
 },
-  {
-  url: "https://www.youtube.com/watch?v=KLTxwpsj3Y4",
-  title: "Driving the 2013 BMW M3 DTM - /CHRIS HARRIS ON CARS",
-  categories: ["dtm"],
-  description: "Chris Harris gets behind the wheel of the 2013 BMW M3 DTM race car.",
-  source: "Race car driving review",
-  featured: false
-},
+  
   {
   url: "https://www.youtube.com/watch?v=KLTxwpsj3Y4",
   title: "Driving the 2013 BMW M3 DTM - /CHRIS HARRIS ON CARS",
