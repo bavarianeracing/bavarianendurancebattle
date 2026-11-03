@@ -8,6 +8,14 @@
 */
 window.BEB_INSPIRATION_VIDEOS = [
   {
+  url: "https://www.youtube.com/watch?v=Db7K4pWvKNw",
+  title: "Racecar Review: E36 BMW 325is Spec3 Tour & Race Footage",
+  categories: ["engineering"],
+  description: "A tour of an E36 BMW 325is Spec3 race car, accompanied by race footage.",
+  source: "Race car review and racing footage",
+  featured: false
+},
+  {
   url: "https://www.youtube.com/watch?v=3zfkd4ERf28",
   title: "McLaren F1: The Road Car That Conquered Le Mans",
   categories: ["lemans", "endurance", "history"],
