@@ -1,0 +1,233 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BMW Car & Motorcycle Show | Bavarian Endurance Battle</title>
+<meta name="description" content="Celebrate BMW heritage at the Bavarian Endurance Battle Car & Motorcycle Show at Buttonwillow Raceway Park.">
+<link rel="icon" href="beb-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#070a10;
+  --panel:#111824;
+  --text:#f5f7fb;
+  --muted:#a9b3c3;
+  --blue:#6bc0ff;
+  --line:rgba(255,255,255,.12);
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,Arial,sans-serif;line-height:1.65;
+}
+.wrap {width:min(1180px,calc(100% - 40px));margin:auto}
+a {color:inherit}
+header {
+  position:absolute;z-index:10;width:100%;padding:18px 0;
+  background:rgba(0,0,0,.55);
+}
+nav {display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo {width:170px;max-width:50vw}
+.button {
+  display:inline-block;padding:13px 22px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:6px;text-decoration:none;
+  font-size:13px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.05em;
+  transition:.2s;
+}
+.button:hover {background:#fff;color:#070a10}
+.primary {background:#2f8cff;border-color:#2f8cff;color:white}
+.hero {
+  min-height:80vh;display:flex;align-items:end;
+  background:
+    linear-gradient(0deg,#070a10 0%,rgba(0,0,0,.1) 75%),
+    url("BMW Paddock Classic Car Showcase.png") center/cover no-repeat;
+}
+.hero-content {padding:180px 0 90px}
+.eyebrow {
+  color:var(--blue);font-size:13px;font-weight:900;
+  letter-spacing:.2em;text-transform:uppercase;
+}
+h1 {
+  font-size:clamp(44px,7vw,94px);line-height:1;
+  letter-spacing:-.06em;margin:18px 0;text-transform:uppercase;
+}
+.hero p {max-width:680px;font-size:clamp(17px,2vw,22px);color:#e4e8ed}
+section.content {padding:80px 0}
+h2 {
+  font-size:clamp(28px,4vw,44px);line-height:1.12;
+  text-transform:uppercase;letter-spacing:-.035em;
+}
+.intro {max-width:850px;color:var(--muted);font-size:18px}
+.cards {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;margin-top:35px;
+}
+.card {
+  background:var(--panel);padding:28px;
+  border:1px solid var(--line);border-radius:10px;
+}
+.card h3 {font-size:19px;line-height:1.3;margin:0 0 12px}
+.card p {color:var(--muted);font-size:15px;margin:0}
+.subhead {margin-top:55px}
+.pricing {background:#0d1522;border-block:1px solid var(--line)}
+.price-grid {
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:20px;margin-top:35px;
+}
+.price {
+  padding:30px;background:var(--panel);
+  border:1px solid var(--line);border-radius:10px;
+}
+.price strong {display:block;font-size:42px;letter-spacing:-.05em}
+.price span {color:var(--muted);font-size:14px}
+.note {font-size:14px;color:var(--muted);margin-top:25px}
+footer {
+  padding:35px 0;text-align:center;
+  color:var(--muted);font-size:13px;
+}
+@media(max-width:750px) {
+  .hero {min-height:70vh}
+  .hero-content {padding-bottom:60px}
+  .cards,.price-grid {grid-template-columns:1fr}
+  .card,.price {padding:24px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html">
+        <img class="logo" src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+      <a class="button" href="index.html">Back to Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-content">
+    <div class="eyebrow">Bavarian Endurance Battle</div>
+    <h1>BMW HERITAGE.<br>ON DISPLAY.</h1>
+    <p>
+      From timeless classics to modern performance machines,
+      celebrate the craftsmanship, individuality, and history
+      of BMW automobiles and motorcycles.
+    </p>
+    <a class="button primary" href="#show">Explore the Show</a>
+  </div>
+</section>
+
+<section class="content" id="show">
+  <div class="wrap">
+    <div class="eyebrow">The BMW Car & Motorcycle Show</div>
+    <h2>Every Generation.<br>Every Passion.</h2>
+    <p class="intro">
+      Whether preserved in original condition, carefully restored,
+      or transformed into something extraordinary, every BMW has a story.
+      Join fellow enthusiasts at Buttonwillow Raceway Park for a
+      celebration of the machines and people behind the marque.
+    </p>
+    <p class="intro">
+      The show welcomes BMW automobiles and BMW motorcycles only.
+      Both original and modified examples are encouraged.
+      MINI vehicles are not eligible.
+    </p>
+
+    <h2 class="subhead">Automobile Awards</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Classic BMW — Original & Restored</h3>
+        <p>Preservation, restoration, historical character, and factory presentation.</p>
+      </div>
+      <div class="card">
+        <h3>Classic BMW — Modified</h3>
+        <p>Older BMWs thoughtfully reimagined through design, engineering, and craftsmanship.</p>
+      </div>
+      <div class="card">
+        <h3>Modern BMW — Original & Stock</h3>
+        <p>Factory configuration, condition, preparation, and attention to detail.</p>
+      </div>
+      <div class="card">
+        <h3>Modern BMW — Modified M</h3>
+        <p>Modified genuine BMW M models, recognizing quality of execution and presentation.</p>
+      </div>
+      <div class="card">
+        <h3>Modern BMW — Modified Non-M</h3>
+        <p>Modified non-M BMW models, celebrating creativity, craftsmanship, and execution.</p>
+      </div>
+    </div>
+
+    <h2 class="subhead">Motorcycle Awards</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>BMW Motorcycle Heritage — Original & Restored</h3>
+        <p>Historical character, preservation, restoration, and presentation.</p>
+      </div>
+      <div class="card">
+        <h3>BMW Motorcycle Modern — Original & Stock</h3>
+        <p>Factory character, condition, preparation, and attention to detail.</p>
+      </div>
+      <div class="card">
+        <h3>BMW Motorcycle Custom & Modified</h3>
+        <p>Design, fabrication, engineering, and quality of execution.</p>
+      </div>
+    </div>
+    <p class="note">
+      The model-year distinction between Classic/Heritage and Modern
+      categories will be announced before registration opens.
+    </p>
+  </div>
+</section>
+
+<section class="content pricing" id="admission">
+  <div class="wrap">
+    <div class="eyebrow">Join the Celebration</div>
+    <h2>Show & Spectator Admission</h2>
+    <p class="intro">
+      Bring your BMW, show your motorcycle, or simply enjoy the
+      event as a spectator. Each show entry includes admission
+      for one driver or rider.
+    </p>
+    <div class="price-grid">
+      <div class="price">
+        <h3>BMW Show Car + Driver</h3>
+        <strong>$60</strong>
+        <span>One BMW automobile and one driver included.</span>
+      </div>
+      <div class="price">
+        <h3>BMW Show Motorcycle + Rider</h3>
+        <strong>$50</strong>
+        <span>One BMW motorcycle and one rider included.</span>
+      </div>
+      <div class="price">
+        <h3>Spectator</h3>
+        <strong>$50</strong>
+        <span>General admission per person.</span>
+      </div>
+    </div>
+    <p class="note">
+      Prices include the applicable $10 Buttonwillow Raceway Park
+      entry charge. Additional passengers and guests require
+      their own admission. Registration details will be announced.
+    </p>
+  </div>
+</section>
+
+</main>
+<footer>
+  <div class="wrap">
+    © Bavarian Endurance Battle.
+    Built on BMW heritage. Driven by endurance.
+  </div>
+</footer>
+</body>
+</html>
