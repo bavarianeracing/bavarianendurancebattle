@@ -1,0 +1,341 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Bavarian Festival & Parade | Bavarian Endurance Battle</title>
+<meta name="description" content="Experience the Bavarian Festival, VIP hospitality, and spectacular closing parade at Bavarian Endurance Battle.">
+
+<link rel="icon" href="beb-logo.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#070a10;
+  --panel:#111824;
+  --text:#f5f7fb;
+  --muted:#a9b3c3;
+  --blue:#6bc0ff;
+  --line:rgba(255,255,255,.12);
+}
+* {box-sizing:border-box}
+html {scroll-behavior:smooth}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+  line-height:1.65;
+}
+.wrap {width:min(1180px,calc(100% - 40px));margin:auto}
+a {color:inherit}
+header {
+  position:absolute;
+  z-index:10;
+  width:100%;
+  padding:18px 0;
+  background:rgba(0,0,0,.55);
+}
+nav {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.logo {width:170px;max-width:50vw}
+.button {
+  display:inline-block;
+  padding:13px 22px;
+  border:1px solid rgba(255,255,255,.45);
+  border-radius:6px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  transition:.2s;
+}
+.button:hover {background:#fff;color:#070a10}
+.primary {background:#2f8cff;border-color:#2f8cff;color:white}
+.hero {
+  min-height:80vh;
+  display:flex;
+  align-items:end;
+  background:
+    linear-gradient(0deg,#070a10 0%,rgba(0,0,0,.12) 75%),
+    url("Golden-Hour Bavarian Motorsport Festival.png")
+    center/cover no-repeat;
+}
+.hero-content {padding:180px 0 90px}
+.eyebrow {
+  color:var(--blue);
+  font-size:13px;
+  font-weight:900;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+}
+h1 {
+  font-size:clamp(44px,7vw,94px);
+  line-height:1;
+  letter-spacing:-.06em;
+  margin:18px 0;
+  text-transform:uppercase;
+}
+.hero p {
+  max-width:680px;
+  font-size:clamp(17px,2vw,22px);
+  color:#e4e8ed;
+}
+section.content {padding:80px 0}
+h2 {
+  font-size:clamp(28px,4vw,44px);
+  line-height:1.12;
+  text-transform:uppercase;
+  letter-spacing:-.035em;
+}
+.intro {max-width:850px;color:var(--muted);font-size:18px}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+  margin-top:35px;
+}
+.card {
+  background:var(--panel);
+  padding:30px;
+  border:1px solid var(--line);
+  border-radius:10px;
+}
+.card h3 {font-size:21px;line-height:1.3;margin:0 0 12px}
+.card p {color:var(--muted);font-size:15px;margin:0}
+.parade {
+  background:#0d1522;
+  border-block:1px solid var(--line);
+}
+.parade-grid {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:50px;
+  align-items:center;
+}
+.parade-number {
+  font-size:clamp(80px,14vw,180px);
+  line-height:1;
+  font-weight:900;
+  color:rgba(107,192,255,.16);
+  letter-spacing:-.08em;
+}
+.highlight {
+  color:var(--blue);
+  font-weight:800;
+}
+.notice {
+  margin-top:35px;
+  padding:24px;
+  border:1px solid var(--line);
+  border-radius:8px;
+  background:var(--panel);
+  color:var(--muted);
+  font-size:14px;
+}
+footer {
+  padding:35px 0;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px;
+}
+@media(max-width:750px) {
+  .hero {min-height:70vh}
+  .hero-content {padding-bottom:60px}
+  .cards,.parade-grid {grid-template-columns:1fr}
+  .card {padding:24px}
+  .parade-number {font-size:90px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html">
+        <img class="logo" src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+      <a class="button" href="index.html">Back to Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="wrap hero-content">
+    <div class="eyebrow">Bavarian Endurance Battle</div>
+    <h1>MORE THAN<br>A RACE.</h1>
+    <p>
+      A celebration of Bavarian heritage, motorsport,
+      community, and the people who make it all possible.
+    </p>
+    <a class="button primary" href="#festival">Explore the Festival</a>
+  </div>
+</section>
+
+<section class="content" id="festival">
+  <div class="wrap">
+    <div class="eyebrow">The Bavarian Experience</div>
+    <h2>Where Motorsport<br>Meets Celebration.</h2>
+    <p class="intro">
+      Bavarian Endurance Battle is more than twelve hours
+      of racing. It is a gathering of enthusiasts, families,
+      teams, and friends brought together by a shared
+      appreciation for BMW history and Bavarian culture.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Food & Refreshments</h3>
+        <p>
+          Enjoy the festival atmosphere with food,
+          refreshments, and places to gather throughout
+          the event. Food and beverage offerings will
+          be announced as arrangements are finalized.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Vendors & Partners</h3>
+        <p>
+          Explore participating automotive brands,
+          specialty businesses, and event partners
+          showcasing products, services, and
+          their passion for motorsport.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>BMW Community</h3>
+        <p>
+          Meet fellow BMW enthusiasts, connect with
+          racing teams, discover remarkable cars,
+          and experience a weekend built around
+          the community.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="content parade" id="parade">
+  <div class="wrap parade-grid">
+    <div>
+      <div class="eyebrow">The Signature BEB Tradition</div>
+      <h2>The Closing<br>Victory Parade.</h2>
+      <p class="intro">
+        When the racing ends, the celebration begins.
+      </p>
+      <p>
+        Imagine BMW race cars, drivers, and team members
+        coming together for a procession through the
+        event grounds, surrounded by Bavarian flags,
+        music, cheering spectators, and the people
+        who shared the journey.
+      </p>
+      <p>
+        The parade will lead into our
+        <span class="highlight">awards ceremony</span>,
+        celebrating the teams, drivers, and crew
+        whose endurance, preparation, and determination
+        defined the race.
+      </p>
+    </div>
+    <div class="parade-number">12H</div>
+  </div>
+</section>
+
+<section class="content" id="vip">
+  <div class="wrap">
+    <div class="eyebrow">An Elevated Motorsport Experience</div>
+    <h2>The BEB VIP Lounge.</h2>
+    <p class="intro">
+      Experience Bavarian Endurance Battle from a
+      different perspective with our planned VIP
+      hospitality experience.
+    </p>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>Exclusive Hospitality</h3>
+        <p>
+          A dedicated setting for guests and partners
+          to relax, connect, and enjoy the event
+          atmosphere.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Race-Day Atmosphere</h3>
+        <p>
+          A comfortable place to follow the competition,
+          enjoy the event, and share the excitement
+          of endurance racing.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Stories From the Paddock</h3>
+        <p>
+          Planned interviews and conversations with
+          drivers, teams, and special guests,
+          bringing the people behind the race
+          closer to the audience.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      VIP access, hospitality features, ticket pricing,
+      and availability will be announced as event
+      arrangements are confirmed.
+    </div>
+  </div>
+</section>
+
+<section class="content parade" id="partners">
+  <div class="wrap">
+    <div class="eyebrow">Be Part of the Experience</div>
+    <h2>Vendors & Festival Partners.</h2>
+    <p class="intro">
+      The Bavarian Festival offers businesses an
+      opportunity to connect with BMW enthusiasts,
+      racing teams, spectators, and the wider
+      motorsport community.
+    </p>
+    <p>
+      Interested in participating as a vendor,
+      festival partner, or parade sponsor?
+    </p>
+    <a class="button primary" href="business-partnerships.html">
+      Explore Partnership Opportunities
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © Bavarian Endurance Battle.
+    Built on BMW heritage. Driven by endurance.
+  </div>
+</footer>
+
+</body>
+</html>
