@@ -1,0 +1,295 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>The Race | Bavarian Endurance Battle</title>
+  <meta name="description" content="Explore the Bavarian Endurance Battle, the BMW-only 12-hour endurance race at Buttonwillow Raceway Park.">
+
+  <link rel="icon" href="beb-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#070a10;
+      --panel:#111824;
+      --text:#f5f7fb;
+      --muted:#a9b3c3;
+      --blue:#6bc0ff;
+    }
+
+    * { box-sizing:border-box; }
+
+    body {
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Inter,Arial,sans-serif;
+      line-height:1.6;
+    }
+
+    .wrap {
+      width:min(1180px,calc(100% - 40px));
+      margin:auto;
+    }
+
+    header {
+      position:absolute;
+      z-index:10;
+      width:100%;
+      padding:18px 0;
+      background:rgba(0,0,0,.55);
+    }
+
+    nav {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+    }
+
+    .logo {
+      width:170px;
+      max-width:50vw;
+    }
+
+    a { color:inherit; }
+
+    .button {
+      display:inline-block;
+      padding:13px 22px;
+      border:1px solid rgba(255,255,255,.45);
+      border-radius:6px;
+      text-decoration:none;
+      font-size:13px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.05em;
+      transition:.2s;
+    }
+
+    .button:hover {
+      background:#fff;
+      color:#070a10;
+    }
+
+    .primary {
+      background:#2f8cff;
+      border-color:#2f8cff;
+      color:white;
+    }
+
+    .hero {
+      min-height:80vh;
+      display:flex;
+      align-items:end;
+      background:
+        linear-gradient(0deg,#070a10 0%,rgba(0,0,0,.15) 75%),
+        url("BMW Race Cars Rounding the Corner.png")
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      padding:180px 0 90px;
+    }
+
+    .eyebrow {
+      color:var(--blue);
+      font-size:13px;
+      font-weight:900;
+      letter-spacing:.2em;
+      text-transform:uppercase;
+    }
+
+    h1 {
+      font-size:clamp(48px,8vw,100px);
+      line-height:.95;
+      letter-spacing:-.06em;
+      margin:18px 0;
+      text-transform:uppercase;
+    }
+
+    .hero p {
+      max-width:650px;
+      font-size:clamp(17px,2vw,22px);
+      color:#e4e8ed;
+    }
+
+    section.content {
+      padding:75px 0;
+    }
+
+    h2 {
+      font-size:clamp(28px,4vw,44px);
+      line-height:1.1;
+      text-transform:uppercase;
+      letter-spacing:-.035em;
+    }
+
+    .intro {
+      max-width:850px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .cards {
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+      margin-top:40px;
+    }
+
+    .card {
+      background:var(--panel);
+      padding:30px;
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:10px;
+    }
+
+    .card h3 {
+      margin-top:0;
+      font-size:21px;
+    }
+
+    .card p {
+      color:var(--muted);
+      font-size:15px;
+    }
+
+    .card a {
+      display:inline-block;
+      margin-top:15px;
+      font-weight:800;
+      color:var(--blue);
+      text-decoration:none;
+    }
+
+    .legacy {
+      background:#0d1522;
+      padding:80px 0;
+      border-top:1px solid rgba(255,255,255,.1);
+      border-bottom:1px solid rgba(255,255,255,.1);
+    }
+
+    footer {
+      padding:35px 0;
+      text-align:center;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    @media(max-width:750px) {
+      .hero { min-height:70vh; }
+      .hero-content { padding-bottom:60px; }
+      .cards { grid-template-columns:1fr; }
+      .card { padding:24px; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="index.html">
+        <img class="logo" src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+      </a>
+      <a class="button" href="index.html">Back to Home</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="wrap hero-content">
+      <div class="eyebrow">Bavarian Endurance Battle</div>
+      <h1>12 HOURS.<br>ONE BATTLE.</h1>
+      <p>
+        A BMW-only endurance racing experience celebrating
+        generations of engineering, determination, and
+        motorsport heritage at Buttonwillow Raceway Park.
+      </p>
+      <a class="button primary" href="#explore">Explore the Race</a>
+    </div>
+  </section>
+
+  <section class="content" id="explore">
+    <div class="wrap">
+      <div class="eyebrow">The Historic 12 Hours of Buttonwillow</div>
+      <h2>Every Generation.<br>One Starting Grid.</h2>
+      <p class="intro">
+        From vintage BMW classics to modern racing machines,
+        Bavarian Endurance Battle brings together BMW enthusiasts
+        and competitors for twelve hours of endurance racing.
+        Different generations. Different approaches.
+        One shared passion.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+          <h3>Racing Classes</h3>
+          <p>
+            Discover the BMW chassis and racing categories
+            that make up the Bavarian Endurance Battle.
+          </p>
+          <a href="index.html#classes">Explore Classes →</a>
+        </div>
+
+        <div class="card">
+          <h3>Rules & Safety</h3>
+          <p>
+            Review vehicle requirements, technical regulations,
+            and the safety standards governing competition.
+          </p>
+          <a href="index.html#rules">View Regulations →</a>
+        </div>
+
+        <div class="card">
+          <h3>Team Registration</h3>
+          <p>
+            Learn about the Founding Grid and begin your
+            journey toward the inaugural BEB endurance race.
+          </p>
+          <a href="index.html#join">Join the Founding Grid →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="legacy">
+    <div class="wrap">
+      <div class="eyebrow">BEB Legacy Racing Numbers</div>
+      <h2>Your Number.<br>Your Team. Your Legacy.</h2>
+      <p class="intro">
+        Racing numbers are more than identification.
+        They become part of a team's history.
+        BEB racing numbers will be assigned on a
+        first-come, first-served basis and protected
+        across BEB events as long as teams maintain
+        their annual participation.
+      </p>
+      <p>
+        Claim your number. Keep coming back.
+        Build a legacy that lasts.
+      </p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    © Bavarian Endurance Battle.
+    Built on BMW heritage. Driven by endurance.
+  </div>
+</footer>
+
+</body>
+</html>
