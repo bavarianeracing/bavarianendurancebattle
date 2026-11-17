@@ -154,6 +154,71 @@ footer {
   .card {padding:24px}
   .parade-number {font-size:90px}
 }
+  /* BEB VIP — PREMIUM PHOTO GALLERY */
+
+.vip-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 42px 0 48px;
+}
+
+.vip-photo {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #101720;
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 20px 45px rgba(0,0,0,.28);
+}
+
+.vip-photo img {
+  display: block;
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  transition: transform .5s ease;
+}
+
+.vip-photo:hover img {
+  transform: scale(1.035);
+}
+
+.vip-photo figcaption {
+  padding: 23px 26px;
+  background: #101720;
+  border-top: 2px solid #2f8cff;
+}
+
+.vip-photo figcaption strong {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  margin-bottom: 8px;
+}
+
+.vip-photo figcaption span {
+  display: block;
+  color: #aeb9c8;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .vip-gallery {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .vip-photo img {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+  }
+}
 </style>
 </head>
 
@@ -267,6 +332,31 @@ footer {
       different perspective with our planned VIP
       hospitality experience.
     </p>
+    <div class="vip-gallery">
+
+  <figure class="vip-photo">
+    <img
+      src="Sunset motorsport lounge with BMW race broadcast.png"
+      alt="BEB VIP balcony overlooking BMW endurance racing"
+      loading="lazy">
+    <figcaption>
+      <strong>THE VIP VIEWING LOUNGE</strong>
+      <span>Experience the race from a different perspective.</span>
+    </figcaption>
+  </figure>
+
+  <figure class="vip-photo">
+    <img
+      src="VIP patio with balanced spectators (1).png"
+      alt="BEB VIP hospitality patio with lounge seating"
+      loading="lazy">
+    <figcaption>
+      <strong>THE VIP HOSPITALITY PATIO</strong>
+      <span>Where motorsport, community and hospitality meet.</span>
+    </figcaption>
+  </figure>
+
+</div>
 
     <div class="cards">
 
