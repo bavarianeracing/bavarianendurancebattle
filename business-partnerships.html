@@ -460,7 +460,98 @@
       form{padding:20px}
       .hero{min-height:auto;padding:130px 0 70px}
     }
+/* BEB — PARTNERSHIP OPPORTUNITIES DIRECTORY */
 
+#partnership-directory {
+  background: #0a1019;
+}
+
+.partnership-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 42px;
+}
+
+.partnership-tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 235px;
+  padding: 32px;
+  overflow: hidden;
+  color: #fff;
+  text-decoration: none;
+  background: linear-gradient(135deg, #172337, #0c121d);
+  border: 1px solid rgba(255,255,255,.13);
+  border-radius: 12px;
+  box-shadow: 0 14px 35px rgba(0,0,0,.18);
+  transition: transform .25s ease, border-color .25s ease;
+}
+
+.partnership-tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70px;
+  height: 3px;
+  background: #2f8cff;
+}
+
+.partnership-tile:hover {
+  transform: translateY(-5px);
+  border-color: rgba(47,140,255,.65);
+}
+
+.partnership-number {
+  color: #74b7ff;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .15em;
+}
+
+.partnership-tile h3 {
+  margin: 20px 0 10px;
+  color: #fff;
+  font-size: clamp(20px, 2.4vw, 28px);
+  font-weight: 900;
+  line-height: 1.15;
+  letter-spacing: -.025em;
+}
+
+.partnership-tile p {
+  margin: 0 0 24px;
+  color: #b6c2d1;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.partnership-link {
+  margin-top: auto;
+  color: #78bbff;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .09em;
+}
+
+@media (max-width: 700px) {
+  .partnership-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .partnership-tile {
+    min-height: 210px;
+    padding: 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .partnership-tile {
+    transition: none;
+  }
+}
   </style>
 </head>
 
@@ -521,7 +612,96 @@
   </div>
 
 </section>
+<!-- BEB PARTNERSHIP OPPORTUNITIES DIRECTORY -->
+<section class="section" id="partnership-directory">
+  <div class="wrap">
 
+    <div class="eyebrow">Find Your Place at BEB</div>
+
+    <h2>YOUR BUSINESS.<br>YOUR OPPORTUNITY.</h2>
+
+    <p class="lead">
+      From independent shops and BMW dealerships to major manufacturers
+      and local businesses, there is more than one way to become part
+      of Bavarian Endurance Battle. Explore the opportunities below.
+    </p>
+
+    <div class="partnership-grid">
+
+      <a class="partnership-tile" href="#opportunities">
+        <span class="partnership-number">01 / EVENT PRESENCE</span>
+        <h3>VENDOR BOOTHS</h3>
+        <p>Bring your products, services, and brand directly to the BMW community.</p>
+        <span class="partnership-link">EXPLORE OPPORTUNITY →</span>
+      </a>
+
+      <a class="partnership-tile" href="#awards">
+        <span class="partnership-number">02 / RECOGNITION</span>
+        <h3>AWARDS &amp; PODIUM</h3>
+        <p>Put your company behind the trophies and moments that teams remember.</p>
+        <span class="partnership-link">EXPLORE OPPORTUNITY →</span>
+      </a>
+
+      <a class="partnership-tile" href="#contact">
+        <span class="partnership-number">03 / OFFICIAL VEHICLE</span>
+        <h3>SAFETY KART</h3>
+        <p>Help build, equip, and support the official BEB Safety Kart.</p>
+        <span class="partnership-link">INQUIRE ABOUT PARTNERSHIP →</span>
+      </a>
+
+      <a class="partnership-tile" href="#parade">
+        <span class="partnership-number">04 / CELEBRATION</span>
+        <h3>PARADE OF HONOR</h3>
+        <p>Support the music, flags, vehicles, awards, and unforgettable closing celebration.</p>
+        <span class="partnership-link">EXPLORE OPPORTUNITY →</span>
+      </a>
+
+      <a class="partnership-tile" href="#contact">
+        <span class="partnership-number">05 / EVENT SUPPORT</span>
+        <h3>VOLUNTEERS &amp; STAFF</h3>
+        <p>Support the people behind the event through meals, apparel, supplies, and services.</p>
+        <span class="partnership-link">INQUIRE ABOUT PARTNERSHIP →</span>
+      </a>
+
+      <a class="partnership-tile" href="#contact">
+        <span class="partnership-number">06 / HOSPITALITY</span>
+        <h3>VIP LOUNGE</h3>
+        <p>Help create an exceptional race-day experience for guests and partners.</p>
+        <span class="partnership-link">INQUIRE ABOUT PARTNERSHIP →</span>
+      </a>
+
+      <a class="partnership-tile" href="#contact">
+        <span class="partnership-number">07 / COMMUNITY</span>
+        <h3>BMW CAR &amp; MOTORCYCLE SHOW</h3>
+        <p>Support show awards, special displays, and enthusiast experiences.</p>
+        <span class="partnership-link">INQUIRE ABOUT PARTNERSHIP →</span>
+      </a>
+
+      <a class="partnership-tile" href="#contact">
+        <span class="partnership-number">08 / STORYTELLING</span>
+        <h3>MEDIA &amp; CONTENT</h3>
+        <p>Help capture and share the stories, people, and machines behind BEB.</p>
+        <span class="partnership-link">INQUIRE ABOUT PARTNERSHIP →</span>
+      </a>
+
+      <a class="partnership-tile" href="#contact">
+        <span class="partnership-number">09 / MOTORSPORT</span>
+        <h3>TECHNICAL &amp; PRODUCT SUPPORT</h3>
+        <p>Contribute equipment, components, services, and racer support.</p>
+        <span class="partnership-link">INQUIRE ABOUT PARTNERSHIP →</span>
+      </a>
+
+      <a class="partnership-tile" href="#custom">
+        <span class="partnership-number">10 / YOUR VISION</span>
+        <h3>CUSTOM SPONSORSHIPS</h3>
+        <p>Explore presenting partnerships, branded experiences, and ideas unique to your business.</p>
+        <span class="partnership-link">EXPLORE OPPORTUNITY →</span>
+      </a>
+
+    </div>
+
+  </div>
+</section>
 
 <section class="section" id="opportunities">
 
