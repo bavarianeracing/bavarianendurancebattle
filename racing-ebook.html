@@ -1,0 +1,246 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Endurance Racing Strategy E-Book | Bavarian Endurance Battle</title>
+  <meta name="description" content="Discover endurance racing strategy through engineering, economics, psychology, leadership and more. The BEB endurance racing manual.">
+  <link rel="icon" type="image/jpeg" href="beb-logo.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- BEB analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7158L0J2KV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js',new Date());
+    gtag('config','G-7158L0J2KV');
+  </script>
+  <script>
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","ygppucp8bi");
+  </script>
+
+  <style>
+    :root {
+      --bg:#070a10;
+      --panel:#111824;
+      --line:#273241;
+      --text:#f5f7fb;
+      --muted:#a9b3c3;
+      --blue:#2f8cff;
+      --lightblue:#6bc0ff;
+    }
+    * {box-sizing:border-box}
+    html {scroll-behavior:smooth}
+    body {
+      margin:0;background:var(--bg);color:var(--text);
+      font-family:Inter,Arial,sans-serif;line-height:1.65;
+    }
+    a {color:inherit}
+    .wrap {width:min(1140px,calc(100% - 40px));margin:auto}
+    header {border-bottom:1px solid var(--line);background:#0b1018}
+    nav {
+      min-height:88px;display:flex;align-items:center;
+      justify-content:space-between;gap:20px;
+    }
+    .logo {width:150px;max-width:42vw}
+    .nav-links {display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+    .nav-links a {text-decoration:none;font-size:14px;font-weight:700}
+    .nav-links a:hover {color:var(--lightblue)}
+    .eyebrow {
+      color:var(--lightblue);font-size:12px;font-weight:800;
+      letter-spacing:.15em;text-transform:uppercase;
+    }
+    h1,h2,h3 {line-height:1.12;letter-spacing:-.035em}
+    h1 {font-size:clamp(42px,6vw,76px);margin:18px 0 24px}
+    h2 {font-size:clamp(30px,4vw,48px);margin:12px 0 22px}
+    h3 {font-size:20px;margin:0 0 12px}
+    p {color:var(--muted)}
+    .lead {font-size:clamp(17px,2vw,21px);color:#dce3ee}
+    .hero {padding:100px 0 90px;background:radial-gradient(ellipse at 85% 15%,#142e4c 0%,transparent 55%)}
+    .hero-grid {
+      display:grid;grid-template-columns:1.2fr .8fr;
+      gap:65px;align-items:center;
+    }
+    .book-art {
+      min-height:440px;border:1px solid #355174;border-radius:18px;
+      background:linear-gradient(145deg,#162c48,#080c14 65%);
+      display:flex;flex-direction:column;justify-content:flex-end;
+      padding:38px;box-shadow:0 30px 70px #0008;
+    }
+    .book-art span {font-size:12px;letter-spacing:.18em;color:var(--lightblue);font-weight:800}
+    .book-art strong {font-size:clamp(30px,4vw,52px);line-height:1.02;margin:16px 0}
+    .book-art small {color:#c7d5e6}
+    .button {
+      display:inline-flex;justify-content:center;align-items:center;
+      padding:15px 26px;border-radius:999px;text-decoration:none;
+      font-weight:800;font-size:15px;transition:transform .2s;
+    }
+    .button:hover {transform:translateY(-2px)}
+    .primary {background:var(--blue);color:white}
+    .secondary {border:1px solid #65748a;color:white}
+    .buttons {display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .price {font-size:25px;font-weight:800;margin-top:24px}
+    section.content {padding:85px 0;border-top:1px solid var(--line)}
+    .cards {display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:35px}
+    .card {padding:28px;border:1px solid var(--line);border-radius:14px;background:var(--panel)}
+    .card p {margin-bottom:0}
+    .quote {font-size:clamp(23px,3.2vw,39px);font-weight:800;line-height:1.35;max-width:900px}
+    .video-box {
+      border:1px solid var(--line);border-radius:16px;
+      background:#111824;padding:45px;text-align:center;
+    }
+    .video-box p {max-width:600px;margin:14px auto 25px}
+    .video-box iframe {width:100%;aspect-ratio:16/9;border:0;border-radius:10px}
+    .closing {text-align:center;padding:95px 0}
+    footer {padding:35px 0;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+    @media(max-width:760px) {
+      .hero {padding:60px 0}
+      .hero-grid,.cards {grid-template-columns:1fr}
+      .hero-grid {gap:35px}
+      .book-art {min-height:370px}
+      .nav-links {gap:12px}
+      .nav-links a {font-size:12px}
+      .video-box {padding:22px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a href="index.html" aria-label="BEB homepage">
+          <img class="logo" src="beb-logo.jpg" alt="Bavarian Endurance Battle">
+        </a>
+        <div class="nav-links">
+          <a href="index.html">Home</a>
+          <a href="race.html">The Race</a>
+          <a href="inspiration.html">Inspiration</a>
+          <a href="https://www.youtube.com/@beb_battle" target="_blank" rel="noopener noreferrer">YouTube</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Bavarian Endurance Battle Presents</div>
+          <h1>THINK BEYOND THE RACETRACK.</h1>
+          <p class="lead">What if the secret to becoming a better endurance racer isn't found only in a garage or behind the steering wheel?</p>
+          <p>What can an engineer teach you about winning a race? How can an economist help you build a more competitive car? What can a detective, a poker player, or a military strategist reveal about beating your competition?</p>
+          <p>Discover a different approach to endurance racing. One that connects motorsport with ideas from engineering, psychology, business, aviation, leadership, and strategy.</p>
+          <div class="price">Digital E-Book — $14.99</div>
+          <div class="buttons">
+            <a class="button primary" href="https://payhip.com/b/coRCf" target="_blank" rel="noopener noreferrer">Get Your Copy — $14.99</a>
+            <a class="button secondary" href="#inside">Explore the Book</a>
+          </div>
+        </div>
+        <div class="book-art" role="img" aria-label="Temporary graphic for the BEB endurance racing strategy e-book">
+          <span>BAVARIAN ENDURANCE BATTLE</span>
+          <strong>ENDURANCE RACING STRATEGY</strong>
+          <small>Beyond speed. Beyond horsepower. Beyond the obvious.</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="content" id="inside">
+      <div class="wrap">
+        <div class="eyebrow">A Different Way to Compete</div>
+        <h2>Winning begins long before the green flag.</h2>
+        <p class="lead">Endurance racing rewards more than outright speed. It rewards preparation, reliability, discipline, teamwork, and the ability to make better decisions under pressure.</p>
+        <div class="cards">
+          <div class="card">
+            <h3>Engineering & Reliability</h3>
+            <p>Explore how practical engineering decisions and intelligent preparation can matter more than chasing horsepower.</p>
+          </div>
+          <div class="card">
+            <h3>Economics & Budgeting</h3>
+            <p>Understand how resources, priorities, and trade-offs shape a competitive endurance racing program.</p>
+          </div>
+          <div class="card">
+            <h3>Psychology & Leadership</h3>
+            <p>Learn why calm decisions, communication, and team culture matter during long races.</p>
+          </div>
+          <div class="card">
+            <h3>Strategy & Adaptation</h3>
+            <p>Discover how concepts from poker, investigation, and strategic thinking can change the way you approach competition.</p>
+          </div>
+          <div class="card">
+            <h3>Time & Pit Stops</h3>
+            <p>Think about every second, every stop, and every decision as part of a much larger race strategy.</p>
+          </div>
+          <div class="card">
+            <h3>Learning From Every Race</h3>
+            <p>Turn setbacks, observations, and post-race analysis into improvements for the next event.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content">
+      <div class="wrap">
+        <div class="eyebrow">The Endurance Mindset</div>
+        <p class="quote">“The fastest car doesn't always win. The team that makes the best decisions for twelve hours might.”</p>
+        <p>Written for drivers, builders, crew chiefs, and teams who want to see endurance racing from a fresh perspective.</p>
+      </div>
+    </section>
+
+    <section class="content" id="watch">
+      <div class="wrap">
+        <div class="eyebrow">Watch & Discover</div>
+        <h2>See what the book is about.</h2>
+        <div class="video-box">
+          <h3>Introducing the BEB Endurance Racing Strategy Manual</h3>
+          <p>Watch our introduction to the ideas behind the book, and explore more BEB content on YouTube.</p>
+          <!-- Replace this section with the embedded promotional video when its URL is available. -->
+
+<iframe
+  src="https://www.youtube.com/embed/Sf5WuTQNXBc?start=2"
+  title="BEB Endurance Racing Strategy E-Book Introduction"
+  loading="lazy"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+
+<div class="buttons" style="justify-content:center">
+  <a class="button secondary"
+     href="https://www.youtube.com/watch?v=Sf5WuTQNXBc&t=2s"
+     target="_blank"
+     rel="noopener noreferrer">
+    Watch on YouTube
+  </a>
+</div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="wrap">
+        <div class="eyebrow">Prepare Differently. Race Differently.</div>
+        <h2>YOUR NEXT ADVANTAGE MAY COME FROM AN UNEXPECTED PLACE.</h2>
+        <p>Explore a new perspective on endurance racing for $14.99.</p>
+        <div class="buttons" style="justify-content:center">
+          <a class="button primary" href="https://payhip.com/b/coRCf" target="_blank" rel="noopener noreferrer">Buy the E-Book — $14.99</a>
+          <a class="button secondary" href="race.html">Explore Bavarian Endurance Battle</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      © Bavarian Endurance Battle · Built around heritage, craftsmanship, and endurance.
+    </div>
+  </footer>
+</body>
+</html>
