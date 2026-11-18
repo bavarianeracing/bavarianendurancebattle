@@ -109,6 +109,22 @@
       .nav-links a {font-size:12px}
       .video-box {padding:22px}
     }
+    
+.book-cover {
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.book-cover img {
+  display:block;
+  width:100%;
+  max-width:420px;
+  height:auto;
+  border-radius:10px;
+  box-shadow:0 30px 70px rgba(0,0,0,.55);
+}
+
   </style>
 </head>
 <body>
@@ -143,11 +159,14 @@
             <a class="button secondary" href="#inside">Explore the Book</a>
           </div>
         </div>
-        <div class="book-art" role="img" aria-label="Temporary graphic for the BEB endurance racing strategy e-book">
-          <span>BAVARIAN ENDURANCE BATTLE</span>
-          <strong>ENDURANCE RACING STRATEGY</strong>
-          <small>Beyond speed. Beyond horsepower. Beyond the obvious.</small>
-        </div>
+       
+<div class="book-cover">
+  <img
+    src="book%20cover.png"
+    alt="Bavarian Endurance Battle Endurance Racing Strategy E-Book cover"
+    loading="eager">
+</div>
+
       </div>
     </section>
 
