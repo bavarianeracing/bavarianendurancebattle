@@ -62,6 +62,20 @@ section {padding:55px 0;border-bottom:1px solid var(--line)}
 .stat small {display:block;color:var(--muted);font-size:11px}
 .stat strong {display:block;font-size:19px;margin-top:5px}
 .grid {display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+
+/* Flexible driver roster */
+.drivers-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:20px;
+}
+
+@media(max-width:700px) {
+  .drivers-grid {
+    grid-template-columns:1fr;
+  }
+}
+
 .driver {
   display:flex;align-items:center;gap:18px;
 }
@@ -160,7 +174,7 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
   <div class="wrap">
     <div class="eyebrow">THE CREW</div>
     <h2>Meet the Drivers</h2>
-    <div class="grid">
+<div class="drivers-grid">
       <div class="card driver">
         <div class="avatar">01</div>
         <div><h3>Driver One</h3><p>Team Captain</p></div>
