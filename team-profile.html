@@ -1,0 +1,261 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Team Profile | Bavarian Endurance Battle</title>
+<link rel="icon" href="beb-logo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#070a10;
+  --panel:#111824;
+  --line:#263246;
+  --text:#f5f7fb;
+  --muted:#a9b3c3;
+  --blue:#6bc0ff;
+}
+* {box-sizing:border-box}
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,Arial,sans-serif;
+  line-height:1.6;
+}
+a {color:var(--blue)}
+.wrap {width:min(1100px,calc(100% - 36px));margin:auto}
+header {
+  background:#0c111a;
+  border-bottom:1px solid var(--line);
+  padding:14px 0;
+}
+.header-inner {display:flex;align-items:center;gap:16px}
+.brand-logo {width:66px;height:66px;object-fit:contain}
+.brand-name {font-size:17px;font-weight:900;letter-spacing:.04em}
+.brand-sub {color:var(--muted);font-size:12px}
+.home-link {margin-left:auto;font-size:13px;text-decoration:none}
+.hero {
+  min-height:350px;
+  background:
+    linear-gradient(0deg,#070a10 0%,transparent 80%),
+    linear-gradient(90deg,#070a10aa,#070a1022),
+    url("https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1600") center/cover;
+  display:flex;
+  align-items:end;
+}
+.hero-content {padding:75px 0 35px}
+.eyebrow {color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.16em}
+h1 {font-size:clamp(36px,6vw,70px);line-height:1.05;margin:12px 0}
+h2 {font-size:clamp(25px,3vw,36px);margin:0 0 18px}
+h3 {margin:10px 0 4px}
+p {color:var(--muted)}
+section {padding:55px 0;border-bottom:1px solid var(--line)}
+.stats {display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+.stat,.card {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:22px;
+}
+.stat small {display:block;color:var(--muted);font-size:11px}
+.stat strong {display:block;font-size:19px;margin-top:5px}
+.grid {display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.driver {
+  display:flex;align-items:center;gap:18px;
+}
+.avatar {
+  width:80px;height:80px;border-radius:50%;
+  background:#223550;display:grid;place-items:center;
+  font-size:30px;font-weight:800;color:var(--blue);
+  flex-shrink:0;
+}
+.media {
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  overflow:hidden;
+}
+.media img {display:block;width:100%;aspect-ratio:16/10;object-fit:cover}
+.media-content {padding:18px}
+.video {aspect-ratio:16/9;background:#05080e}
+.video iframe {width:100%;height:100%;border:0}
+.sponsors {display:grid;grid-template-columns:repeat(3,1fr);gap:15px}
+.sponsor {
+  background:var(--panel);border:1px solid var(--line);
+  padding:30px 12px;border-radius:10px;text-align:center;
+  color:var(--muted);font-weight:700;
+}
+.note {font-size:13px;color:var(--muted)}
+footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
+@media(max-width:700px) {
+  .stats,.grid {grid-template-columns:1fr 1fr}
+  .sponsors {grid-template-columns:1fr 1fr}
+  .brand-name {font-size:13px}
+  .brand-logo {width:48px;height:48px}
+  .home-link {font-size:11px}
+}
+@media(max-width:480px) {
+  .stats,.grid {grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="index.html">
+      <img class="brand-logo" src="beb-logo.jpg"
+           alt="Bavarian Endurance Battle">
+    </a>
+    <div>
+      <div class="brand-name">BAVARIAN ENDURANCE BATTLE</div>
+      <div class="brand-sub">OFFICIAL TEAM PADDOCK</div>
+    </div>
+    <a class="home-link" href="index.html">BEB HOME</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-content">
+    <div class="eyebrow">BEHIND THE MACHINE</div>
+    <h1>APEX BAVARIAN RACING</h1>
+    <p>Four drivers. One BMW. Twelve hours of determination.</p>
+  </div>
+</div>
+
+<main>
+<section>
+  <div class="wrap">
+    <div class="eyebrow">TEAM IDENTITY</div>
+    <div class="stats">
+      <div class="stat"><small>RACE NUMBER</small><strong>#036</strong></div>
+      <div class="stat"><small>BMW</small><strong>E36 325i</strong></div>
+      <div class="stat"><small>RACING CLASS</small><strong>Dreier</strong></div>
+      <div class="stat"><small>HOMETOWN</small><strong>Los Angeles, CA</strong></div>
+    </div>
+    <p class="note">Demonstration team — not an official race entry.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE PEOPLE BEHIND THE MACHINE</div>
+    <h2>Our Story</h2>
+    <p>
+      What started as a weekend project became a shared
+      passion for BMW endurance racing. We believe in
+      preparation, teamwork, reliability, and the determination
+      to reach the checkered flag.
+    </p>
+    <p>
+      Our goal is to build a machine that represents our team
+      and the spirit of Bavarian Endurance Battle.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE CREW</div>
+    <h2>Meet the Drivers</h2>
+    <div class="grid">
+      <div class="card driver">
+        <div class="avatar">01</div>
+        <div><h3>Driver One</h3><p>Team Captain</p></div>
+      </div>
+      <div class="card driver">
+        <div class="avatar">02</div>
+        <div><h3>Driver Two</h3><p>Driver</p></div>
+      </div>
+      <div class="card driver">
+        <div class="avatar">03</div>
+        <div><h3>Driver Three</h3><p>Driver</p></div>
+      </div>
+      <div class="card driver">
+        <div class="avatar">04</div>
+        <div><h3>Driver Four</h3><p>Driver</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE MACHINE</div>
+    <h2>Our BMW</h2>
+    <div class="stats">
+      <div class="stat"><small>CHASSIS</small><strong>E36</strong></div>
+      <div class="stat"><small>MODEL YEAR</small><strong>1995</strong></div>
+      <div class="stat"><small>ENGINE</small><strong>Inline-Six</strong></div>
+      <div class="stat"><small>CLASS</small><strong>Dreier</strong></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE JOURNEY</div>
+    <h2>From the Workshop to the Paddock</h2>
+    <p>
+      Follow our progress as we build, prepare, test,
+      and race our BMW.
+    </p>
+
+    <div class="grid">
+      <article class="media">
+        <img src="https://images.unsplash.com/photo-1486496572940-2bb2341fdbdf?w=900"
+             alt="Workshop preparation example" loading="lazy">
+        <div class="media-content">
+          <h3>Building Our Race Car</h3>
+          <p>Workshop photographs and preparation updates.</p>
+        </div>
+      </article>
+
+      <article class="media">
+        <div class="video">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/DbPTKYrocos"
+            title="Example BMW motorsport video"
+            loading="lazy"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="media-content">
+          <h3>Our Racing Videos</h3>
+          <p>YouTube videos play directly on the team profile.</p>
+        </div>
+      </article>
+    </div>
+    <p class="note">
+      Demonstration content. Teams will eventually add their
+      own photographs, videos, and build journal entries.
+    </p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">THE PARTNERS BEHIND THE TEAM</div>
+    <h2>Our Sponsors</h2>
+    <div class="sponsors">
+      <div class="sponsor">Sponsor Logo</div>
+      <div class="sponsor">Sponsor Logo</div>
+      <div class="sponsor">Sponsor Logo</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    BAVARIAN ENDURANCE BATTLE · OFFICIAL TEAM PADDOCK
+    <p>Built on passion. Driven by endurance.</p>
+  </div>
+</footer>
+
+</body>
+</html>
