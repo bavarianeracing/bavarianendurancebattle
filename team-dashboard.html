@@ -570,6 +570,45 @@ if (photo) {
   if (uploadError) throw uploadError;
 }
 
+
+const photo = $("driverPhoto").files[0];
+let photoPath = null;
+
+if (photo) {
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+  ];
+
+  if (!allowedTypes.includes(photo.type)) {
+    throw new Error("Please select a JPG, PNG, or WebP photograph.");
+  }
+
+  if (photo.size > 5 * 1024 * 1024) {
+    throw new Error("Photograph must be smaller than 5 MB.");
+  }
+
+  const extensions = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp"
+  };
+
+  photoPath =
+    currentTeam.id + "/" +
+    crypto.randomUUID() + "." + extensions[photo.type];
+
+  const { error: uploadError } = await supabase.storage
+    .from("driver-photos")
+    .upload(photoPath, photo, {
+      contentType: photo.type,
+      upsert: false
+    });
+
+  if (uploadError) throw uploadError;
+}
+
 const { error } = await supabase
   .from("team_drivers")
   .insert({
@@ -586,7 +625,10 @@ if (error) {
       .from("driver-photos")
       .remove([photoPath]);
   }
+
   throw error;
+}
+
 }
 
 
