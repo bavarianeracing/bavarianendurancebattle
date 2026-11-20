@@ -328,6 +328,49 @@ footer {
 
 </form>
 
+  
+<hr style="border:0;border-top:1px solid #29374b;margin:40px 0;">
+
+<div class="eyebrow">The People Behind the Machine</div>
+<h2>Meet the Drivers</h2>
+
+<p>
+  Introduce the drivers who make your team possible.
+  Share their backgrounds, racing experience, and
+  what motivates them to compete in endurance racing.
+</p>
+
+<div id="driversList"></div>
+
+<h3>Add a Driver</h3>
+
+<form id="addDriverForm">
+
+  <label for="driverName">Driver Name</label>
+  <input id="driverName" type="text"
+         maxlength="120" required
+         placeholder="Full name">
+
+  <label for="driverHometown">Hometown</label>
+  <input id="driverHometown" type="text"
+         maxlength="120"
+         placeholder="City, State or Country">
+
+  <label for="driverBiography">Driver Biography</label>
+  <textarea id="driverBiography" rows="5"
+            maxlength="3000"
+            placeholder="Tell us about this driver..."
+            style="width:100%;padding:14px;background:#0b1422;color:white;border:1px solid #29374b;border-radius:7px;font:inherit;resize:vertical;"></textarea>
+
+  <div class="actions">
+    <button type="submit" id="addDriverButton">
+      Add Driver
+    </button>
+  </div>
+
+</form>
+
+
 
 </div>
 </main>
@@ -447,6 +490,7 @@ async function loadDashboard() {
     $("savedTeamStatus").textContent = team.status;
     fillTeamEditor(team);
     showPanel("existingPanel");
+   await loadDrivers();
     showNotice("Your team profile is ready to manage.");
   } else {
     showPanel("createPanel");
@@ -556,6 +600,132 @@ $("editTeamForm").addEventListener("submit", async event => {
   } finally {
     button.disabled = false;
     button.textContent = "Save Team Profile";
+  }
+});
+
+  
+async function loadDrivers() {
+  if (!currentTeam) return;
+
+  const list = $("driversList");
+  list.textContent = "Loading drivers...";
+
+  const { data, error } = await supabase
+    .from("team_drivers")
+    .select("id,driver_name,hometown,biography")
+    .eq("team_id", currentTeam.id)
+    .order("display_order", { ascending: true })
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    list.textContent = "Could not load drivers: " + error.message;
+    return;
+  }
+
+  list.replaceChildren();
+
+  if (!data.length) {
+    list.textContent = "No drivers added yet.";
+    return;
+  }
+
+  for (const driver of data) {
+    const card = document.createElement("div");
+    card.style.cssText =
+      "padding:18px;margin:14px 0;border:1px solid #29374b;border-radius:8px;";
+
+    const heading = document.createElement("h3");
+    heading.textContent = driver.driver_name;
+    card.appendChild(heading);
+
+    if (driver.hometown) {
+      const hometown = document.createElement("p");
+      hometown.textContent = driver.hometown;
+      card.appendChild(hometown);
+    }
+
+    if (driver.biography) {
+      const biography = document.createElement("p");
+      biography.textContent = driver.biography;
+      biography.style.whiteSpace = "pre-wrap";
+      card.appendChild(biography);
+    }
+
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "secondary";
+    removeButton.textContent = "Remove Driver";
+
+    removeButton.addEventListener("click", async () => {
+      if (!confirm("Remove " + driver.driver_name + " from your team?")) {
+        return;
+      }
+
+      removeButton.disabled = true;
+
+      const { data: deleted, error } = await supabase
+        .from("team_drivers")
+        .delete()
+        .eq("id", driver.id)
+        .eq("team_id", currentTeam.id)
+        .select("id");
+
+      if (error || !deleted?.length) {
+        showNotice(
+          "Could not remove driver: " +
+          (error?.message || "No matching driver was removed."),
+          true
+        );
+        removeButton.disabled = false;
+        return;
+      }
+
+      showNotice("Driver removed successfully.");
+      await loadDrivers();
+    });
+
+    card.appendChild(removeButton);
+    list.appendChild(card);
+  }
+}
+
+$("addDriverForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!currentUser || !currentTeam) return;
+
+  const name = $("driverName").value.trim();
+
+  if (!name) {
+    showNotice("Please enter the driver's name.", true);
+    return;
+  }
+
+  const button = $("addDriverButton");
+  button.disabled = true;
+  button.textContent = "Adding...";
+
+  try {
+    const { error } = await supabase
+      .from("team_drivers")
+      .insert({
+        team_id: currentTeam.id,
+        driver_name: name,
+        hometown: $("driverHometown").value.trim() || null,
+        biography: $("driverBiography").value.trim() || null
+      });
+
+    if (error) throw error;
+
+    $("addDriverForm").reset();
+    await loadDrivers();
+    showNotice("Driver added successfully!");
+
+  } catch (error) {
+    showNotice("Could not add driver: " + error.message, true);
+  } finally {
+    button.disabled = false;
+    button.textContent = "Add Driver";
   }
 });
 
