@@ -257,13 +257,77 @@ footer {
         <span class="status" id="savedTeamStatus"></span>
       </p>
 
-      <p>
-        Your team has been saved in the BEB database.
-        The full profile editor is our next development step.
-      </p>
+      
     </section>
 
   </div>
+<form id="editTeamForm">
+
+  <div class="eyebrow">Team Information</div>
+  <h2>Tell Us About Your Team</h2>
+
+  <label for="editTeamName">Team Name</label>
+  <input id="editTeamName" type="text"
+         maxlength="100" required>
+
+  <label for="editHometown">Hometown</label>
+  <input id="editHometown" type="text"
+         maxlength="120"
+         placeholder="Los Angeles, California">
+
+  <label for="editStory">Our Story</label>
+  <textarea id="editStory" rows="7"
+            maxlength="5000"
+            placeholder="How did your team begin? What brought you together? What does endurance racing mean to you?"
+            style="width:100%;padding:14px;background:#0b1422;color:white;border:1px solid #29374b;border-radius:7px;font:inherit;resize:vertical;"></textarea>
+
+  <hr style="border:0;border-top:1px solid #29374b;margin:35px 0;">
+
+  <div class="eyebrow">The Machine</div>
+  <h2>Meet Your BMW</h2>
+
+  <label for="editCarYear">Model Year</label>
+  <input id="editCarYear" type="number"
+         min="1950" max="2035"
+         placeholder="1998">
+
+  <label for="editCarModel">BMW Model</label>
+  <input id="editCarModel" type="text"
+         maxlength="100"
+         placeholder="BMW E36 328i">
+
+  <label for="editRacingClass">BEB Racing Class</label>
+  <select id="editRacingClass"
+          style="width:100%;padding:14px;background:#0b1422;color:white;border:1px solid #29374b;border-radius:7px;font:inherit;">
+    <option value="">Select your class</option>
+    <option value="Vintage">Vintage</option>
+    <option value="Dreier">Dreier</option>
+    <option value="Geschäftsklasse">Geschäftsklasse</option>
+    <option value="Touring">Touring</option>
+    <option value="Zenith">Zenith</option>
+    <option value="Werk Sport">Werk Sport</option>
+    <option value="Stock">Stock</option>
+  </select>
+
+  <label for="editRaceNumber">Race Number</label>
+  <input id="editRaceNumber" type="text"
+         maxlength="10"
+         placeholder="Your preferred number">
+
+  <div class="actions">
+    <button type="submit" id="saveTeamButton">
+      Save Team Profile
+    </button>
+  </div>
+
+  <p style="font-size:12px;">
+    Your changes will be saved privately.
+    Your profile will not appear in the public
+    Team Paddock until BEB approves it.
+  </p>
+
+</form>
+
 
 </div>
 </main>
@@ -325,6 +389,17 @@ function makeSlug(name) {
 }
 
 let currentUser = null;
+let currentTeam = null;
+
+function fillTeamEditor(team) {
+  $("editTeamName").value = team.team_name || "";
+  $("editHometown").value = team.hometown || "";
+  $("editStory").value = team.team_story || "";
+  $("editCarYear").value = team.car_year ?? "";
+  $("editCarModel").value = team.car_model || "";
+  $("editRacingClass").value = team.racing_class || "";
+  $("editRaceNumber").value = team.race_number || "";
+}
 
 async function loadDashboard() {
   if (SUPABASE_KEY.includes("PASTE_YOUR_")) {
@@ -366,9 +441,11 @@ async function loadDashboard() {
 
   const team = result.data?.[0];
 
-  if (team) {
- $("savedTeamName").textContent = team.team_name;
+ if (team) {
+    currentTeam = team;
+    $("savedTeamName").textContent = team.team_name;
     $("savedTeamStatus").textContent = team.status;
+    fillTeamEditor(team);
     showPanel("existingPanel");
     showNotice("Your team profile is ready to manage.");
   } else {
@@ -419,6 +496,68 @@ $("createTeamForm").addEventListener(
     }
   }
 );
+
+$("editTeamForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  if (!currentUser || !currentTeam) return;
+
+  const name = $("editTeamName").value.trim();
+  const yearText = $("editCarYear").value.trim();
+  const year = yearText ? Number(yearText) : null;
+
+  if (!name) {
+    showNotice("Please enter a team name.", true);
+    return;
+  }
+
+  if (year !== null &&
+      (!Number.isInteger(year) || year < 1950 || year > 2035)) {
+    showNotice("Please enter a valid model year.", true);
+    return;
+  }
+
+  const button = $("saveTeamButton");
+  button.disabled = true;
+  button.textContent = "Saving...";
+
+  try {
+    const updates = {
+      team_name: name,
+      hometown: $("editHometown").value.trim() || null,
+      team_story: $("editStory").value.trim() || null,
+      car_year: year,
+      car_model: $("editCarModel").value.trim() || null,
+      racing_class: $("editRacingClass").value || null,
+      race_number: $("editRaceNumber").value.trim() || null
+    };
+
+    const { data, error } = await supabase
+      .from("teams")
+      .update(updates)
+      .eq("id", currentTeam.id)
+      .eq("owner_id", currentUser.id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    currentTeam = data;
+    $("savedTeamName").textContent = data.team_name;
+    $("savedTeamStatus").textContent = data.status;
+    fillTeamEditor(data);
+
+    showNotice("Your team profile has been saved successfully!");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+
+  } catch (error) {
+    showNotice("Could not save your team: " + error.message, true);
+  } finally {
+    button.disabled = false;
+    button.textContent = "Save Team Profile";
+  }
+});
 
 $("logoutButton").addEventListener(
   "click", async () => {
