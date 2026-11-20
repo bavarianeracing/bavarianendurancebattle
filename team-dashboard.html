@@ -361,6 +361,20 @@ footer {
             maxlength="3000"
             placeholder="Tell us about this driver..."
             style="width:100%;padding:14px;background:#0b1422;color:white;border:1px solid #29374b;border-radius:7px;font:inherit;resize:vertical;"></textarea>
+  
+<label for="driverPhoto">Driver Photograph</label>
+
+<input
+  id="driverPhoto"
+  type="file"
+  accept="image/jpeg,image/png,image/webp">
+
+<p style="font-size:12px;color:#acbbcf;">
+  Optional. Upload a JPG, PNG, or WebP photograph,
+  maximum 5 MB. Driver photographs will remain
+  private until the public profile system is ready.
+</p>
+
 
   <div class="actions">
     <button type="submit" id="addDriverButton">
@@ -517,16 +531,64 @@ $("createTeamForm").addEventListener(
     button.disabled = true;
 
     try {
-      const { error } = await supabase
-        .from("teams")
-       .insert({
-  owner_id:currentUser.id,
-  team_name:name,
-  slug:makeSlug(name),
-  status:"draft"
-});
+      
+const photo = $("driverPhoto").files[0];
+let photoPath = null;
 
-      if (error) throw error;
+if (photo) {
+  const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+  ];
+
+  if (!allowedTypes.includes(photo.type)) {
+    throw new Error("Please choose a JPG, PNG, or WebP image.");
+  }
+
+  if (photo.size > 5 * 1024 * 1024) {
+    throw new Error("Photographs must be 5 MB or smaller.");
+  }
+
+  const extension = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp"
+  }[photo.type];
+
+  photoPath =
+    currentTeam.id + "/" +
+    crypto.randomUUID() + "." + extension;
+
+  const { error: uploadError } = await supabase.storage
+    .from("driver-photos")
+    .upload(photoPath, photo, {
+      contentType: photo.type,
+      upsert: false
+    });
+
+  if (uploadError) throw uploadError;
+}
+
+const { error } = await supabase
+  .from("team_drivers")
+  .insert({
+    team_id: currentTeam.id,
+    driver_name: name,
+    hometown: $("driverHometown").value.trim() || null,
+    biography: $("driverBiography").value.trim() || null,
+    photo_url: photoPath
+  });
+
+if (error) {
+  if (photoPath) {
+    await supabase.storage
+      .from("driver-photos")
+      .remove([photoPath]);
+  }
+  throw error;
+}
+
 
       await loadDashboard();
 
@@ -612,7 +674,7 @@ async function loadDrivers() {
 
   const { data, error } = await supabase
     .from("team_drivers")
-    .select("id,driver_name,hometown,biography")
+  .select("id,driver_name,hometown,biography,photo_url")
     .eq("team_id", currentTeam.id)
     .order("display_order", { ascending: true })
     .order("created_at", { ascending: true });
@@ -633,6 +695,32 @@ async function loadDrivers() {
     const card = document.createElement("div");
     card.style.cssText =
       "padding:18px;margin:14px 0;border:1px solid #29374b;border-radius:8px;";
+
+if (driver.photo_url) {
+  const { data: photoData, error: photoError } =
+    await supabase.storage
+      .from("driver-photos")
+      .createSignedUrl(driver.photo_url, 3600);
+
+  if (!photoError && photoData?.signedUrl) {
+    const photo = document.createElement("img");
+
+    photo.src = photoData.signedUrl;
+    photo.alt = "Photograph of " + driver.driver_name;
+
+    photo.style.cssText = `
+      width:160px;
+      height:160px;
+      object-fit:cover;
+      border-radius:10px;
+      border:1px solid #29374b;
+      display:block;
+      margin-bottom:16px;
+    `;
+
+    card.appendChild(photo);
+  }
+}
 
     const heading = document.createElement("h3");
     heading.textContent = driver.driver_name;
