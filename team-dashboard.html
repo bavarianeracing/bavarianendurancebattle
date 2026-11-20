@@ -367,7 +367,7 @@ async function loadDashboard() {
   const team = result.data?.[0];
 
   if (team) {
-    $("savedTeamName").textContent = team.name;
+ $("savedTeamName").textContent = team.team_name;
     $("savedTeamStatus").textContent = team.status;
     showPanel("existingPanel");
     showNotice("Your team profile is ready to manage.");
@@ -398,12 +398,12 @@ $("createTeamForm").addEventListener(
     try {
       const { error } = await supabase
         .from("teams")
-        .insert({
-          owner_id:currentUser.id,
-          name:name,
-          slug:makeSlug(name),
-          status:"draft"
-        });
+       .insert({
+  owner_id:currentUser.id,
+  team_name:name,
+  slug:makeSlug(name),
+  status:"draft"
+});
 
       if (error) throw error;
 
