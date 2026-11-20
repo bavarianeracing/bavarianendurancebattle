@@ -1,0 +1,503 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Team Account | Bavarian Endurance Battle</title>
+
+<style>
+:root {
+  --bg:#0b111b;
+  --panel:#152033;
+  --line:#29374b;
+  --text:#f5f7fb;
+  --muted:#acbbcf;
+  --blue:#69baff;
+}
+* { box-sizing:border-box; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+}
+.wrap {
+  width:min(1160px,calc(100% - 36px));
+  margin:auto;
+}
+header {
+  background:linear-gradient(
+    90deg,#fff 0%,#fff 25%,
+    #eef1f5 40%,#8995a5 65%,#0b111b 100%
+  );
+  border-bottom:1px solid var(--line);
+  padding:18px 0;
+}
+.header-inner {
+  display:flex;
+  align-items:center;
+  gap:24px;
+}
+.brand-logo {
+  display:block;
+  width:340px;
+  max-width:100%;
+  height:auto;
+}
+.home-link {
+  margin-left:auto;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+main {
+  min-height:75vh;
+  padding:75px 18px 100px;
+  background:radial-gradient(
+    ellipse at 75% 10%,#203b5d 0%,#0b111b 65%
+  );
+}
+.intro {
+  text-align:center;
+  max-width:650px;
+  margin:0 auto 35px;
+}
+.eyebrow {
+  color:var(--blue);
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+h1 {
+  font-size:clamp(32px,5vw,52px);
+  margin:16px 0;
+}
+.intro p {
+  color:var(--muted);
+  line-height:1.8;
+}
+.account-card {
+  width:min(100%,470px);
+  margin:auto;
+  padding:32px;
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:14px;
+}
+.tabs {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:28px;
+}
+.tab {
+  padding:14px;
+  border:1px solid var(--line);
+  border-radius:7px;
+  background:#101a2a;
+  color:var(--muted);
+  cursor:pointer;
+  font-weight:800;
+}
+.tab.active {
+  color:#fff;
+  border-color:var(--blue);
+  background:#203b5d;
+}
+h2 {
+  font-size:23px;
+  margin:0 0 12px;
+}
+.description {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+  margin-bottom:25px;
+}
+label {
+  display:block;
+  margin:18px 0 8px;
+  font-size:13px;
+  font-weight:700;
+}
+input {
+  width:100%;
+  padding:14px;
+  border-radius:7px;
+  border:1px solid var(--line);
+  background:#0b1422;
+  color:#fff;
+  font-size:15px;
+}
+input:focus {
+  outline:1px solid var(--blue);
+}
+.primary-button {
+  display:block;
+  width:100%;
+  padding:16px;
+  margin-top:26px;
+  background:#e9f2ff;
+  border:0;
+  border-radius:7px;
+  color:#07111f;
+  font-size:14px;
+  font-weight:800;
+  cursor:pointer;
+}
+.primary-button:disabled {
+  opacity:.6;
+  cursor:wait;
+}
+.text-button {
+  display:block;
+  background:none;
+  border:0;
+  color:var(--blue);
+  cursor:pointer;
+  margin:20px auto 0;
+  font-size:13px;
+}
+.notice {
+  display:none;
+  margin-top:22px;
+  padding:14px;
+  border-radius:7px;
+  background:#101a2a;
+  border:1px solid #456b8e;
+  color:#d9ecff;
+  font-size:13px;
+  line-height:1.6;
+  overflow-wrap:anywhere;
+}
+.notice.error {
+  border-color:#b85b65;
+  color:#ffd8dc;
+}
+.hidden { display:none !important; }
+footer {
+  padding:35px 18px;
+  color:#8d9bb0;
+  font-size:12px;
+  text-align:center;
+  border-top:1px solid var(--line);
+}
+@media(max-width:650px) {
+  .brand-logo { width:min(65vw,260px); }
+  .header-inner { gap:12px; }
+  .home-link { font-size:11px; }
+  main { padding-top:50px; }
+  .account-card { padding:24px; }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap header-inner">
+    <a href="index.html">
+      <img class="brand-logo" src="beb-logo.jpg"
+           alt="Bavarian Endurance Battle">
+    </a>
+    <a class="home-link" href="team-paddock.html">
+      TEAM PADDOCK
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="intro">
+    <div class="eyebrow">Bavarian Endurance Battle</div>
+    <h1>YOUR TEAM. YOUR STORY.</h1>
+    <p>
+      Create your BEB Team Paddock account.
+      Introduce your drivers, showcase your BMW,
+      recognize your sponsors, and document
+      your journey toward race day.
+    </p>
+  </div>
+
+  <div class="account-card">
+
+    <div class="tabs" id="tabs">
+      <button type="button" class="tab active"
+              id="registerTab">Create Account</button>
+      <button type="button" class="tab"
+              id="loginTab">Log In</button>
+    </div>
+
+    <form id="registerForm">
+      <h2>Join the Team Paddock</h2>
+      <p class="description">
+        Create an account to begin building your
+        team's profile. Profiles will require
+        BEB approval before appearing publicly.
+      </p>
+
+      <label for="registerEmail">Email Address</label>
+      <input id="registerEmail" type="email"
+             autocomplete="email" required>
+
+      <label for="registerPassword">Password</label>
+      <input id="registerPassword" type="password"
+             autocomplete="new-password"
+             minlength="8" required>
+
+      <label for="confirmPassword">Confirm Password</label>
+      <input id="confirmPassword" type="password"
+             autocomplete="new-password"
+             minlength="8" required>
+
+      <button class="primary-button" type="submit">
+        Create Team Account
+      </button>
+    </form>
+
+    <form id="loginForm" class="hidden">
+      <h2>Welcome Back</h2>
+      <p class="description">
+        Log in to your BEB Team Paddock account.
+      </p>
+
+      <label for="loginEmail">Email Address</label>
+      <input id="loginEmail" type="email"
+             autocomplete="email" required>
+
+      <label for="loginPassword">Password</label>
+      <input id="loginPassword" type="password"
+             autocomplete="current-password" required>
+
+      <button class="primary-button" type="submit">
+        Log In
+      </button>
+
+      <button type="button" class="text-button"
+              id="forgotButton">
+        Forgot your password?
+      </button>
+    </form>
+
+    <form id="forgotForm" class="hidden">
+      <h2>Reset Your Password</h2>
+      <p class="description">
+        Enter your email address to request
+        a password reset link.
+      </p>
+
+      <label for="forgotEmail">Email Address</label>
+      <input id="forgotEmail" type="email"
+             autocomplete="email" required>
+
+      <button class="primary-button" type="submit">
+        Send Reset Link
+      </button>
+
+      <button type="button" class="text-button"
+              id="backButton">
+        Back to Log In
+      </button>
+    </form>
+
+    <form id="resetForm" class="hidden">
+      <h2>Choose a New Password</h2>
+
+      <label for="newPassword">New Password</label>
+      <input id="newPassword" type="password"
+             autocomplete="new-password"
+             minlength="8" required>
+
+      <button class="primary-button" type="submit">
+        Update Password
+      </button>
+    </form>
+
+    <div class="notice" id="notice"
+         role="status" aria-live="polite"></div>
+
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span>
+  Bavarian Endurance Battle. All rights reserved.
+</footer>
+
+<script type="module">
+import { createClient } from
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+/*
+  Supabase public browser configuration.
+  Replace the publishable key below.
+  NEVER use a service_role or secret key here.
+*/
+const SUPABASE_URL =
+  "https://hjeovuaecghiigoqcmoa.supabase.co";
+
+const SUPABASE_KEY =
+  "PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY_HERE";
+
+const configured =
+  !SUPABASE_KEY.includes("PASTE_YOUR_");
+
+const supabase = configured
+  ? createClient(SUPABASE_URL, SUPABASE_KEY)
+  : null;
+
+const $ = id => document.getElementById(id);
+const redirectUrl =
+  window.location.origin + "/team-login.html";
+
+$("year").textContent = new Date().getFullYear();
+
+function notice(message, error = false) {
+  const box = $("notice");
+  box.textContent = message;
+  box.className = "notice" + (error ? " error" : "");
+  box.style.display = "block";
+}
+
+function showForm(name) {
+  ["registerForm","loginForm","forgotForm","resetForm"]
+    .forEach(id => $(id).classList.add("hidden"));
+
+  $(name + "Form").classList.remove("hidden");
+
+  $("tabs").classList.toggle(
+    "hidden",
+    name === "forgot" || name === "reset"
+  );
+
+  $("registerTab").classList.toggle(
+    "active", name === "register"
+  );
+  $("loginTab").classList.toggle(
+    "active", name === "login"
+  );
+
+  $("notice").style.display = "none";
+}
+
+function requireSetup() {
+  if (configured) return true;
+  notice("Account registration is being configured. Please check back soon.", true);
+  return false;
+}
+
+async function submitAction(form, action) {
+  if (!requireSetup()) return;
+
+  const button = form.querySelector(
+    'button[type="submit"]'
+  );
+  button.disabled = true;
+
+  try {
+    await action();
+  } catch (error) {
+    notice(error.message || "Something went wrong.", true);
+  } finally {
+    button.disabled = false;
+  }
+}
+
+$("registerTab").onclick = () => showForm("register");
+$("loginTab").onclick = () => showForm("login");
+$("forgotButton").onclick = () => showForm("forgot");
+$("backButton").onclick = () => showForm("login");
+
+$("registerForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  const password = $("registerPassword").value;
+  if (password !== $("confirmPassword").value) {
+    notice("Passwords do not match.", true);
+    return;
+  }
+
+  await submitAction(event.currentTarget, async () => {
+    const { data, error } = await supabase.auth.signUp({
+      email: $("registerEmail").value.trim(),
+      password,
+      options: {
+        emailRedirectTo: redirectUrl
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.session) {
+      notice("Account created. You are signed in. Team profile setup is coming next.");
+    } else {
+      notice("If this email can be registered, a confirmation email will be sent. Please check your inbox and spam folder.");
+    }
+  });
+});
+
+$("loginForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  await submitAction(event.currentTarget, async () => {
+    const { error } = await supabase.auth.signInWithPassword({
+      email: $("loginEmail").value.trim(),
+      password: $("loginPassword").value
+    });
+
+    if (error) throw error;
+
+    notice("You are signed in successfully. Team profile management is coming next.");
+  });
+});
+
+$("forgotForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  await submitAction(event.currentTarget, async () => {
+    const { error } = await supabase.auth.resetPasswordForEmail(
+      $("forgotEmail").value.trim(),
+      { redirectTo: redirectUrl }
+    );
+
+    if (error) throw error;
+
+    notice("If an account exists for this email, a password reset link will be sent.");
+  });
+});
+
+$("resetForm").addEventListener("submit", async event => {
+  event.preventDefault();
+
+  await submitAction(event.currentTarget, async () => {
+    const { error } = await supabase.auth.updateUser({
+      password: $("newPassword").value
+    });
+
+    if (error) throw error;
+
+    await supabase.auth.signOut();
+    showForm("login");
+    notice("Password updated. Please log in with your new password.");
+  });
+});
+
+if (supabase) {
+  supabase.auth.onAuthStateChange((event) => {
+    if (event === "PASSWORD_RECOVERY") {
+      showForm("reset");
+      notice("Enter your new password below.");
+    } else if (event === "SIGNED_IN" &&
+               !$("resetForm").classList.contains("hidden")) {
+      // Keep the reset form open during password recovery.
+    } else if (event === "SIGNED_IN") {
+      notice("Your email is verified and your account is signed in. Team profile management is coming next.");
+    }
+  });
+}
+</script>
+
+</body>
+</html>
