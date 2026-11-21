@@ -175,8 +175,41 @@ async function loadPendingTeams() {
 
     const status = document.createElement("p");
     status.textContent = "Status: " + team.status;
+const approveButton = document.createElement("button");
+approveButton.type = "button";
+approveButton.textContent = "Approve Team";
+approveButton.style.marginTop = "15px";
+approveButton.addEventListener("click", async () => {
+  const confirmed = confirm(
+    "Approve " + team.team_name +
+    " and publish this team in the BEB Team Paddock?"
+  );
 
-    card.append(heading, details, status);
+  if (!confirmed) return;
+
+  approveButton.disabled = true;
+  approveButton.textContent = "Approving...";
+
+  const { data, error } = await supabase
+    .from("teams")
+    .update({ status: "published" })
+    .eq("id", team.id)
+    .eq("status", "pending")
+    .select("id,status")
+    .single();
+
+  if (error) {
+    approveButton.disabled = false;
+    approveButton.textContent = "Approve Team";
+    alert("Approval failed: " + error.message);
+    return;
+  }
+
+  alert(team.team_name + " has been approved!");
+  await loadPendingTeams();
+});
+card.append(heading, details, status);
+card.appendChild(approveButton);
     container.appendChild(card);
   }
 }
