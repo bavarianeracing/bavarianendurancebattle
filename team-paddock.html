@@ -405,18 +405,84 @@ footer {
   </div>
 </footer>
 
-<script>
+<script type="module">
+  import { createClient } from
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+const SUPABASE_URL =
+  "https://hjeovuaecghiigoqcmoa.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_zVPjF4qp5C-T-5vZcyx0_g_sMkJRzMT";
+
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 document.getElementById("year").textContent =
   new Date().getFullYear();
 
 const searchInput = document.getElementById("teamSearch");
 const classFilter = document.getElementById("classFilter");
-const cards = Array.from(
-  document.querySelectorAll(".team-card")
-);
+let cards = Array.from(document.querySelectorAll(".team-card"));
+  const teamGrid = document.getElementById("teamGrid");
 const countElement = document.getElementById("teamCount");
 const emptyState = document.getElementById("emptyState");
+async function loadPublishedTeams() {
+  const { data: teams, error } = await supabase
+    .from("teams")
+    .select("id,slug,team_name,hometown,car_year,car_model,racing_class,car_photo_url")
+    .eq("status", "published")
+    .order("team_name", { ascending: true });
 
+  if (error) {
+    console.error("Could not load published teams:", error.message);
+    return;
+  }
+
+  console.log("Approved BEB teams found:", teams.length);
+  teamGrid.replaceChildren();
+
+for (const team of teams) {
+  const card = document.createElement("a");
+  card.className = "team-card";
+  card.href = "team-profile.html?team=" + encodeURIComponent(team.slug || team.id);
+
+  card.dataset.name = team.team_name || "";
+  card.dataset.model = team.car_model || "";
+  card.dataset.location = team.hometown || "";
+  card.dataset.class = team.racing_class || "";
+
+  const info = document.createElement("div");
+  info.className = "team-info";
+
+  const racingClass = document.createElement("div");
+  racingClass.className = "team-class";
+  racingClass.textContent = team.racing_class || "BEB Racing Team";
+
+  const name = document.createElement("div");
+  name.className = "team-name";
+  name.textContent = team.team_name;
+
+  const details = document.createElement("div");
+  details.className = "team-details";
+  details.textContent = [
+    [team.car_year, team.car_model].filter(Boolean).join(" "),
+    team.hometown
+  ].filter(Boolean).join(" | ");
+
+  const explore = document.createElement("div");
+  explore.className = "explore";
+  explore.textContent = "Explore Team →";
+
+  info.append(racingClass, name, details, explore);
+  card.appendChild(info);
+  teamGrid.appendChild(card);
+}
+
+cards = Array.from(teamGrid.querySelectorAll(".team-card"));
+filterTeams();
+}
 function filterTeams() {
   const search = searchInput.value.toLowerCase().trim();
   const selectedClass = classFilter.value;
@@ -449,7 +515,7 @@ function filterTeams() {
 
 searchInput.addEventListener("input",filterTeams);
 classFilter.addEventListener("change",filterTeams);
-filterTeams();
+loadPublishedTeams();
 </script>
 
 </body>
