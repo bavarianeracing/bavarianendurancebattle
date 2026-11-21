@@ -182,7 +182,7 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
 <div class="hero">
   <div class="wrap hero-content">
     <div class="eyebrow">BEHIND THE MACHINE</div>
-    <h1>APEX BAVARIAN RACING</h1>
+ <h1 id="profileTeamName">Loading Team...</h1>
   
   </div>
 </div>
@@ -192,10 +192,10 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
   <div class="wrap">
     <div class="eyebrow">TEAM IDENTITY</div>
     <div class="stats">
-      <div class="stat"><small>RACE NUMBER</small><strong>#036</strong></div>
-      <div class="stat"><small>BMW</small><strong>E36 325i</strong></div>
-      <div class="stat"><small>RACING CLASS</small><strong>Dreier</strong></div>
-      <div class="stat"><small>HOMETOWN</small><strong>Los Angeles, CA</strong></div>
+      <div class="stat"><small>RACE NUMBER</small><strong id="profileRaceNumber">—</strong></div>
+      <div class="stat"><small>BMW</small><strong id="profileBMW">—</strong></div>
+      <div class="stat"><small>RACING CLASS</small><strong id="profileRacingClass">—</strong></div>
+      <div class="stat"><small>HOMETOWN</small><strong id="profileHometown">—</strong></div>
     </div>
     <p class="note">Demonstration team — not an official race entry.</p>
   </div>
@@ -205,16 +205,8 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
   <div class="wrap">
     <div class="eyebrow">THE PEOPLE BEHIND THE MACHINE</div>
     <h2>Our Story</h2>
-    <p>
-      What started as a weekend project became a shared
-      passion for BMW endurance racing. We believe in
-      preparation, teamwork, reliability, and the determination
-      to reach the checkered flag.
-    </p>
-    <p>
-      Our goal is to build a machine that represents our team
-      and the spirit of Bavarian Endurance Battle.
-    </p>
+    
+   <p id="profileTeamStory">Loading team story...</p>
   </div>
 </section>
 
@@ -222,25 +214,9 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
   <div class="wrap">
     <div class="eyebrow">THE CREW</div>
     <h2>Meet the Drivers</h2>
-<div class="drivers-grid">
-      <div class="card driver">
-        <div class="avatar">01</div>
-        <div><h3>Driver One</h3><p>Team Captain</p></div>
-      </div>
-      <div class="card driver">
-        <div class="avatar">02</div>
-        <div><h3>Driver Two</h3><p>Driver</p></div>
-      </div>
-      <div class="card driver">
-        <div class="avatar">03</div>
-        <div><h3>Driver Three</h3><p>Driver</p></div>
-      </div>
-      <div class="card driver">
-        <div class="avatar">04</div>
-        <div><h3>Driver Four</h3><p>Driver</p></div>
-      </div>
-    </div>
-  </div>
+<div class="drivers-grid" id="profileDrivers">
+  <p>Loading team drivers...</p>
+</div>
 </section>
 
 <section>
@@ -248,8 +224,8 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
     <div class="eyebrow">THE MACHINE</div>
     <h2>Our BMW</h2>
     <div class="stats">
-      <div class="stat"><small>CHASSIS</small><strong>E36</strong></div>
-      <div class="stat"><small>MODEL YEAR</small><strong>1995</strong></div>
+      <div class="stat"><small>CHASSIS</small><strong id="profileChassis">—</strong></div>
+      <div class="stat"><small>MODEL YEAR</small><strong id="profileModelYear">—</strong></div>
       <div class="stat"><small>ENGINE</small><strong>Inline-Six</strong></div>
       <div class="stat"><small>CLASS</small><strong>Dreier</strong></div>
     </div>
@@ -358,6 +334,102 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
     <p>Built on passion. Driven by endurance.</p>
   </div>
 </footer>
+<script type="module">
+import { createClient } from
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
+const SUPABASE_URL =
+  "https://hjeovuaecghiigoqcmoa.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_zVPjF4qp5C-T-5vZcyx0_g_sMkJRzMT";
+
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+  const urlParams = new URLSearchParams(window.location.search);
+const teamSlug = urlParams.get("team");
+  async function loadTeamProfile() {
+  if (!teamSlug) {
+    console.error("No team was specified in the URL.");
+    return;
+  }
+
+  const { data: team, error } = await supabase
+    .from("teams")
+    .select("id,team_name,slug,hometown,car_year,car_model,racing_class,race_number,team_story,status")
+    .eq("slug", teamSlug)
+    .eq("status", "published")
+    .maybeSingle();
+
+  if (error) {
+    console.error("Could not load team profile:", error.message);
+    return;
+  }
+
+  if (!team) {
+    console.error("Published team not found.");
+    return;
+  }
+
+  console.log("Team profile loaded:", team.team_name);
+    document.getElementById("profileTeamName").textContent =
+  team.team_name;
+    document.getElementById("profileRaceNumber").textContent =
+  team.race_number ? "#" + team.race_number : "—";
+    document.getElementById("profileBMW").textContent =
+  [team.car_year, team.car_model].filter(Boolean).join(" ") || "—";
+    document.getElementById("profileModelYear").textContent =
+  team.car_year || "—";
+    document.getElementById("profileRacingClass").textContent =
+  team.racing_class || "—";
+    document.getElementById("profileHometown").textContent =
+  team.hometown || "—";
+    document.getElementById("profileTeamStory").textContent =
+  team.team_story || "This team has not added its story yet.";
+    const { data: drivers, error: driversError } = await supabase
+  .from("team_drivers")
+  .select("*")
+  .eq("team_id", team.id);
+
+if (driversError) {
+  console.error("Could not load team drivers:", driversError.message);
+}
+    const driversContainer =
+  document.getElementById("profileDrivers");
+
+driversContainer.replaceChildren();
+    if (driversError || !drivers || drivers.length === 0) {
+  driversContainer.textContent =
+    driversError
+      ? "Driver information is not available yet."
+      : "This team has not added any drivers yet.";
+      if (!driversError && drivers) {
+  for (const driver of drivers) {
+    const card = document.createElement("div");
+    card.className = "card driver";
+
+    const avatar = document.createElement("div");
+    avatar.className = "avatar";
+    avatar.textContent = "BMW";
+
+    const info = document.createElement("div");
+
+    const name = document.createElement("h3");
+    name.textContent = driver.driver_name || "BEB Driver";
+
+    const hometown = document.createElement("p");
+    hometown.textContent = driver.hometown || "BEB Racing Team";
+
+    info.append(name, hometown);
+    card.append(avatar, info);
+    driversContainer.appendChild(card);
+  }
+}
+}
+}
+  loadTeamProfile();
+</script>
 </body>
 </html>
