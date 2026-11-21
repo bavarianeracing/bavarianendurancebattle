@@ -676,6 +676,19 @@ if (driver.photo_url) {
   }
 }
 
+const photoLabel = document.createElement("label");
+photoLabel.textContent = driver.photo_url
+  ? "Change Driver Photograph"
+  : "Upload Driver Photograph";
+
+const photoInput = document.createElement("input");
+photoInput.type = "file";
+photoInput.accept = "image/jpeg,image/png,image/webp";
+photoInput.style.marginBottom = "18px";
+
+photoLabel.appendChild(photoInput);
+card.appendChild(photoLabel);
+
     const heading = document.createElement("h3");
     heading.textContent = driver.driver_name;
     card.appendChild(heading);
