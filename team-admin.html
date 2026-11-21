@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>BEB Administrator Dashboard</title>
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: #0b111b;
+    color: #f5f7fb;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .wrap {
+    width: min(1100px, calc(100% - 36px));
+    margin: auto;
+  }
+
+  header {
+    background: #152033;
+    border-bottom: 1px solid #29374b;
+    padding: 20px 0;
+  }
+
+  .brand-logo {
+    width: 280px;
+    max-width: 100%;
+  }
+
+  main {
+    min-height: 75vh;
+    padding: 60px 0;
+  }
+
+  h1 { font-size: 38px; }
+
+  .panel {
+    padding: 28px;
+    background: #152033;
+    border: 1px solid #29374b;
+    border-radius: 12px;
+    margin-top: 25px;
+  }
+
+  .muted {
+    color: #acbbcf;
+    line-height: 1.7;
+  }
+
+  .hidden { display: none !important; }
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="wrap">
+    <a href="index.html">
+      <img
+        src="beb-logo.jpg"
+        alt="Bavarian Endurance Battle"
+        class="brand-logo">
+    </a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <h1>BEB Administrator Dashboard</h1>
+    <p class="muted">
+      Review and manage team profiles submitted
+      for the Bavarian Endurance Battle public paddock.
+    </p>
+
+    <section class="panel" id="adminStatus">
+      Checking administrator access...
+    </section>
+
+    <section class="panel hidden" id="adminPanel">
+      <h2>Teams Awaiting Approval</h2>
+      <div id="pendingTeams">
+        Loading submitted teams...
+      </div>
+    </section>
+  </div>
+</main>
+
+</body>
+</html>
