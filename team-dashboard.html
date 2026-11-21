@@ -688,6 +688,105 @@ photoInput.style.marginBottom = "18px";
 
 photoLabel.appendChild(photoInput);
 card.appendChild(photoLabel);
+    
+photoInput.addEventListener("change", async () => {
+  const file = photoInput.files[0];
+  if (!file || !currentTeam) return;
+
+  const allowedTypes = {
+    "image/jpeg": "jpg",
+    "image/png": "png",
+    "image/webp": "webp"
+  };
+
+  if (!allowedTypes[file.type]) {
+    showNotice("Please select a JPG, PNG, or WebP photograph.", true);
+    photoInput.value = "";
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    showNotice("Photographs must be 5 MB or smaller.", true);
+    photoInput.value = "";
+    return;
+  }
+
+  photoInput.disabled = true;
+  showNotice("Uploading driver photograph...");
+
+  let newPath = null;
+  let saved = false;
+
+  try {
+    newPath = currentTeam.id + "/" +
+      crypto.randomUUID() + "." + allowedTypes[file.type];
+
+    const { error: uploadError } = await supabase.storage
+      .from("driver-photos")
+      .upload(newPath, file, {
+        contentType: file.type,
+        upsert: false
+      });
+
+    if (uploadError) throw uploadError;
+
+    const { data: updated, error: saveError } = await supabase
+      .from("team_drivers")
+      .update({ photo_url: newPath })
+      .eq("id", driver.id)
+      .eq("team_id", currentTeam.id)
+      .select("id");
+
+    if (saveError || !updated?.length) {
+      throw new Error(
+        saveError?.message || "Could not save the photograph."
+      );
+    }
+
+    saved = true;
+
+    const oldPath = driver.photo_url;
+
+    if (oldPath && oldPath !== newPath) {
+      const { error: removeError } = await supabase.storage
+        .from("driver-photos")
+        .remove([oldPath]);
+
+      if (removeError) {
+        console.warn("Old photograph cleanup failed:", removeError);
+      }
+    }
+
+    await loadDrivers();
+    showNotice("Driver photograph saved successfully!");
+
+  } catch (error) {
+    if (newPath && !saved) {
+      const { data: record } = await supabase
+        .from("team_drivers")
+        .select("photo_url")
+        .eq("id", driver.id)
+        .eq("team_id", currentTeam.id)
+        .maybeSingle();
+
+      if (record && record.photo_url !== newPath) {
+        await supabase.storage
+          .from("driver-photos")
+          .remove([newPath]);
+      }
+    }
+
+    showNotice(
+      "Could not upload photograph: " + error.message,
+      true
+    );
+
+  } finally {
+    photoInput.disabled = false;
+    photoInput.value = "";
+  }
+});
+
 
     const heading = document.createElement("h3");
     heading.textContent = driver.driver_name;
