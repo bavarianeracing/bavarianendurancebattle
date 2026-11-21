@@ -403,15 +403,16 @@ footer {
   </p>
 
   <button
-    type="button"
-   id="submitForApprovalButton"
-    Submit for BEB Approval
-  </button>
+  type="button"
+  id="submitForApprovalButton">
+  Submit for BEB Approval
+</button>
 
   <p style="font-size:12px;color:#acbbcf;">
-    Submission feature being activated.
-    This does not constitute race registration.
-  </p>
+  Once submitted, your team profile will be locked
+  while BEB reviews it.
+  This does not constitute race registration.
+</p>
 
 </div>
 
@@ -591,6 +592,7 @@ async function loadDashboard() {
     currentTeam = team;
     $("savedTeamName").textContent = team.team_name;
     $("savedTeamStatus").textContent = team.status;
+   $("submitForApprovalButton").disabled = team.status !== "draft";
   fillTeamEditor(team);
 showPanel("existingPanel");
 await displayTeamLogo();
@@ -1228,7 +1230,65 @@ $("logoutButton").addEventListener(
   }
 );
 
-loadDashboard();
+$("submitForApprovalButton").addEventListener("click", async () => {
+
+  if (!currentUser || !currentTeam) {
+    showNotice("Please load your team profile first.", true);
+    return;
+  }
+
+  if (currentTeam.status !== "draft") {
+    showNotice("This profile has already been submitted.");
+    return;
+  }
+
+  const confirmed = confirm(
+    "Submit your team profile for BEB review?\n\n" +
+    "Once submitted, your profile will be locked " +
+    "until BEB reviews it.\n\n" +
+    "This is not an official race registration."
+  );
+
+  if (!confirmed) return;
+
+  const button = $("submitForApprovalButton");
+  button.disabled = true;
+  button.textContent = "Submitting...";
+
+  try {
+    const { data, error } = await supabase
+      .from("teams")
+      .update({ status: "pending" })
+      .eq("id", currentTeam.id)
+      .eq("owner_id", currentUser.id)
+      .eq("status", "draft")
+      .select("id,status")
+      .single();
+
+    if (error) throw error;
+
+    currentTeam.status = data.status;
+
+    $("savedTeamStatus").textContent = data.status;
+
+    button.textContent = "Awaiting BEB Review";
+
+    showNotice(
+      "Your team profile has been submitted for BEB review!"
+    );
+
+  } catch (error) {
+    button.disabled = false;
+    button.textContent = "Submit for BEB Approval";
+
+    showNotice(
+      "Could not submit profile: " + error.message,
+      true
+    );
+  }
+});
+
+
 </script>
 
 </body>
