@@ -90,6 +90,99 @@
     </section>
   </div>
 </main>
+<script type="module">
+import { createClient } from
+  "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
+const SUPABASE_URL =
+  "https://hjeovuaecghiigoqcmoa.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_zVPjF4qp5C-T-5vZcyx0_g_sMkJRzMT";
+
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+ 
+async function checkAdminAccess() {
+  const status = document.getElementById("adminStatus");
+  const panel = document.getElementById("adminPanel");
+
+  const { data: authData, error: authError } =
+    await supabase.auth.getUser();
+
+  if (authError || !authData.user) {
+    status.textContent =
+      "Please sign in to your BEB account to access this page.";
+    return;
+  }
+
+  const { data: isAdmin, error: adminError } =
+    await supabase.rpc("is_beb_admin");
+
+  if (adminError || isAdmin !== true) {
+    status.textContent =
+      "Access denied. This page is reserved for BEB administrators.";
+    return;
+  }
+
+  status.textContent = "Administrator access verified.";
+  panel.classList.remove("hidden");
+ await loadPendingTeams();
+}
+
+async function loadPendingTeams() {
+  const container = document.getElementById("pendingTeams");
+
+  container.textContent = "Loading submitted teams...";
+
+  const { data: teams, error } = await supabase
+    .from("teams")
+    .select("id,team_name,hometown,car_year,car_model,racing_class,status")
+    .eq("status", "pending")
+    .order("created_at", { ascending: true });
+
+  if (error) {
+    container.textContent =
+      "Could not load submitted teams: " + error.message;
+    return;
+  }
+
+  container.replaceChildren();
+
+  if (!teams.length) {
+    container.textContent = "No teams awaiting approval.";
+    return;
+  }
+
+  for (const team of teams) {
+    const card = document.createElement("div");
+
+    card.style.cssText =
+      "padding:20px;margin:15px 0;border:1px solid #29374b;border-radius:8px;";
+
+    const heading = document.createElement("h3");
+    heading.textContent = team.team_name;
+
+    const details = document.createElement("p");
+    details.className = "muted";
+    details.textContent = [
+      team.hometown,
+      [team.car_year, team.car_model].filter(Boolean).join(" "),
+      team.racing_class
+    ].filter(Boolean).join(" | ");
+
+    const status = document.createElement("p");
+    status.textContent = "Status: " + team.status;
+
+    card.append(heading, details, status);
+    container.appendChild(card);
+  }
+}
+
+checkAdminAccess();
+
+</script>
 </body>
 </html>
