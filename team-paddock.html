@@ -446,7 +446,9 @@ async function loadPublishedTeams() {
 for (const team of teams) {
   const card = document.createElement("a");
   card.className = "team-card";
-  card.href = "team-profile.html?team=" + encodeURIComponent(team.slug || team.id);
+   card.href = team.slug
+    ? "team-profile.html?team=" + encodeURIComponent(team.slug)
+    : "team-profile.html?id=" + encodeURIComponent(team.id);
 
   card.dataset.name = team.team_name || "";
   card.dataset.model = team.car_model || "";
