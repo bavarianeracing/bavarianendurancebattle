@@ -197,7 +197,7 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
       <div class="stat"><small>RACING CLASS</small><strong id="profileRacingClass">—</strong></div>
       <div class="stat"><small>HOMETOWN</small><strong id="profileHometown">—</strong></div>
     </div>
-    <p class="note">Demonstration team — not an official race entry.</p>
+    
   </div>
 </section>
 
@@ -217,6 +217,7 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
 <div class="drivers-grid" id="profileDrivers">
   <p>Loading team drivers...</p>
 </div>
+    </div>
 </section>
 
 <section>
@@ -226,8 +227,8 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
     <div class="stats">
       <div class="stat"><small>CHASSIS</small><strong id="profileChassis">—</strong></div>
       <div class="stat"><small>MODEL YEAR</small><strong id="profileModelYear">—</strong></div>
-      <div class="stat"><small>ENGINE</small><strong>Inline-Six</strong></div>
-      <div class="stat"><small>CLASS</small><strong>Dreier</strong></div>
+     <div class="stat"><small>ENGINE</small><strong>—</strong></div>
+<div class="stat"><small>CLASS</small><strong id="profileClass">—</strong></div>
     </div>
   </div>
 </section>
@@ -352,7 +353,10 @@ const supabase = createClient(
 const teamSlug = urlParams.get("team");
   async function loadTeamProfile() {
   if (!teamSlug) {
-    console.error("No team was specified in the URL.");
+   document.getElementById("profileTeamName").textContent = "No team selected";
+document.getElementById("profileTeamStory").textContent =
+  "Return to the Team Paddock and choose a team.";
+document.getElementById("profileDrivers").textContent = "No team selected.";
     return;
   }
 
@@ -363,13 +367,15 @@ const teamSlug = urlParams.get("team");
     .eq("status", "published")
     .maybeSingle();
 
-  if (error) {
-    console.error("Could not load team profile:", error.message);
-    return;
-  }
+    if (error || !team) {
+    if (error) console.error("Could not load team profile:", error.message);
 
-  if (!team) {
-    console.error("Published team not found.");
+    document.getElementById("profileTeamName").textContent =
+      error ? "Could not load team" : "Team not found";
+    document.getElementById("profileTeamStory").textContent =
+      "Return to the Team Paddock and choose a team.";
+    document.getElementById("profileDrivers").textContent =
+      "Driver information is unavailable.";
     return;
   }
 
@@ -384,14 +390,18 @@ const teamSlug = urlParams.get("team");
   team.car_year || "—";
     document.getElementById("profileRacingClass").textContent =
   team.racing_class || "—";
+    document.getElementById("profileClass").textContent =
+  team.racing_class || "—";
     document.getElementById("profileHometown").textContent =
   team.hometown || "—";
     document.getElementById("profileTeamStory").textContent =
   team.team_story || "This team has not added its story yet.";
     const { data: drivers, error: driversError } = await supabase
   .from("team_drivers")
-  .select("*")
-  .eq("team_id", team.id);
+    .select("driver_name,hometown")
+  .eq("team_id", team.id)
+  .order("display_order", { ascending: true })
+  .order("created_at", { ascending: true });
 
 if (driversError) {
   console.error("Could not load team drivers:", driversError.message);
@@ -405,7 +415,7 @@ driversContainer.replaceChildren();
     driversError
       ? "Driver information is not available yet."
       : "This team has not added any drivers yet.";
-      if (!driversError && drivers) {
+     } else {
   for (const driver of drivers) {
     const card = document.createElement("div");
     card.className = "card driver";
@@ -424,12 +434,11 @@ driversContainer.replaceChildren();
 
     info.append(name, hometown);
     card.append(avatar, info);
-    driversContainer.appendChild(card);
+     driversContainer.appendChild(card);
   }
 }
 }
-}
-  loadTeamProfile();
+loadTeamProfile();
 </script>
 </body>
 </html>
