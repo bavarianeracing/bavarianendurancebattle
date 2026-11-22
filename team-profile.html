@@ -351,6 +351,7 @@ const supabase = createClient(
 );
   const urlParams = new URLSearchParams(window.location.search);
 const teamSlug = urlParams.get("team");
+  const teamId = urlParams.get("id");
   async function loadTeamProfile() {
  if (!teamSlug && !teamId) {
    document.getElementById("profileTeamName").textContent = "No team selected";
@@ -363,7 +364,7 @@ document.getElementById("profileDrivers").textContent = "No team selected.";
   const { data: team, error } = await supabase
     .from("teams")
     .select("id,team_name,slug,hometown,car_year,car_model,racing_class,race_number,team_story,status")
-    .eq("slug", teamSlug)
+   .eq(teamSlug ? "slug" : "id", teamSlug || teamId)
     .eq("status", "published")
     .maybeSingle();
 
