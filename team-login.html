@@ -317,6 +317,9 @@ footer {
 
     <div class="notice" id="notice"
          role="status" aria-live="polite"></div>
+    <a id="teamDashboardLink" class="primary-button hidden" href="team-dashboard.html">
+  Go to Team Dashboard
+</a>
         <a id="adminDashboardLink" class="primary-button hidden" href="team-admin.html">
       Administrator Dashboard
     </a>
@@ -461,7 +464,8 @@ if (!adminError && isAdmin === true) {
   notice("You are signed in. Open the Administrator Dashboard below.");
 } else {
   $("adminDashboardLink").classList.add("hidden");
-  notice("You are signed in successfully.");
+ $("teamDashboardLink").classList.remove("hidden");
+notice("You’re signed in. Open the Team Dashboard to create or manage your team.");
 }
   });
 });
@@ -499,6 +503,10 @@ $("resetForm").addEventListener("submit", async event => {
 
 if (supabase) {
   supabase.auth.onAuthStateChange((event) => {
+        if (event === "SIGNED_OUT" || event === "PASSWORD_RECOVERY") {
+      $("teamDashboardLink").classList.add("hidden");
+      $("adminDashboardLink").classList.add("hidden");
+    }
     if (event === "PASSWORD_RECOVERY") {
       showForm("reset");
       notice("Enter your new password below.");
@@ -506,7 +514,8 @@ if (supabase) {
                !$("resetForm").classList.contains("hidden")) {
       // Keep the reset form open during password recovery.
     } else if (event === "SIGNED_IN") {
-      notice("Your email is verified and your account is signed in. Team profile management is coming next.");
+            $("teamDashboardLink").classList.remove("hidden");
+      notice("You’re signed in. Open the Team Dashboard to create or manage your team.");
     }
   });
 }
