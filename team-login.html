@@ -317,6 +317,9 @@ footer {
 
     <div class="notice" id="notice"
          role="status" aria-live="polite"></div>
+        <a id="adminDashboardLink" class="primary-button hidden" href="team-admin.html">
+      Administrator Dashboard
+    </a>
 
   </div>
 </main>
@@ -442,6 +445,7 @@ $("loginForm").addEventListener("submit", async event => {
   event.preventDefault();
 
   await submitAction(event.currentTarget, async () => {
+        $("adminDashboardLink").classList.add("hidden");
     const { error } = await supabase.auth.signInWithPassword({
       email: $("loginEmail").value.trim(),
       password: $("loginPassword").value
@@ -449,7 +453,16 @@ $("loginForm").addEventListener("submit", async event => {
 
     if (error) throw error;
 
-    notice("You are signed in successfully. Team profile management is coming next.");
+    const { data: isAdmin, error: adminError } =
+  await supabase.rpc("is_beb_admin");
+
+if (!adminError && isAdmin === true) {
+  $("adminDashboardLink").classList.remove("hidden");
+  notice("You are signed in. Open the Administrator Dashboard below.");
+} else {
+  $("adminDashboardLink").classList.add("hidden");
+  notice("You are signed in successfully.");
+}
   });
 });
 
