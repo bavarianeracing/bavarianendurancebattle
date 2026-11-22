@@ -85,8 +85,14 @@
     <section class="panel hidden" id="adminPanel">
       <h2>Teams Awaiting Approval</h2>
       <div id="pendingTeams">
-        Loading submitted teams...
+               Loading submitted teams...
       </div>
+    </section>
+
+    <section class="panel hidden" id="managePanel">
+      <h2>Manage Teams</h2>
+      <div id="manageNotice" role="status"></div>
+      <div id="managedTeams"></div>
     </section>
   </div>
 </main>
@@ -129,7 +135,8 @@ async function checkAdminAccess() {
 
   status.textContent = "Administrator access verified.";
   panel.classList.remove("hidden");
- await loadPendingTeams();
+document.getElementById("managePanel").classList.remove("hidden");
+await Promise.all([loadPendingTeams(), loadManagedTeams()]);
 }
 
 async function loadPendingTeams() {
@@ -206,14 +213,168 @@ approveButton.addEventListener("click", async () => {
   }
 
   alert(team.team_name + " has been approved!");
-  await loadPendingTeams();
+ await Promise.all([loadPendingTeams(), loadManagedTeams()]);
 });
 card.append(heading, details, status);
 card.appendChild(approveButton);
     container.appendChild(card);
   }
 }
+async function loadManagedTeams() {
+  const container = document.getElementById("managedTeams");
+  container.textContent = "Loading teams...";
 
+  const { data: teams, error } = await supabase
+    .from("teams")
+    .select("id,team_name,status,race_number,car_year,car_model,racing_class,hometown,team_story")
+    .order("team_name", { ascending: true });
+
+  if (error) {
+    container.textContent = "Could not load teams: " + error.message;
+    return;
+  }
+
+  if (!teams.length) {
+    container.textContent = "No team profiles yet.";
+    return;
+  }
+
+  container.replaceChildren(...teams.map(createManagedTeamCard));
+}
+ function createManagedTeamCard(team) {
+  const card = document.createElement("article");
+  card.style.cssText =
+    "padding:20px;margin:15px 0;border:1px solid #29374b;border-radius:8px;";
+
+  const heading = document.createElement("h3");
+  heading.textContent = team.team_name;
+
+  const status = document.createElement("p");
+  status.textContent = "Status: " + team.status;
+
+  const editButton = document.createElement("button");
+  editButton.type = "button";
+  editButton.textContent = "Edit Profile";
+
+  card.append(heading, status, editButton);
+
+  if (team.status === "published" || team.status === "pending") {
+    const draftButton = document.createElement("button");
+    draftButton.type = "button";
+    draftButton.style.marginLeft = "10px";
+    draftButton.textContent =
+      team.status === "published" ? "Unpublish" : "Return to Draft";
+    draftButton.addEventListener("click", () => returnTeamToDraft(team, draftButton));
+    card.append(draftButton);
+  }
+
+  const editor = createTeamEditor(team);
+  editButton.addEventListener("click", () => editor.classList.toggle("hidden"));
+  card.append(editor);
+
+  return card;
+}
+ function createTeamEditor(team) {
+  const form = document.createElement("form");
+  form.className = "hidden";
+  form.style.marginTop = "15px";
+
+  const fields = [
+    ["team_name", "Team Name", 100],
+    ["race_number", "Race Number", 10],
+    ["car_year", "Model Year"],
+    ["car_model", "BMW Model", 100],
+    ["racing_class", "Racing Class", 100],
+    ["hometown", "Hometown", 120],
+    ["team_story", "Team Story", 5000]
+  ];
+
+  for (const [key, labelText, maxLength] of fields) {
+    const label = document.createElement("label");
+    label.style.cssText = "display:block;margin:12px 0;";
+
+    const input = document.createElement(
+      key === "team_story" ? "textarea" : "input"
+    );
+    input.name = key;
+    input.value = team[key] ?? "";
+    input.style.cssText = "display:block;width:100%;padding:8px;";
+    input.required = key === "team_name";
+    if (maxLength) input.maxLength = maxLength;
+
+    if (key === "car_year") {
+      input.type = "number";
+      input.min = "1950";
+      input.max = "2035";
+      input.step = "1";
+    }
+
+    label.append(labelText, input);
+    form.append(label);
+  }
+
+  const saveButton = document.createElement("button");
+  saveButton.type = "submit";
+  saveButton.textContent = "Save Changes";
+  form.append(saveButton);
+
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    saveTeamProfile(team, form, saveButton);
+  });
+
+  return form;
+}
+ async function saveTeamProfile(team, form, button) {
+  const updates = Object.fromEntries(
+    [...new FormData(form)].map(([key, value]) => [key, value.trim() || null])
+  );
+
+  if (!updates.team_name) {
+    document.getElementById("manageNotice").textContent = "Enter a team name.";
+    form.elements.team_name.focus();
+    return;
+  }
+
+  if (updates.car_year !== null) {
+    updates.car_year = Number(updates.car_year);
+  }
+
+  await updateManagedTeam(team, updates, button, "Profile saved.");
+}
+
+async function returnTeamToDraft(team, button) {
+  const confirmed = confirm(
+    "Return " + team.team_name + " to draft? The team can edit and resubmit it."
+  );
+  if (!confirmed) return;
+
+  await updateManagedTeam(team, { status: "draft" }, button, "Profile returned to draft.");
+}
+
+async function updateManagedTeam(team, updates, button, successMessage) {
+  const notice = document.getElementById("manageNotice");
+  button.disabled = true;
+  notice.textContent = "Saving changes...";
+
+  const { error } = await supabase
+    .from("teams")
+    .update(updates)
+    .eq("id", team.id)
+    .eq("status", team.status)
+    .select("id")
+    .single();
+
+  button.disabled = false;
+
+  if (error) {
+    notice.textContent = "Could not save changes: " + error.message;
+    return;
+  }
+
+  notice.textContent = successMessage;
+  await Promise.all([loadPendingTeams(), loadManagedTeams()]);
+}
 checkAdminAccess();
 
 </script>
