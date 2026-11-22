@@ -352,7 +352,7 @@ const supabase = createClient(
   const urlParams = new URLSearchParams(window.location.search);
 const teamSlug = urlParams.get("team");
   async function loadTeamProfile() {
-  if (!teamSlug) {
+ if (!teamSlug && !teamId) {
    document.getElementById("profileTeamName").textContent = "No team selected";
 document.getElementById("profileTeamStory").textContent =
   "Return to the Team Paddock and choose a team.";
