@@ -322,7 +322,13 @@ footer {
   <input id="editCarYear" type="number"
          min="1950" max="2035"
          placeholder="1998">
+  <label for="editCarChassis">Chassis</label>
+  <input id="editCarChassis" type="text"
+         maxlength="100" placeholder="E46">
 
+  <label for="editCarEngine">Engine</label>
+  <input id="editCarEngine" type="text"
+         maxlength="100" placeholder="M54B30">
   <label for="editCarModel">BMW Model</label>
   <input id="editCarModel" type="text"
          maxlength="100"
@@ -544,6 +550,8 @@ function fillTeamEditor(team) {
   $("editStory").value = team.team_story || "";
   $("editCarYear").value = team.car_year ?? "";
   $("editCarModel").value = team.car_model || "";
+    $("editCarChassis").value = team.car_chassis || "";
+  $("editCarEngine").value = team.car_engine || "";
   $("editRacingClass").value = team.racing_class || "";
   $("editRaceNumber").value = team.race_number || "";
 }
@@ -682,6 +690,8 @@ $("editTeamForm").addEventListener("submit", async event => {
       team_story: $("editStory").value.trim() || null,
       car_year: year,
       car_model: $("editCarModel").value.trim() || null,
+            car_chassis: $("editCarChassis").value.trim() || null,
+      car_engine: $("editCarEngine").value.trim() || null,
       racing_class: $("editRacingClass").value || null,
       race_number: $("editRaceNumber").value.trim() || null
     };
