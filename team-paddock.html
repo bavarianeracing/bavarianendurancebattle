@@ -471,9 +471,16 @@ for (const team of teams) {
     if (team.logo_url) {
     const logo = document.createElement("img");
     logo.alt = "";
-    logo.width = 42;
-    logo.height = 42;
-    logo.style.cssText = "object-fit:contain;flex:none";
+       logo.width = 112;
+    logo.height = 112;
+    logo.style.cssText =
+      "grid-column:2;grid-row:1 / span 4;width:100%;height:auto;max-height:112px;aspect-ratio:1;object-fit:contain;align-self:center";
+
+    logo.onload = () => {
+      info.style.cssText =
+        "display:grid;grid-template-columns:minmax(0,1fr) clamp(64px,28%,112px);column-gap:12px;overflow-wrap:anywhere";
+      info.append(logo);
+    };
 
     logo.onload = () => {
       name.style.cssText = "display:flex;align-items:center;gap:10px";
