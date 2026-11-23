@@ -251,7 +251,7 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
     <div class="stats">
       <div class="stat"><small>CHASSIS</small><strong id="profileChassis">—</strong></div>
       <div class="stat"><small>MODEL YEAR</small><strong id="profileModelYear">—</strong></div>
-     <div class="stat"><small>ENGINE</small><strong>—</strong></div>
+    <div class="stat"><small>ENGINE</small><strong id="profileEngine">—</strong></div>
 <div class="stat"><small>CLASS</small><strong id="profileClass">—</strong></div>
     </div>
   </div>
@@ -387,7 +387,7 @@ document.getElementById("profileDrivers").textContent = "No team selected.";
 
   const { data: team, error } = await supabase
     .from("teams")
-       .select("id,team_name,slug,hometown,car_year,car_model,racing_class,race_number,team_story,status,logo_url,car_photo_url")
+          .select("id,team_name,slug,hometown,car_year,car_model,racing_class,race_number,team_story,status,logo_url,car_photo_url,car_chassis,car_engine")
    .eq(teamSlug ? "slug" : "id", teamSlug || teamId)
     .eq("status", "published")
     .maybeSingle();
@@ -405,6 +405,8 @@ document.getElementById("profileDrivers").textContent = "No team selected.";
   }
 
   console.log("Team profile loaded:", team.team_name);
+      document.getElementById("profileChassis").textContent = team.car_chassis || "—";
+  document.getElementById("profileEngine").textContent = team.car_engine || "—";
       void showTeamImage("profileTeamLogo", "team-logos", team.logo_url, team.team_name + " logo");
   void showTeamImage("profileCarPhoto", "car-photos", team.car_photo_url, "");
     document.getElementById("profileTeamName").textContent =
