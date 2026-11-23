@@ -267,7 +267,14 @@ async function loadManagedTeams() {
     draftButton.addEventListener("click", () => returnTeamToDraft(team, draftButton));
     card.append(draftButton);
   }
-
+  if (team.status === "draft") {
+    const deleteButton = document.createElement("button");
+    deleteButton.type = "button";
+    deleteButton.textContent = "Delete Profile";
+    deleteButton.style.marginLeft = "10px";
+    deleteButton.addEventListener("click", () => deleteTeamProfile(team, deleteButton));
+    card.append(deleteButton);
+  }
   const editor = createTeamEditor(team);
   editButton.addEventListener("click", () => editor.classList.toggle("hidden"));
   card.append(editor);
@@ -374,6 +381,85 @@ async function updateManagedTeam(team, updates, button, successMessage) {
 
   notice.textContent = successMessage;
   await Promise.all([loadPendingTeams(), loadManagedTeams()]);
+}
+ async function listTeamUploadPaths(bucket, folder) {
+  const paths = [];
+  const pageSize = 100;
+
+  for (let offset = 0; ; offset += pageSize) {
+    const { data, error } = await bucket.list(folder, {
+      limit: pageSize,
+      offset,
+      sortBy: { column: "name", order: "asc" }
+    });
+    if (error) throw error;
+
+    for (const item of data) {
+      const path = folder + "/" + item.name;
+      if (item.id === null) {
+        paths.push(...await listTeamUploadPaths(bucket, path));
+      } else {
+        paths.push(path);
+      }
+    }
+
+    if (data.length < pageSize) return paths;
+  }
+}
+
+async function deleteTeamProfile(team, button) {
+  const confirmed = confirm(
+    'Permanently delete "' + team.team_name + '" and its drivers and uploads? ' +
+    "This cannot be undone."
+  );
+  if (!confirmed) return;
+
+  const notice = document.getElementById("manageNotice");
+  button.disabled = true;
+  notice.textContent = "Checking team uploads...";
+
+  try {
+    const { data: draft, error: lookupError } = await supabase
+      .from("teams")
+      .select("id")
+      .eq("id", team.id)
+      .eq("status", "draft")
+      .maybeSingle();
+
+    if (lookupError) throw lookupError;
+    if (!draft) throw new Error("This profile is no longer a draft. Refresh Manage Teams.");
+
+    const uploads = await Promise.all(
+      ["team-logos", "car-photos", "driver-photos"].map(async name => {
+        const bucket = supabase.storage.from(name);
+        return { bucket, paths: await listTeamUploadPaths(bucket, team.id) };
+      })
+    );
+
+    notice.textContent = "Deleting team uploads...";
+    for (const { bucket, paths } of uploads) {
+      for (let index = 0; index < paths.length; index += 100) {
+        const { error } = await bucket.remove(paths.slice(index, index + 100));
+        if (error) throw error;
+      }
+    }
+
+    const { error: deleteError } = await supabase
+      .from("teams")
+      .delete()
+      .eq("id", team.id)
+      .eq("status", "draft")
+      .select("id")
+      .single();
+
+    if (deleteError) throw deleteError;
+
+    notice.textContent = "Profile deleted.";
+    await Promise.all([loadPendingTeams(), loadManagedTeams()]);
+  } catch (error) {
+    notice.textContent = "Could not finish deletion: " + error.message;
+    button.disabled = false;
+  }
 }
 checkAdminAccess();
 
