@@ -86,12 +86,31 @@ header {
 
 .hero {
   min-height:350px;
-  background:
-    linear-gradient(0deg,#070a10 0%,transparent 80%),
-    linear-gradient(90deg,#070a10aa,#070a1022),
-    url("https://images.unsplash.com/photo-1555215695-3004980ad54e?w=1600") center/cover;
+  background:var(--panel);
   display:flex;
   align-items:end;
+  position:relative;
+  isolation:isolate;
+}
+.hero-photo {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  z-index:-2;
+}
+.hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(0deg,#070a10,#070a1033);
+  z-index:-1;
+}
+.team-logo {
+  max-width:min(180px,50vw);
+  max-height:125px;
+  margin-bottom:12px;
 }
 .hero-content {padding:75px 0 35px}
 .eyebrow {color:var(--blue);font-size:12px;font-weight:800;letter-spacing:.16em}
@@ -180,7 +199,9 @@ footer {padding:35px 0;text-align:center;color:var(--muted);font-size:13px}
 </header>
 
 <div class="hero">
+  <img id="profileCarPhoto" class="hero-photo" alt="" hidden>
   <div class="wrap hero-content">
+    <img id="profileTeamLogo" class="team-logo" alt="" hidden>
     <div class="eyebrow">BEHIND THE MACHINE</div>
  <h1 id="profileTeamName">Loading Team...</h1>
     <a href="#support-team" style="display:inline-block; margin-top:12px; padding:12px 20px; border-radius:8px; background:var(--blue); color:var(--bg); font-weight:800; text-decoration:none;">
@@ -366,7 +387,7 @@ document.getElementById("profileDrivers").textContent = "No team selected.";
 
   const { data: team, error } = await supabase
     .from("teams")
-    .select("id,team_name,slug,hometown,car_year,car_model,racing_class,race_number,team_story,status")
+       .select("id,team_name,slug,hometown,car_year,car_model,racing_class,race_number,team_story,status,logo_url,car_photo_url")
    .eq(teamSlug ? "slug" : "id", teamSlug || teamId)
     .eq("status", "published")
     .maybeSingle();
@@ -443,6 +464,21 @@ driversContainer.replaceChildren();
 }
 }
 loadTeamProfile();
+  async function showTeamImage(elementId, bucket, path, alt) {
+  if (!path) return;
+
+  const { data, error } = await supabase.storage
+    .from(bucket)
+    .createSignedUrl(path, 300);
+
+  if (error || !data?.signedUrl) return;
+
+  const image = document.getElementById(elementId);
+  image.alt = alt;
+  image.onload = () => { image.hidden = false; };
+  image.onerror = () => { image.hidden = true; };
+  image.src = data.signedUrl;
+}
 </script>
 </body>
 </html>
