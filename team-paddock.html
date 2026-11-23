@@ -434,7 +434,7 @@ const emptyState = document.getElementById("emptyState");
 async function loadPublishedTeams() {
   const { data: teams, error } = await supabase
     .from("teams")
-    .select("id,slug,team_name,hometown,car_year,car_model,racing_class,car_photo_url")
+       .select("id,slug,team_name,hometown,car_year,car_model,racing_class,car_photo_url,logo_url")
     .eq("status", "published")
     .order("team_name", { ascending: true });
 
@@ -468,6 +468,24 @@ for (const team of teams) {
   const name = document.createElement("div");
   name.className = "team-name";
   name.textContent = team.team_name;
+    if (team.logo_url) {
+    const logo = document.createElement("img");
+    logo.alt = "";
+    logo.width = 42;
+    logo.height = 42;
+    logo.style.cssText = "object-fit:contain;flex:none";
+
+    logo.onload = () => {
+      name.style.cssText = "display:flex;align-items:center;gap:10px";
+      name.prepend(logo);
+    };
+
+    supabase.storage.from("team-logos").createSignedUrl(team.logo_url, 300)
+      .then(({ data, error }) => {
+        if (!error && data?.signedUrl) logo.src = data.signedUrl;
+      })
+      .catch(error => console.warn("Could not load team logo:", error));
+  }
 
   const details = document.createElement("div");
   details.className = "team-details";
