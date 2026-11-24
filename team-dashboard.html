@@ -348,9 +348,14 @@ footer {
   </select>
 
   <label for="editRaceNumber">Race Number</label>
-  <input id="editRaceNumber" type="text"
-         maxlength="10"
-         placeholder="Your preferred number">
+    <select id="editRaceNumber" disabled>
+    <option value="">Loading race numbers…</option>
+  </select>
+
+  <p id="raceNumberStatus" role="status"></p>
+  <div id="raceNumberGrid" aria-label="Race number availability"
+       style="display:grid;grid-template-columns:repeat(auto-fit,minmax(52px,1fr));gap:6px;">
+  </div>
   
 <div style="margin-top:30px;">
   <h3>BMW Race Car Photograph</h3>
@@ -543,7 +548,59 @@ function makeSlug(name) {
 
 let currentUser = null;
 let currentTeam = null;
+async function loadRaceNumbers(team) {
+  const select = $("editRaceNumber");
+  const grid = $("raceNumberGrid");
+  const status = $("raceNumberStatus");
+  const own = team.race_number || "";
 
+  select.disabled = true;
+  grid.replaceChildren();
+
+  const { data, error } = await supabase.rpc("reserved_race_numbers");
+
+  if (error) {
+    status.textContent = "Could not load race numbers. Please refresh.";
+    return;
+  }
+
+  const taken = new Set(data.map(row => row.race_number));
+  taken.add("01");
+
+  select.replaceChildren(new Option("Choose a race number", ""));
+
+  for (let i = 1; i <= 99; i++) {
+    const number = String(i).padStart(2, "0");
+    const yours = number === own;
+    const unavailable = taken.has(number) && !yours;
+
+    if (!unavailable) {
+      select.add(new Option(number, number));
+    }
+
+    const cell = document.createElement("button");
+    cell.type = "button";
+    cell.textContent = number;
+      cell.disabled = unavailable || team.status === "pending";
+    cell.title = yours ? "Your number" : unavailable ? "Taken" : "Available";
+
+    cell.style.cssText =
+      "padding:8px;border-radius:5px;text-align:center;" +
+      "background:" +
+      (yours ? "#276bb0" : unavailable ? "#752929" : "#245c36") +
+      ";color:white;";
+
+    cell.addEventListener("click", () => {
+      select.value = number;
+    });
+
+    grid.appendChild(cell);
+  }
+
+  select.value = own;
+  select.disabled = team.status === "pending";
+  status.textContent = "Green: Available • Red: Taken • Blue: Yours";
+}
 function fillTeamEditor(team) {
   $("editTeamName").value = team.team_name || "";
   $("editHometown").value = team.hometown || "";
@@ -553,7 +610,7 @@ function fillTeamEditor(team) {
     $("editCarChassis").value = team.car_chassis || "";
   $("editCarEngine").value = team.car_engine || "";
   $("editRacingClass").value = team.racing_class || "";
-  $("editRaceNumber").value = team.race_number || "";
+    void loadRaceNumbers(team);
 }
 
 async function loadDashboard() {
@@ -693,7 +750,9 @@ $("editTeamForm").addEventListener("submit", async event => {
             car_chassis: $("editCarChassis").value.trim() || null,
       car_engine: $("editCarEngine").value.trim() || null,
       racing_class: $("editRacingClass").value || null,
-      race_number: $("editRaceNumber").value.trim() || null
+           race_number: $("editRaceNumber").disabled
+        ? currentTeam.race_number
+        : $("editRaceNumber").value || null
     };
 
     const { data, error } = await supabase
@@ -716,7 +775,13 @@ $("editTeamForm").addEventListener("submit", async event => {
     window.scrollTo({ top: 0, behavior: "smooth" });
 
   } catch (error) {
-    showNotice("Could not save your team: " + error.message, true);
+    if (error.code === "23505" &&
+    error.message.includes("teams_race_number_unique")) {
+  showNotice("That race number has already been taken. Please choose another.", true);
+  await loadRaceNumbers(currentTeam);
+} else {
+  showNotice("Could not save your team: " + error.message, true);
+}
   } finally {
     button.disabled = false;
     button.textContent = "Save Team Profile";
