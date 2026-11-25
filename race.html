@@ -10,7 +10,7 @@
 
   <link rel="icon" href="beb-logo.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;family=League+Spartan:wght@900&amp;display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -37,7 +37,7 @@
     }
 
     header {
-      position:absolute;
+      position:relative;
       z-index:10;
       width:100%;
       padding:18px 0;
@@ -80,6 +80,108 @@
       background:#2f8cff;
       border-color:#2f8cff;
       color:white;
+    }
+
+    .heritage-start {
+      padding:clamp(32px,6vw,84px) 0;
+      background:radial-gradient(ellipse at 50% 32%,#202938,var(--bg) 75%);
+      border-bottom:1px solid #283449;
+    }
+
+    .heritage-poster {
+      width:min(840px,calc(100% - 32px));
+      margin-inline:auto;
+      filter:drop-shadow(0 18px 22px #000a);
+    }
+
+    .heritage-paper {
+      padding:clamp(13px,3vw,32px);
+      border:clamp(5px,1.15vw,12px) solid transparent;
+      color:#f6eddc;
+      background:
+        radial-gradient(ellipse at 12% 6%,#ffffff12,transparent 46%) padding-box,
+        repeating-linear-gradient(94deg,#ffffff06 0 1px,transparent 1px 5px) padding-box,
+        linear-gradient(#161513,#161513) padding-box,
+        radial-gradient(ellipse at 99% 3%,#785a3b 0,transparent 13%) border-box,
+        radial-gradient(ellipse at 3% 97%,#916e48 0,transparent 16%) border-box,
+        radial-gradient(ellipse at 78% 100%,#ad8960 0,transparent 18%) border-box,
+        linear-gradient(103deg,#b29a72,#e4d4b2 18%,#c6ac83 55%,#dbc7a1 83%,#a2875f) border-box;
+      clip-path:polygon(
+        0 1.1%,.7% .8%,1.6% 0,8% .16%,19% .08%,23% .36%,24.5% .14%,
+        41% .2%,47% .08%,67% .25%,72% 0,91% .08%,97.2% .3%,98% .75%,
+        99.1% .9%,99.7% 1.7%,99.85% 9%,99.69% 18%,100% 26%,99.83% 40%,
+        99.55% 46.8%,99.08% 47.5%,99.66% 48.2%,99.8% 52%,99.85% 71%,
+        99.6% 82%,99.9% 92%,99.65% 98.6%,98.4% 99.4%,96.7% 99.58%,
+        89% 99.7%,78% 99.48%,74.6% 99.68%,73.8% 99.16%,72.8% 99.66%,
+        64% 99.87%,53% 99.68%,38% 99.92%,27% 99.77%,14% 100%,7% 99.69%,
+        4.1% 99.56%,2.6% 98.96%,1.8% 99.11%,.8% 98.42%,.41% 96.95%,
+        .2% 92%,.3% 81%,.14% 69%,.35% 64%,.07% 53%,.26% 41%,0 29%,
+        .29% 20%,.79% 16.2%,.24% 15.6%,.1% 9%
+      );
+    }
+
+    .heritage-paper .eyebrow {
+      color:#f6eddc;
+    }
+
+    .heritage-start h2 {
+      margin:10px 0 clamp(16px,3vw,28px);
+      font-family:"League Spartan","Arial Black",Inter,sans-serif;
+      font-size:clamp(1.45rem,4vw,3.15rem);
+      font-weight:900;
+      line-height:1;
+      letter-spacing:-.04em;
+    }
+
+    .heritage-headline-intro,
+    .heritage-headline-feature {
+      display:block;
+    }
+
+    .heritage-headline-intro {
+      color:#59b9e9;
+    }
+
+    .heritage-headline-feature {
+      margin-top:.12em;
+      font-size:clamp(2.55rem,9.5vw,6.5rem);
+      letter-spacing:-.06em;
+      color:#b7e4ff;
+    }
+
+    .heritage-headline-feature span {
+      color:#ff643d;
+    }
+
+    .heritage-story {
+      margin-top:clamp(18px,3vw,28px);
+    }
+
+    .heritage-story p {
+      margin:0 0 16px;
+      color:#f6eddc;
+    }
+
+    .heritage-video-link {
+      color:#f6eddc;
+      border-color:#d4c3a2;
+    }
+
+    .heritage-photo {
+      margin:0;
+    }
+
+    .heritage-photo img {
+      display:block;
+      width:100%;
+      height:auto;
+      border:1px solid #d4c3a280;
+    }
+
+    .heritage-photo figcaption {
+      margin-top:9px;
+      color:#d4c3a2;
+      font-size:.875rem;
     }
 
     .hero {
@@ -408,6 +510,38 @@
 </header>
 
 <main>
+
+  <section class="heritage-start" aria-labelledby="heritage-start-heading">
+    <div class="heritage-poster">
+      <div class="heritage-paper">
+        <div class="eyebrow">BEB Heritage Start</div>
+        <h2 id="heritage-start-heading">
+          <span class="heritage-headline-intro">Did you know that we are</span>
+          starting the race
+          <span class="heritage-headline-feature">Le Mans <span>style?</span></span>
+        </h2>
+        <figure class="heritage-photo">
+          <img src="heritage-start-vintage.png" width="1501" height="1048"
+               alt="Helmeted drivers run across the Le Mans straight toward a line of parked historic race cars.">
+          <figcaption>Drivers sprint to their cars in a recreation of the traditional Le Mans start.</figcaption>
+        </figure>
+        <div class="heritage-story">
+          <p>
+            At the Historic 12 Hours of Buttonwillow, we’re planning to open with a tribute
+            to the classic Le Mans start. Drivers will sprint to their parked BMWs with
+            the engines off.
+          </p>
+          <p>
+            Safety comes first. Every driver must be strapped in and checked, and every
+            crew must be clear before race control releases the field behind the BEB Safety
+            Kart. One controlled formation lap later, the tower’s green flag begins
+            twelve hours of racing.
+          </p>
+          <a class="button heritage-video-link" href="BEB_Le_Mans_Heritage_Start_Static%20%282%29.mp4">Watch the Heritage Start explainer</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section class="hero">
     <div class="wrap hero-content">
